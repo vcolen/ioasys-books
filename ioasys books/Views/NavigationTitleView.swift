@@ -25,11 +25,28 @@ class NavigationTitleView: UIView {
         return l
     }()
     
+    lazy var logOutButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Log Out Icon"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     lazy var titleStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.spacing = 12.2
         stackView.axis = .horizontal
         stackView.alignment = .leading
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        return stackView
+    }()
+    
+    lazy var navigationTitleMainStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .equalSpacing
+        stackView.axis = .horizontal
+        stackView.spacing = 138
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -45,9 +62,10 @@ class NavigationTitleView: UIView {
     }
     
     func configureSubviews() {
-        addSubview(titleStackView)
+        addSubview(navigationTitleMainStackView)
+        navigationTitleMainStackView.addArrangedSubview(titleStackView)
         titleStackView.addArrangedSubview(ioasysTitleLabel)
         titleStackView.addArrangedSubview(booksTitleLabel)
+        navigationTitleMainStackView.addArrangedSubview(logOutButton)
     }
-    
 }

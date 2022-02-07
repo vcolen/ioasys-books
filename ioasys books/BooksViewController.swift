@@ -9,8 +9,8 @@ import UIKit
 
 class BooksViewController: UIViewController {
     
-    lazy var viewCustom = BooksView()
-
+    lazy var viewCustom = BooksCatalogueView()
+    //lazy var viewCustom = BookContainerView()
     
     override func loadView() {
         super.loadView()
