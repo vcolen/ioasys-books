@@ -20,7 +20,7 @@ class LoginFormView: UIView {
         let view = UIView()
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
-        view.layer.borderColor = CGColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        view.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -29,7 +29,7 @@ class LoginFormView: UIView {
         let view = UIView()
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
-        view.layer.borderColor = CGColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        view.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -51,7 +51,7 @@ class LoginFormView: UIView {
     
     lazy var showPasswordButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal) //other is "eye"
         button.tintColor = UIColor(red: 0.46, green: 0.46, blue: 0.47, alpha: 1.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -75,7 +75,7 @@ class LoginFormView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(red: 0.57, green: 0.21, blue: 0.75, alpha: 1.0)
+        button.backgroundColor = UIColor(red: 0.22, green: 0.08, blue: 0.29, alpha: 1.0)
         button.setTitle("Entrar", for: .normal)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
