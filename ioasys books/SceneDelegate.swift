@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         let navigationController = UINavigationController()
-        navigationController.setViewControllers([LoginViewController()], animated: true)
+        navigationController.setViewControllers([BooksViewController()], animated: true)
         window?.rootViewController = navigationController
     }
 

@@ -11,17 +11,17 @@ class NavigationTitleView: UIView {
     
     lazy var ioasysTitleLabel: UILabel = {
        let l = UILabel()
-        l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "ioasys"
         l.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
     lazy var booksTitleLabel: UILabel = {
        let l = UILabel()
-        l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "Books"
         l.font = UIFont.systemFont(ofSize: 30, weight: .thin)
+        l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
@@ -36,7 +36,6 @@ class NavigationTitleView: UIView {
        let stackView = UIStackView()
         stackView.spacing = 12.2
         stackView.axis = .horizontal
-        stackView.alignment = .leading
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         return stackView
@@ -44,17 +43,18 @@ class NavigationTitleView: UIView {
     
     lazy var navigationTitleMainStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
         stackView.axis = .horizontal
-        stackView.spacing = 138
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         configureSubviews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -67,5 +67,16 @@ class NavigationTitleView: UIView {
         titleStackView.addArrangedSubview(ioasysTitleLabel)
         titleStackView.addArrangedSubview(booksTitleLabel)
         navigationTitleMainStackView.addArrangedSubview(logOutButton)
+    }
+    
+    func setupConstraints() {
+        
+        //Navigation Title Main Stack View
+        NSLayoutConstraint.activate([
+            navigationTitleMainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            navigationTitleMainStackView.topAnchor.constraint(equalTo: topAnchor),
+            navigationTitleMainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            navigationTitleMainStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }

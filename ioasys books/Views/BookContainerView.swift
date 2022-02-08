@@ -158,11 +158,7 @@ class BookContainerView: UIView {
             bookContainerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bookContainerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
-        
-        NSLayoutConstraint.activate([
-            //bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor, constant: 20)
-        ])
-        
+                
         NSLayoutConstraint.activate([
             bookFullInfoStackView.topAnchor.constraint(equalTo: bookContainerStackView.topAnchor, constant: 16),
             bookFullInfoStackView.bottomAnchor.constraint(equalTo: bookContainerStackView.bottomAnchor, constant: -16)

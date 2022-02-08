@@ -24,7 +24,7 @@ class WelcomeTitleView: UIView {
         return l
     }()
     
-    lazy var stackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.alignment = .leading
         stackView.spacing = 0
@@ -34,19 +34,29 @@ class WelcomeTitleView: UIView {
     }()
     
     func configureSubviews() {
-        addSubview(stackView)
-        stackView.addArrangedSubview(welcomeLabel)
-        stackView.addArrangedSubview(userNameLabel)
+        addSubview(mainStackView)
+        mainStackView.addArrangedSubview(welcomeLabel)
+        mainStackView.addArrangedSubview(userNameLabel)
     }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         configureSubviews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupConstraints() {
+        
+        //Main Stack View
+        NSLayoutConstraint.activate([
+            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mainStackView.topAnchor.constraint(equalTo: topAnchor),
+        ])
+    }
 }

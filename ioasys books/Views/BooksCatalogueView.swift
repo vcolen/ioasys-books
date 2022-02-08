@@ -25,8 +25,7 @@ class BooksCatalogueView: UIView {
     lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 50
-        stackView.alignment = .leading
+        stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -122,28 +121,25 @@ class BooksCatalogueView: UIView {
             mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            mainStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+            mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
         ])
         
-        //Title stack view
+        //Title Stack View
         NSLayoutConstraint.activate([
-            titleStackView.topAnchor.constraint(equalTo: mainStackView.topAnchor),
             titleStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
-            titleStackView.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor)
         ])
         
-        NSLayoutConstraint.activate([
-            navigationTitleView.trailingAnchor.constraint(equalTo: titleStackView.trailingAnchor, constant: -24)
-        ])
-        //Book stack view
-        NSLayoutConstraint.activate([
-            bookStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
-            bookStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
+        //Search bar Text Field
         NSLayoutConstraint.activate([
             searchBarTextField.leadingAnchor.constraint(equalTo: bookStackView.leadingAnchor),
             searchBarTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
+        //Book Stack View
+        NSLayoutConstraint.activate([
+            bookStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
+            bookStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         for view in bookStackView.arrangedSubviews[1...] {
