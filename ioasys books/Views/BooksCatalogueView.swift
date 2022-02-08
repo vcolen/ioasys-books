@@ -19,8 +19,8 @@ class BooksCatalogueView: UIView {
         return scrollView
     }()
     
-    var navigationTitleView = NavigationTitleView()
-    var welcomeTitleView = WelcomeTitleView()
+   lazy var navigationTitleView = NavigationTitleView()
+   lazy var welcomeTitleView = WelcomeTitleView()
     
     lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()

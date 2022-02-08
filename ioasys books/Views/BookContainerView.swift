@@ -160,7 +160,7 @@ class BookContainerView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor, constant: 20)
+            //bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor, constant: 20)
         ])
         
         NSLayoutConstraint.activate([

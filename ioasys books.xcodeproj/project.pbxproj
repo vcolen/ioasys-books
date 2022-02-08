@@ -18,6 +18,9 @@
 		79A1A0B427B0145D00C2E0E6 /* WelcomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B327B0145D00C2E0E6 /* WelcomeTitleView.swift */; };
 		79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */; };
 		79A1A0BA27B0549800C2E0E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79A1A0B927B0549800C2E0E6 /* Assets.xcassets */; };
+		79F5B73827B137BF00EBEB6A /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73727B137BF00EBEB6A /* BookModel.swift */; };
+		79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */; };
+		79F5B73C27B2AFEE00EBEB6A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73B27B2AFEE00EBEB6A /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		79A1A0B327B0145D00C2E0E6 /* WelcomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTitleView.swift; sourceTree = "<group>"; };
 		79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerView.swift; sourceTree = "<group>"; };
 		79A1A0B927B0549800C2E0E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		79F5B73727B137BF00EBEB6A /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		79F5B73B27B2AFEE00EBEB6A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,8 @@
 				79A1A09C27AFF30B00C2E0E6 /* ViewController.swift */,
 				79A1A0B027B00D2000C2E0E6 /* Views */,
 				79A1A0AE27AFF60300C2E0E6 /* BooksViewController.swift */,
+				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
+				79F5B73727B137BF00EBEB6A /* BookModel.swift */,
 				79A1A09E27AFF30B00C2E0E6 /* Main.storyboard */,
 				79A1A0A327AFF30C00C2E0E6 /* LaunchScreen.storyboard */,
 				79A1A0A627AFF30C00C2E0E6 /* Info.plist */,
@@ -86,6 +94,7 @@
 				79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */,
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* WelcomeTitleView.swift */,
+				79F5B73B27B2AFEE00EBEB6A /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,10 +173,13 @@
 				79A1A0AF27AFF60300C2E0E6 /* BooksViewController.swift in Sources */,
 				79A1A09D27AFF30B00C2E0E6 /* ViewController.swift in Sources */,
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
+				79F5B73827B137BF00EBEB6A /* BookModel.swift in Sources */,
 				79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */,
 				79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */,
 				79A1A0B427B0145D00C2E0E6 /* WelcomeTitleView.swift in Sources */,
 				79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */,
+				79F5B73C27B2AFEE00EBEB6A /* LoginView.swift in Sources */,
+				79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */,
 				79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
