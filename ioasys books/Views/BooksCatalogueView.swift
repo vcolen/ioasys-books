@@ -63,7 +63,7 @@ class BooksCatalogueView: UIView {
         textField.layer.cornerRadius = 8
         textField.layer.shadowRadius = 24
         textField.layer.shadowOffset = CGSize(width: 0, height: 4)
-        textField.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.09)
+        textField.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
         textField.layer.shadowOpacity = 1.0
         
         

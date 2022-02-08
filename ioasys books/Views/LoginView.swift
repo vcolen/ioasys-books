@@ -10,7 +10,7 @@ import UIKit
 class LoginView: UIView {
     var authorization = ""
     func loginUser() {
-        let postUrl = URL(string: "https://books.ioasys.com.br/api/v1/auth/sign-in")!
+        let postUrl = URL(string: K.URLs.auth + "/sign-in")!
         var request = URLRequest(url: postUrl)
         
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -32,15 +32,9 @@ class LoginView: UIView {
     
     func loadData() {
         print("carregou aqui")
-        let url = URL(string:"https://books.ioasys.com.br/api/v1/books?page=1")
+        let url = URL(string: K.URLs.books + "page=1")
         var getRequest = URLRequest(url: url!)
-        getRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        getRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         getRequest.addValue("Bearer \(authorization)", forHTTPHeaderField: "Authorization")
-        
-        print(self.authorization + "essa foi a autorizacao")
-      //  print(getRequest.allHTTPHeaderFields!)
-
         URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
             if error != nil { print(error!) }
             if let data = data {

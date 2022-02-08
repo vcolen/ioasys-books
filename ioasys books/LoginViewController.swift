@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    lazy var viewCustom = LoginView()
+    lazy var viewCustom = LoginFormView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +23,12 @@ class LoginViewController: UIViewController {
         super.loadView()
         
         view = viewCustom
-        view.addSubview(changeScreenButton)
+        //view.addSubview(changeScreenButton)
         
-        NSLayoutConstraint.activate([
-            changeScreenButton.leadingAnchor.constraint(equalTo: viewCustom.leadingAnchor),
-            changeScreenButton.bottomAnchor.constraint(equalTo: viewCustom.bottomAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            changeScreenButton.leadingAnchor.constraint(equalTo: viewCustom.leadingAnchor),
+//            changeScreenButton.bottomAnchor.constraint(equalTo: viewCustom.bottomAnchor)
+//        ])
     }
     
     

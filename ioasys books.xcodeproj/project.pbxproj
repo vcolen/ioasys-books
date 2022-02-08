@@ -21,6 +21,8 @@
 		79F5B73827B137BF00EBEB6A /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73727B137BF00EBEB6A /* BookModel.swift */; };
 		79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */; };
 		79F5B73C27B2AFEE00EBEB6A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73B27B2AFEE00EBEB6A /* LoginView.swift */; };
+		79F5B73E27B2C52900EBEB6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73D27B2C52900EBEB6A /* Constants.swift */; };
+		79F5B74027B2DA3C00EBEB6A /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		79F5B73727B137BF00EBEB6A /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		79F5B73B27B2AFEE00EBEB6A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		79F5B73D27B2C52900EBEB6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 				79A1A0B027B00D2000C2E0E6 /* Views */,
 				79A1A0AE27AFF60300C2E0E6 /* BooksViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
+				79F5B73D27B2C52900EBEB6A /* Constants.swift */,
 				79F5B73727B137BF00EBEB6A /* BookModel.swift */,
 				79A1A09E27AFF30B00C2E0E6 /* Main.storyboard */,
 				79A1A0A327AFF30C00C2E0E6 /* LaunchScreen.storyboard */,
@@ -95,6 +100,7 @@
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* WelcomeTitleView.swift */,
 				79F5B73B27B2AFEE00EBEB6A /* LoginView.swift */,
+				79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 				79F5B73C27B2AFEE00EBEB6A /* LoginView.swift in Sources */,
 				79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */,
 				79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */,
+				79F5B74027B2DA3C00EBEB6A /* LoginFormView.swift in Sources */,
+				79F5B73E27B2C52900EBEB6A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
