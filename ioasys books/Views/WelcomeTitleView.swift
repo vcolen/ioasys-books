@@ -12,6 +12,7 @@ class WelcomeTitleView: UIView {
     lazy var welcomeLabel: UILabel = {
         let l = UILabel()
         l.text = "Bem vindo, "
+        l.font = .heebo(ofSize: 18)
         l.translatesAutoresizingMaskIntoConstraints = false
        return l
     }()
@@ -19,7 +20,7 @@ class WelcomeTitleView: UIView {
     lazy var userNameLabel: UILabel = {
        let l = UILabel()
         l.text = "Guilherme!"
-        l.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        l.font = .heeboMedium(ofSize: 18)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

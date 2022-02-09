@@ -19,13 +19,13 @@ class BooksCatalogueView: UIView {
         return scrollView
     }()
     
-   lazy var navigationTitleView = NavigationTitleView()
-   lazy var welcomeTitleView = WelcomeTitleView()
+    lazy var navigationTitleView = NavigationTitleView()
+    lazy var welcomeTitleView = WelcomeTitleView()
     
     lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -37,7 +37,7 @@ class BooksCatalogueView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 50
+        stackView.spacing = 32
         return stackView
     }()
     
@@ -47,6 +47,7 @@ class BooksCatalogueView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 20
+        stackView.backgroundColor = .red
         return stackView
     }()
     
@@ -91,19 +92,8 @@ class BooksCatalogueView: UIView {
         mainStackView.addArrangedSubview(titleStackView)
         titleStackView.addArrangedSubview(navigationTitleView)
         titleStackView.addArrangedSubview(welcomeTitleView)
+        mainStackView.addArrangedSubview(searchBarTextField)
         mainStackView.addArrangedSubview(bookStackView)
-        bookStackView.addArrangedSubview(searchBarTextField)
-        
-        for _ in 0..<12 {
-            let view = BookContainerView()
-            view.bookmarkButton.setImage(UIImage(systemName: Bool.random() ? "bookmark" : "bookmark.fill"), for: .normal)
-            view.layer.cornerRadius = 4
-            view.layer.shadowRadius = 24
-            view.layer.shadowOffset = CGSize(width: 0, height: 4)
-            view.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.09)
-            view.layer.shadowOpacity = 1.0
-            bookStackView.addArrangedSubview(view)
-        }
     }
     
     func setupConstraints() {
@@ -132,21 +122,15 @@ class BooksCatalogueView: UIView {
         
         //Search bar Text Field
         NSLayoutConstraint.activate([
-            searchBarTextField.leadingAnchor.constraint(equalTo: bookStackView.leadingAnchor),
+            searchBarTextField.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
             searchBarTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
-
+        
         //Book Stack View
         NSLayoutConstraint.activate([
             bookStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
             bookStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
-        
-        for view in bookStackView.arrangedSubviews[1...] {
-            NSLayoutConstraint.activate([
-                view.heightAnchor.constraint(equalToConstant: 160),
-                view.widthAnchor.constraint(equalTo: bookStackView.widthAnchor)
-            ])
-        }
     }
 }
+

@@ -23,7 +23,6 @@ class BookContainerView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Book 1")
         imageView.contentMode = .scaleAspectFit
-        //imageView.backgroundColor = .magenta
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -32,7 +31,6 @@ class BookContainerView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        //stackView.backgroundColor = .green
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -40,66 +38,64 @@ class BookContainerView: UIView {
     lazy var bookPrimaryInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 3
-        //  stackView.backgroundColor = .red
+        stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     lazy var bookTitleLabel: UILabel = {
-        let l = UILabel()
-        l.text = "Crossing the Chasm"
-        l.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        l.numberOfLines = 2
-        l.lineBreakMode = .byWordWrapping
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+        let label = UILabel()
+        label.text = "Crossing the Chasm"
+        label.font = .heeboMedium(ofSize: 16)
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var bookAuthorLabel: UILabel = {
-        let l = UILabel()
-        l.textColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
-        l.text = "Geoffrey A. Moore"
-        l.numberOfLines = 2
-        l.font = UIFont.systemFont(ofSize: 14)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+        let label = UILabel()
+        label.textColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
+        label.text = "Geoffrey A. Moore"
+        label.numberOfLines = 2
+        label.font = .heebo(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var bookSecondaryInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        // stackView.backgroundColor = .blue
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     lazy var bookPageCountLabel: UILabel = {
-        let l = UILabel()
-        l.text = "150 páginas"
-        l.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        l.font = UIFont.systemFont(ofSize: 12)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+        let label = UILabel()
+        label.text = "150 páginas"
+        label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        label.font = .heebo(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var bookPublisherLabel: UILabel = {
-        let l = UILabel()
-        l.text = "Editora Loyola"
-        l.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        l.font = UIFont.systemFont(ofSize: 12)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+        let label = UILabel()
+        label.text = "Editora Loyola"
+        label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var bookPublishedLabel: UILabel = {
-        let l = UILabel()
-        l.text = "Publicado em 2020"
-        l.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        l.font = UIFont.systemFont(ofSize: 12)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+        let label = UILabel()
+        label.text = "Publicado em 2020"
+        label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     
@@ -110,21 +106,13 @@ class BookContainerView: UIView {
     }()
     
     lazy var bookmarkButton: UIButton = {
-        
         let button = UIButton()
         button.tintColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
         button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
         button.sizeToFit()
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         return button
     }()
-    
-    @objc func buttonAction(sender: UIButton!) {
-        print("Button tapped")
-    }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -158,6 +146,10 @@ class BookContainerView: UIView {
             bookContainerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bookContainerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor, constant: 24)
+        ])
                 
         NSLayoutConstraint.activate([
             bookFullInfoStackView.topAnchor.constraint(equalTo: bookContainerStackView.topAnchor, constant: 16),
@@ -172,6 +164,7 @@ class BookContainerView: UIView {
             bookmarkButton.topAnchor.constraint(equalTo: bookmarkButtonView.topAnchor),
             bookmarkButton.trailingAnchor.constraint(equalTo: bookmarkButtonView.trailingAnchor, constant: -21)
         ])
+        
     }
     
 }

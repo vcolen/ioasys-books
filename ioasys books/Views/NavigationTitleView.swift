@@ -20,7 +20,7 @@ class NavigationTitleView: UIView {
     lazy var booksTitleLabel: UILabel = {
        let l = UILabel()
         l.text = "Books"
-        l.font = UIFont.systemFont(ofSize: 30, weight: .thin)
+        l.font = .heeboLight(ofSize: 32)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
