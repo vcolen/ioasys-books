@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481027B593F2000391C4 /* BookDetailViewController.swift */; };
+		792F481327B59ADF000391C4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481227B59ADF000391C4 /* UIViewExtension.swift */; };
+		792F481727B5A457000391C4 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481627B5A457000391C4 /* MainTableViewController.swift */; };
 		7937CBAF27B4036800F7FA1F /* Heebo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7937CBAE27B4036800F7FA1F /* Heebo-SemiBold.ttf */; };
 		7937CBB127B4037900F7FA1F /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7937CBB027B4037900F7FA1F /* Heebo-Regular.ttf */; };
 		7937CBB327B403DB00F7FA1F /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7937CBB227B403DB00F7FA1F /* UIFont.swift */; };
 		7937CBB927B408C100F7FA1F /* Heebo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7937CBB827B408C100F7FA1F /* Heebo-Medium.ttf */; };
 		7937CBBB27B4219500F7FA1F /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */; };
+		7937CBBD27B43ADA00F7FA1F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7937CBBC27B43ADA00F7FA1F /* UserModel.swift */; };
+		7937CBC227B4477400F7FA1F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7937CBC127B4477400F7FA1F /* SDWebImage */; };
 		79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */; };
 		79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */; };
 		79A1A09D27AFF30B00C2E0E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09C27AFF30B00C2E0E6 /* ViewController.swift */; };
 		79A1A0A027AFF30B00C2E0E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79A1A09E27AFF30B00C2E0E6 /* Main.storyboard */; };
 		79A1A0A527AFF30C00C2E0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79A1A0A327AFF30C00C2E0E6 /* LaunchScreen.storyboard */; };
 		79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */; };
-		79A1A0AF27AFF60300C2E0E6 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0AE27AFF60300C2E0E6 /* BooksViewController.swift */; };
+		79A1A0AF27AFF60300C2E0E6 /* BooksCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */; };
 		79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */; };
 		79A1A0B427B0145D00C2E0E6 /* WelcomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B327B0145D00C2E0E6 /* WelcomeTitleView.swift */; };
 		79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */; };
@@ -32,11 +37,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		792F481027B593F2000391C4 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		792F481227B59ADF000391C4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		792F481627B5A457000391C4 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		7937CBAE27B4036800F7FA1F /* Heebo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-SemiBold.ttf"; sourceTree = "<group>"; };
 		7937CBB027B4037900F7FA1F /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Regular.ttf"; sourceTree = "<group>"; };
 		7937CBB227B403DB00F7FA1F /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		7937CBB827B408C100F7FA1F /* Heebo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Medium.ttf"; sourceTree = "<group>"; };
 		7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
+		7937CBBC27B43ADA00F7FA1F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		79A1A09527AFF30B00C2E0E6 /* ioasys books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ioasys books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +54,7 @@
 		79A1A0A427AFF30C00C2E0E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79A1A0A627AFF30C00C2E0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCatalogueView.swift; sourceTree = "<group>"; };
-		79A1A0AE27AFF60300C2E0E6 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCatalogueViewController.swift; sourceTree = "<group>"; };
 		79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		79A1A0B327B0145D00C2E0E6 /* WelcomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTitleView.swift; sourceTree = "<group>"; };
 		79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerView.swift; sourceTree = "<group>"; };
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7937CBC227B4477400F7FA1F /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				7937CBB227B403DB00F7FA1F /* UIFont.swift */,
+				792F481227B59ADF000391C4 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -91,8 +102,10 @@
 		7937CBB527B4067A00F7FA1F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				79A1A0AE27AFF60300C2E0E6 /* BooksViewController.swift */,
+				79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */,
+				792F481027B593F2000391C4 /* BookDetailViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
+				792F481627B5A457000391C4 /* MainTableViewController.swift */,
 				79A1A09C27AFF30B00C2E0E6 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -102,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				79F5B73727B137BF00EBEB6A /* BookModel.swift */,
+				7937CBBC27B43ADA00F7FA1F /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +193,9 @@
 			dependencies = (
 			);
 			name = "ioasys books";
+			packageProductDependencies = (
+				7937CBC127B4477400F7FA1F /* SDWebImage */,
+			);
 			productName = "ioasys books";
 			productReference = 79A1A09527AFF30B00C2E0E6 /* ioasys books.app */;
 			productType = "com.apple.product-type.application";
@@ -207,6 +224,9 @@
 				Base,
 			);
 			mainGroup = 79A1A08C27AFF30B00C2E0E6;
+			packageReferences = (
+				7937CBC027B4477300F7FA1F /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 79A1A09627AFF30B00C2E0E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,10 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A1A0AF27AFF60300C2E0E6 /* BooksViewController.swift in Sources */,
+				792F481727B5A457000391C4 /* MainTableViewController.swift in Sources */,
+				79A1A0AF27AFF60300C2E0E6 /* BooksCatalogueViewController.swift in Sources */,
 				79A1A09D27AFF30B00C2E0E6 /* ViewController.swift in Sources */,
+				792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */,
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
+				792F481327B59ADF000391C4 /* UIViewExtension.swift in Sources */,
 				79F5B73827B137BF00EBEB6A /* BookModel.swift in Sources */,
+				7937CBBD27B43ADA00F7FA1F /* UserModel.swift in Sources */,
 				79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */,
 				79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */,
 				79A8305A27B34D7E00860D7C /* BookDetailView.swift in Sources */,
@@ -472,6 +496,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7937CBC027B4477300F7FA1F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7937CBC127B4477400F7FA1F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7937CBC027B4477300F7FA1F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 79A1A08D27AFF30B00C2E0E6 /* Project object */;
 }

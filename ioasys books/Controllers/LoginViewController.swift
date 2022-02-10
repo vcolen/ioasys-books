@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
     }
     
     func navigateToCatalogue() {
-        let booksViewController = BooksViewController()
+        let booksViewController = BooksCatalogueViewController()
         booksViewController.authorization = self.authorization
         navigationController?.pushViewController(booksViewController, animated: true)
     }

@@ -19,7 +19,7 @@ struct Book: Codable {
     let title, description: String
     let pageCount: Int
     let category: String
-    let imageURL: String?
+    let imageUrl: String?
     let language: Language
     let isbn10, isbn13, publisher: String
     let published: Int
@@ -29,7 +29,7 @@ struct Book: Codable {
         case authors, title
         case description
         case pageCount, category
-        case imageURL
+        case imageUrl
         case language, isbn10, isbn13, publisher, published, id
     }
 }

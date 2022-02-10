@@ -47,7 +47,6 @@ class BooksCatalogueView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 20
-        stackView.backgroundColor = .red
         return stackView
     }()
     

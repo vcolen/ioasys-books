@@ -9,12 +9,18 @@ import UIKit
 
 class BookContainerView: UIView {
     
+    lazy var mainView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var bookContainerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 16
         stackView.distribution = .fill
-        stackView.backgroundColor = .white
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -22,7 +28,6 @@ class BookContainerView: UIView {
     lazy var bookCoverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Book 1")
-        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -32,6 +37,7 @@ class BookContainerView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        //stackView.backgroundColor = .green
         return stackView
     }()
     
@@ -57,7 +63,7 @@ class BookContainerView: UIView {
         let label = UILabel()
         label.textColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
         label.text = "Geoffrey A. Moore"
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.font = .heebo(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -126,7 +132,8 @@ class BookContainerView: UIView {
     }
     
     func configureSubviews() {
-        addSubview(bookContainerStackView)
+        addSubview(mainView)
+        mainView.addSubview(bookContainerStackView)
         bookContainerStackView.addArrangedSubview(bookCoverImageView)
         bookContainerStackView.addArrangedSubview(bookFullInfoStackView)
         bookFullInfoStackView.addArrangedSubview(bookPrimaryInfoStackView)
@@ -142,27 +149,44 @@ class BookContainerView: UIView {
     
     func setupConstraints() {
         
+        //Main View
         NSLayoutConstraint.activate([
-            bookContainerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bookContainerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)
+            mainView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mainView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mainView.topAnchor.constraint(equalTo: topAnchor),
+            mainView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+        //Book Container Stack View
         NSLayoutConstraint.activate([
-            bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor, constant: 24)
-        ])
-                
-        NSLayoutConstraint.activate([
-            bookFullInfoStackView.topAnchor.constraint(equalTo: bookContainerStackView.topAnchor, constant: 16),
-            bookFullInfoStackView.bottomAnchor.constraint(equalTo: bookContainerStackView.bottomAnchor, constant: -16)
+            bookContainerStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -22.78),
+            bookContainerStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 24),
+            bookContainerStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16)
         ])
         
+        //Book Cover Image View
         NSLayoutConstraint.activate([
-            bookFullInfoStackView.widthAnchor.constraint(equalToConstant: 120)
+            bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor),
+            bookCoverImageView.widthAnchor.constraint(equalToConstant: 81),
+            bookCoverImageView.heightAnchor.constraint(equalToConstant: 123)
         ])
         
+        //Book Full Info Stack View
+        NSLayoutConstraint.activate([
+            bookFullInfoStackView.topAnchor.constraint(equalTo: bookContainerStackView.topAnchor),
+            bookFullInfoStackView.widthAnchor.constraint(equalToConstant: 120),
+            
+        ])
+        
+        //Bookmark Button View
+        NSLayoutConstraint.activate([
+            bookmarkButtonView.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        //Bookmark Button
         NSLayoutConstraint.activate([
             bookmarkButton.topAnchor.constraint(equalTo: bookmarkButtonView.topAnchor),
-            bookmarkButton.trailingAnchor.constraint(equalTo: bookmarkButtonView.trailingAnchor, constant: -21)
+            bookmarkButton.trailingAnchor.constraint(equalTo: bookmarkButtonView.trailingAnchor)
         ])
         
     }
