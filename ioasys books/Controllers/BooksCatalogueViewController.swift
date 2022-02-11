@@ -22,6 +22,7 @@ class BooksCatalogueViewController: UIViewController {
         viewCustom.navigationTitleView.logOutButton.addAction(UIAction {_ in
             self.logOut()
         }, for: .touchUpInside)
+        
         view = viewCustom
         didSucceedInLogin()
     }
@@ -79,6 +80,7 @@ class BooksCatalogueViewController: UIViewController {
         
         present(bookDetailViewController, animated: true, completion: nil)
     }
+    
     
     func loadBooksInUI() {
         for book in self.books {

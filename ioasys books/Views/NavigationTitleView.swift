@@ -72,11 +72,6 @@ class NavigationTitleView: UIView {
     func setupConstraints() {
         
         //Navigation Title Main Stack View
-        NSLayoutConstraint.activate([
-            navigationTitleMainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            navigationTitleMainStackView.topAnchor.constraint(equalTo: topAnchor),
-            navigationTitleMainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            navigationTitleMainStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        self.stretch(navigationTitleMainStackView)
     }
 }

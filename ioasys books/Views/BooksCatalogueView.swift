@@ -98,21 +98,10 @@ class BooksCatalogueView: UIView {
     func setupConstraints() {
         
         //Scroll View
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor)
-        ])
+        self.stretch(scrollView)
         
         //Main stack view
-        NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
-        ])
+        self.stretch(mainStackView, to: scrollView)
         
         //Title Stack View
         NSLayoutConstraint.activate([

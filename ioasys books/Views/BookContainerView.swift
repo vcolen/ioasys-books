@@ -168,8 +168,6 @@ class BookContainerView: UIView {
         //Book Full Info Stack View
         NSLayoutConstraint.activate([
             bookFullInfoStackView.topAnchor.constraint(equalTo: bookContainerStackView.topAnchor),
-            bookFullInfoStackView.widthAnchor.constraint(equalToConstant: 120),
-            
         ])
         
         //Bookmark Button View
