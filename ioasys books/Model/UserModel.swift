@@ -12,5 +12,4 @@ struct User: Codable {
     var name: String
     var birthdate: String
     var gender: String
-    //var bookmarkedBooks = [String: Book]()
 }

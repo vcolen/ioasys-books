@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
         super.loadView()
         
         view = viewCustom
+        hidesBottomBarWhenPushed = true
     }
     
     
