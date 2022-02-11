@@ -46,46 +46,6 @@ class BooksCatalogueViewController: UIViewController {
         }.resume()
     }
     
-    func loadBooksInUI() {
-        for book in self.books {
-            let view = BookContainerView()
-            
-            
-            view.bookCoverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
-            view.bookTitleLabel.text = book.title
-            view.bookPageCountLabel.text = "\(book.pageCount) Páginas"
-            view.bookAuthorLabel.text = book.authors.joined(separator: ", ")
-            
-            //view.bookmarkButton.setImage(UIImage(systemName: Bool.random() ? "bookmark" : "bookmark.fill"), for: .normal)
-            //view.bookmarkButton.addAction(UIAction { _ in
-            //  view.bookmarkButton.setImage(UIImage(systemName: view.bookmarkButton.imageView?.image == UIImage(systemName: "bookmark") ? "bookmark.fill" : "bookmark"), for: .normal)
-            //}, for: .touchUpInside)
-            
-            //            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.loadDetailView))
-            //            view.addGestureRecognizer(gesture)
-            
-            
-            view.setOnClickListener {
-                self.loadDetailView(of: book)
-            }
-            
-            
-            viewCustom.bookStackView.addArrangedSubview(view)
-            
-            for view in viewCustom.bookStackView.arrangedSubviews {
-                view.layer.cornerRadius = 4
-                view.layer.shadowRadius = 24
-                view.layer.shadowOffset = CGSize(width: 0, height: 4)
-                view.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.09)
-                view.layer.shadowOpacity = 1.0
-                NSLayoutConstraint.activate([
-                    view.heightAnchor.constraint(equalToConstant: 160),
-                    view.widthAnchor.constraint(equalTo: viewCustom.bookStackView.widthAnchor)
-                ])
-            }
-        }
-    }
-    
     func didSucceedInLogin() {
         fetchBooks { data, response, error in
             if let error = error {
@@ -108,18 +68,65 @@ class BooksCatalogueViewController: UIViewController {
         }
     }
     
-    func loadDetailView(of book: Book) {
-        // Create the view controller.
-        let sheetViewController = BookDetailViewController()
-        sheetViewController.book = book
-        
-        // Present it w/o any adjustments so it uses the default sheet presentation.
-        present(sheetViewController, animated: true, completion: nil)
-    }
-    
     func logOut() {
         let loginScreen = LoginViewController()
         self.navigationController?.setViewControllers([loginScreen], animated: true)
+    }
+    
+    func loadDetailView(of book: Book) {
+        let bookDetailViewController = BookDetailViewController()
+        bookDetailViewController.book = book
+        
+        present(bookDetailViewController, animated: true, completion: nil)
+    }
+    
+    func loadBooksInUI() {
+        for book in self.books {
+            let view = customizeBookContainerView(with: book)
+            viewCustom.bookStackView.addArrangedSubview(view)
+        }
+        customizeBookStackView()
+    }
+    
+    func customizeBookContainerView(with book: Book) -> BookContainerView {
+        let view = BookContainerView()
+        view.bookCoverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
+        view.bookTitleLabel.text = book.title
+        view.bookPageCountLabel.text = "\(book.pageCount) Páginas"
+        view.bookAuthorLabel.text = book.authors.joined(separator: ", ")
+        view.bookmarkButton.setImage(UIImage(systemName: Bool.random() ? "bookmark" : "bookmark.fill"), for: .normal)
+        
+        view.bookmarkButton.addAction(UIAction { _ in
+            self.toggleButtonImage(of: view.bookmarkButton, between: UIImage(systemName: "bookmark")!, and: UIImage(systemName: "bookmark.fill")!)
+        }, for: .touchUpInside)
+        
+        view.setOnClickListener {
+            self.loadDetailView(of: book)
+        }
+        
+        return view
+    }
+    
+    func customizeBookStackView() {
+        for view in viewCustom.bookStackView.arrangedSubviews {
+            view.layer.cornerRadius = 4
+            view.layer.shadowRadius = 24
+            view.layer.shadowOffset = CGSize(width: 0, height: 4)
+            view.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.09)
+            view.layer.shadowOpacity = 1.0
+            NSLayoutConstraint.activate([
+                view.heightAnchor.constraint(equalToConstant: 160),
+                view.widthAnchor.constraint(equalTo: viewCustom.bookStackView.widthAnchor)
+            ])
+        }
+    }
+    
+    func toggleButtonImage(of button: UIButton, between image1: UIImage, and image2: UIImage) {
+        if button.imageView?.image == image1 {
+            button.setImage(image2, for: .normal)
+        } else {
+            button.setImage(image1, for: .normal)
+        }
     }
 }
 

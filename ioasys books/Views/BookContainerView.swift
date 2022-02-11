@@ -37,11 +37,10 @@ class BookContainerView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        //stackView.backgroundColor = .green
         return stackView
     }()
     
-    lazy var bookPrimaryInfoStackView: UIStackView = {
+    lazy var bookTitleAndAuthorStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 0
@@ -136,9 +135,9 @@ class BookContainerView: UIView {
         mainView.addSubview(bookContainerStackView)
         bookContainerStackView.addArrangedSubview(bookCoverImageView)
         bookContainerStackView.addArrangedSubview(bookFullInfoStackView)
-        bookFullInfoStackView.addArrangedSubview(bookPrimaryInfoStackView)
-        bookPrimaryInfoStackView.addArrangedSubview(bookTitleLabel)
-        bookPrimaryInfoStackView.addArrangedSubview(bookAuthorLabel)
+        bookFullInfoStackView.addArrangedSubview(bookTitleAndAuthorStackView)
+        bookTitleAndAuthorStackView.addArrangedSubview(bookTitleLabel)
+        bookTitleAndAuthorStackView.addArrangedSubview(bookAuthorLabel)
         bookFullInfoStackView.addArrangedSubview(bookSecondaryInfoStackView)
         bookSecondaryInfoStackView.addArrangedSubview(bookPageCountLabel)
         bookSecondaryInfoStackView.addArrangedSubview(bookPublisherLabel)
