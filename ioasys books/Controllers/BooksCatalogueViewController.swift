@@ -18,6 +18,10 @@ class BooksCatalogueViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        
+        viewCustom.navigationTitleView.logOutButton.addAction(UIAction {_ in
+            self.logOut()
+        }, for: .touchUpInside)
         view = viewCustom
         didSucceedInLogin()
     }
@@ -30,6 +34,7 @@ class BooksCatalogueViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationItem.hidesBackButton = true
     }
     
     func fetchBooks(completion: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
@@ -44,6 +49,7 @@ class BooksCatalogueViewController: UIViewController {
     func loadBooksInUI() {
         for book in self.books {
             let view = BookContainerView()
+            
             
             view.bookCoverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
             view.bookTitleLabel.text = book.title
@@ -103,12 +109,18 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func loadDetailView(of book: Book) {
-            // Create the view controller.
-            let sheetViewController = BookDetailViewController()
-            
-            // Present it w/o any adjustments so it uses the default sheet presentation.
-            present(sheetViewController, animated: true, completion: nil)
-        }
+        // Create the view controller.
+        let sheetViewController = BookDetailViewController()
+        sheetViewController.book = book
+        
+        // Present it w/o any adjustments so it uses the default sheet presentation.
+        present(sheetViewController, animated: true, completion: nil)
+    }
+    
+    func logOut() {
+        let loginScreen = LoginViewController()
+        self.navigationController?.setViewControllers([loginScreen], animated: true)
+    }
 }
 
 

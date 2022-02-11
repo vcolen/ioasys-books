@@ -185,73 +185,17 @@ class BookDetailView: UIView {
         scrollView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(detailLabel)
         mainStackView.addSubview(closeModalButton)
-        mainStackView.addArrangedSubview(bookImage)
-        mainStackView.addArrangedSubview(bookTitleStackView)
-        bookTitleStackView.addArrangedSubview(bookTitleLabel)
-        bookTitleStackView.addArrangedSubview(bookAuthorLabel)
-        
-        mainStackView.addArrangedSubview(bookInfoStackView)
-        bookInfoStackView.addArrangedSubview(bookInfoTitleLabel)
-        bookInfoStackView.addArrangedSubview(bookInfoVerticalStackView)
-        
-        for index in bookInfoNameArray.indices {
-            let stackView = UIStackView()
-            stackView.distribution = .equalSpacing
-            stackView.axis = .horizontal
-            bookInfoVerticalStackView.addArrangedSubview(stackView)
-            
-            let nameLabel = UILabel()
-            nameLabel.text = bookInfoNameArray[index]
-            nameLabel.font = .heeboMedium(ofSize: 14)
-            stackView.addArrangedSubview(nameLabel)
-            
-            let valueLabel = UILabel()
-            valueLabel.text = bookInfoValueArray[index]
-            valueLabel.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-            valueLabel.font = .heebo(ofSize: 14)
-            stackView.addArrangedSubview(valueLabel)
-        }
-        
-        mainStackView.addArrangedSubview(reviewStackView)
-        reviewStackView.addArrangedSubview(reviewTitleLabel)
-        reviewStackView.addArrangedSubview(reviewDescriptionLabel)
     }
     
     func setupConstraints() {
         
         //Scroll View
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        self.stretch(scrollView)
         
         //Main Stack View
+        self.stretch(mainStackView, to: scrollView, top: 20, left: 24, bottom: -40, right: -24)
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
-            mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
-            mainStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
-            mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40),
             mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
-        ])
-        
-        //Book Image
-        NSLayoutConstraint.activate([
-            bookImage.widthAnchor.constraint(equalToConstant: 168),
-            bookImage.heightAnchor.constraint(equalToConstant: 247)
-        ])
-        
-        //Book Info Title Label
-        NSLayoutConstraint.activate([
-            bookInfoTitleLabel.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor)
-        ])
-        
-        
-        //Book Info Vertical Stack View
-        NSLayoutConstraint.activate([
-            bookInfoVerticalStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
-            bookInfoVerticalStackView.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
         ])
         
         //Close Modal Button

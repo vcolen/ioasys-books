@@ -150,12 +150,7 @@ class BookContainerView: UIView {
     func setupConstraints() {
         
         //Main View
-        NSLayoutConstraint.activate([
-            mainView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mainView.topAnchor.constraint(equalTo: topAnchor),
-            mainView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        self.stretch(mainView)
         
         //Book Container Stack View
         NSLayoutConstraint.activate([

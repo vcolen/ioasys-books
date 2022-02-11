@@ -25,5 +25,25 @@ extension UIView {
             onClick()
         }
     }
-  
+    
+    func stretch(_ view: UIView, to otherView: UIView? = nil, top: CGFloat = 0, left: CGFloat = 0, bottom: CGFloat = 0, right: CGFloat = 0) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        if let otherView = otherView {
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: otherView.topAnchor, constant: top),
+                view.leftAnchor.constraint(equalTo: otherView.leftAnchor, constant: left),
+                view.rightAnchor.constraint(equalTo: otherView.rightAnchor, constant: right),
+                view.bottomAnchor.constraint(equalTo: otherView.bottomAnchor, constant: bottom)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: topAnchor, constant: top),
+                view.leftAnchor.constraint(equalTo: leftAnchor, constant: left),
+                view.rightAnchor.constraint(equalTo: rightAnchor, constant: right),
+                view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom)
+            ])
+        }
+    }
+    
 }
