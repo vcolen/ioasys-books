@@ -25,6 +25,7 @@ class BookDetailViewController: UIViewController {
         
         
         loadBookDataInUI()
+        //view = customView
     }
     
     func loadBookDataInUI() {
@@ -97,6 +98,7 @@ class BookDetailViewController: UIViewController {
             view.bookInfoVerticalStackView.leadingAnchor.constraint(equalTo: view.mainStackView.leadingAnchor),
             view.bookInfoVerticalStackView.trailingAnchor.constraint(equalTo: view.mainStackView.trailingAnchor),
         ])
+        
         self.view = view
     }
 }

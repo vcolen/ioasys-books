@@ -20,11 +20,10 @@ class LoginViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        hidesBottomBarWhenPushed = true
         view = viewCustom
         setupView()
-        hidesBottomBarWhenPushed = true
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,10 +52,11 @@ class LoginViewController: UIViewController {
     }
     
     func navigateToCatalogue() {
-        let booksViewController = BooksCatalogueViewController()
-        booksViewController.authorization = self.authorization
-        booksViewController.user = self.user
-        navigationController?.pushViewController(booksViewController, animated: true)
+        let tabBarViewController = TabBarViewController()
+        tabBarViewController.authorization = self.authorization
+        tabBarViewController.user = self.user
+        
+        navigationController?.setViewControllers([tabBarViewController], animated: true)
     }
     
     func didTapLogin() {

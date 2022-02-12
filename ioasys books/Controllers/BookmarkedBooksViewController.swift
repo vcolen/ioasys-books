@@ -21,6 +21,7 @@ class BookmarkedBooksViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        setupPageDescriptionView()
         view = customView
     }
     
@@ -28,5 +29,4 @@ class BookmarkedBooksViewController: UIViewController {
         self.customView.pageDescriptionView.regularFontLabel.text = "Aqui estão os seus "
         self.customView.pageDescriptionView.mediumFontLabel.text = "favoritos"
     }
-    
 }

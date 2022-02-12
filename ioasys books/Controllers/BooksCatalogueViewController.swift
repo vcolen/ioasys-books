@@ -11,10 +11,10 @@ import SDWebImage
 class BooksCatalogueViewController: UIViewController {
     
     lazy var viewCustom = BooksCatalogueView()
-    var authorization = ""
     var books = [Book]()
     var bookmarkedBooks = [String: Book]()
     var user: User?
+    var authorization = ""
     
     
     
@@ -29,7 +29,7 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func setupPageDescriptionView() {
-        self.viewCustom.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vinda, " : "Bem vindo, "
+        self.viewCustom.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vindo, " : "Bem vinda, "
         self.viewCustom.pageDescriptionView.mediumFontLabel.text = (self.user?.name)! + "!"
     }
     
@@ -82,7 +82,9 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func logOut() {
+        
         let loginScreen = LoginViewController()
+        self.dismiss(animated: true)
         self.navigationController?.setViewControllers([loginScreen], animated: true)
     }
     
@@ -90,9 +92,8 @@ class BooksCatalogueViewController: UIViewController {
         let bookDetailViewController = BookDetailViewController()
         bookDetailViewController.book = book
         
-        present(bookDetailViewController, animated: true, completion: nil)
+        present(bookDetailViewController, animated: true)
     }
-    
     
     func loadBooksInUI() {
         for book in self.books {
