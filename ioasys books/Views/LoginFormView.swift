@@ -9,6 +9,37 @@ import UIKit
 
 class LoginFormView: UIView {
     
+    lazy var emailStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    lazy var passwordStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email"
+        label.textColor = .clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var passwordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Senha"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email"
@@ -97,9 +128,14 @@ class LoginFormView: UIView {
         self.backgroundColor = .white
         addSubview(formStackView)
         formStackView.addArrangedSubview(inputStackView)
-        inputStackView.addArrangedSubview(emailInputView)
+        inputStackView.addArrangedSubview(emailStackView)
+        emailStackView.addArrangedSubview(emailLabel)
+        emailStackView.addArrangedSubview(emailInputView)
         emailInputView.addSubview(emailTextField)
-        inputStackView.addArrangedSubview(passwordInputView)
+        
+        inputStackView.addArrangedSubview(passwordStackView)
+        passwordStackView.addArrangedSubview(passwordLabel)
+        passwordStackView.addArrangedSubview(passwordInputView)
         passwordInputView.addSubview(passwordInputStackView)
         passwordInputStackView.addArrangedSubview(passwordTextField)
         passwordInputStackView.addArrangedSubview(showPasswordButton)
@@ -129,13 +165,14 @@ class LoginFormView: UIView {
             emailInputView.heightAnchor.constraint(equalToConstant: 48)
         ])
         
-        //Email Text Field
+        //Email Label
         NSLayoutConstraint.activate([
-            emailTextField.leadingAnchor.constraint(equalTo: emailInputView.leadingAnchor, constant: 16),
-            emailTextField.topAnchor.constraint(equalTo: emailInputView.topAnchor, constant: 12),
-            emailTextField.bottomAnchor.constraint(equalTo: emailInputView.bottomAnchor, constant: -12),
-            emailTextField.trailingAnchor.constraint(equalTo: emailInputView.trailingAnchor, constant: -16)
+            //emailLabel.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor, constant: 16)
         ])
+        
+        //Email Text Field
+        self.stretch(emailTextField, to: emailInputView, top: 12, left: 16, bottom: -16, right: -12)
+
         
         //Password Input View
         NSLayoutConstraint.activate([

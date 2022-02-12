@@ -20,7 +20,7 @@ class BooksCatalogueView: UIView {
     }()
     
     lazy var navigationTitleView = NavigationTitleView()
-    lazy var welcomeTitleView = WelcomeTitleView()
+    lazy var pageDescriptionView = PageDescriptionView()
     
     lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
@@ -90,7 +90,7 @@ class BooksCatalogueView: UIView {
         scrollView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(titleStackView)
         titleStackView.addArrangedSubview(navigationTitleView)
-        titleStackView.addArrangedSubview(welcomeTitleView)
+        titleStackView.addArrangedSubview(pageDescriptionView)
         mainStackView.addArrangedSubview(searchBarTextField)
         mainStackView.addArrangedSubview(bookStackView)
     }

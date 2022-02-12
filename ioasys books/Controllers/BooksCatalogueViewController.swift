@@ -13,18 +13,30 @@ class BooksCatalogueViewController: UIViewController {
     lazy var viewCustom = BooksCatalogueView()
     var authorization = ""
     var books = [Book]()
+    var bookmarkedBooks = [String: Book]()
+    var user: User?
+    
     
     
     override func loadView() {
         super.loadView()
+    
+        setupLogOutButtonAction()
+        setupPageDescriptionView()
         
-        
+        didSucceedInLogin()
+        view = viewCustom
+    }
+    
+    func setupPageDescriptionView() {
+        self.viewCustom.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vinda, " : "Bem vindo, "
+        self.viewCustom.pageDescriptionView.mediumFontLabel.text = (self.user?.name)! + "!"
+    }
+    
+    func setupLogOutButtonAction() {
         viewCustom.navigationTitleView.logOutButton.addAction(UIAction {_ in
             self.logOut()
         }, for: .touchUpInside)
-        
-        view = viewCustom
-        didSucceedInLogin()
     }
     
     override func viewDidLoad() {
@@ -96,10 +108,10 @@ class BooksCatalogueViewController: UIViewController {
         view.bookTitleLabel.text = book.title
         view.bookPageCountLabel.text = "\(book.pageCount) Páginas"
         view.bookAuthorLabel.text = book.authors.joined(separator: ", ")
-        view.bookmarkButton.setImage(UIImage(systemName: Bool.random() ? "bookmark" : "bookmark.fill"), for: .normal)
+        view.bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         
         view.bookmarkButton.addAction(UIAction { _ in
-            self.toggleButtonImage(of: view.bookmarkButton, between: UIImage(systemName: "bookmark")!, and: UIImage(systemName: "bookmark.fill")!)
+            self.bookmark(book, using: view.bookmarkButton)
         }, for: .touchUpInside)
         
         view.setOnClickListener {
@@ -123,11 +135,17 @@ class BooksCatalogueViewController: UIViewController {
         }
     }
     
-    func toggleButtonImage(of button: UIButton, between image1: UIImage, and image2: UIImage) {
-        if button.imageView?.image == image1 {
-            button.setImage(image2, for: .normal)
+    func bookmark(_ book: Book, using button: UIButton) {
+        
+        if button.imageView?.image == UIImage(systemName: "bookmark") {
+            bookmarkedBooks[book.id] = book
+            button.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         } else {
-            button.setImage(image1, for: .normal)
+            bookmarkedBooks.removeValue(forKey: book.id)
+            button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
+        for bookk in self.bookmarkedBooks.values {
+            print(bookk.title)
         }
     }
 }

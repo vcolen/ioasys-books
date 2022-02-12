@@ -7,22 +7,20 @@
 
 import UIKit
 
-class WelcomeTitleView: UIView {
+class PageDescriptionView: UIView {
     
-    lazy var welcomeLabel: UILabel = {
-        let l = UILabel()
-        l.text = "Bem vindo, "
-        l.font = .heebo(ofSize: 18)
-        l.translatesAutoresizingMaskIntoConstraints = false
-       return l
+    lazy var regularFontLabel: UILabel = {
+        let label = UILabel()
+        label.font = .heebo(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+       return label
     }()
     
-    lazy var userNameLabel: UILabel = {
-       let l = UILabel()
-        l.text = "Guilherme!"
-        l.font = .heeboMedium(ofSize: 18)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+    lazy var mediumFontLabel: UILabel = {
+       let label = UILabel()
+        label.font = .heeboMedium(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var mainStackView: UIStackView = {
@@ -36,8 +34,8 @@ class WelcomeTitleView: UIView {
     
     func configureSubviews() {
         addSubview(mainStackView)
-        mainStackView.addArrangedSubview(welcomeLabel)
-        mainStackView.addArrangedSubview(userNameLabel)
+        mainStackView.addArrangedSubview(regularFontLabel)
+        mainStackView.addArrangedSubview(mediumFontLabel)
     }
     
     override init(frame: CGRect) {

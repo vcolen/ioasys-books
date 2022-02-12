@@ -9,26 +9,29 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
+    
+    var authorization = ""
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupVCs()
+        setupViewControllers()
     }
-    func createNavController(for rootViewController: UIViewController,
+    func createNavigationController(for rootViewController: UIViewController,
                              title: String,
                              image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
         
-        
         return navController
     }
     
-    func setupVCs() {
+    func setupViewControllers() {
         viewControllers = [
-            createNavController(for: BooksCatalogueViewController(), title: NSLocalizedString("Início", comment: ""), image: UIImage(systemName: "house")!),
-            createNavController(for: BooksCatalogueViewController(), title: NSLocalizedString("Favoritos", comment: ""), image: UIImage(systemName: "bookmark.fill")!)
+            createNavigationController(for: BooksCatalogueViewController(), title: NSLocalizedString("Início", comment: ""), image: UIImage(systemName: "house")!),
+            createNavigationController(for: BooksCatalogueViewController(), title: NSLocalizedString("Favoritos", comment: ""), image: UIImage(systemName: "bookmark.fill")!)
         ]
     }
 }

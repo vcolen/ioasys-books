@@ -24,4 +24,9 @@ class BookmarkedBooksViewController: UIViewController {
         view = customView
     }
     
+    func setupPageDescriptionView() {
+        self.customView.pageDescriptionView.regularFontLabel.text = "Aqui estão os seus "
+        self.customView.pageDescriptionView.mediumFontLabel.text = "favoritos"
+    }
+    
 }

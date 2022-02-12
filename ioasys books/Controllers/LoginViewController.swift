@@ -11,16 +11,17 @@ class LoginViewController: UIViewController {
     
     lazy var viewCustom = LoginFormView()
     var authorization = ""
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
     override func loadView() {
         super.loadView()
         
         view = viewCustom
+        setupView()
         hidesBottomBarWhenPushed = true
     }
     
@@ -54,6 +55,7 @@ class LoginViewController: UIViewController {
     func navigateToCatalogue() {
         let booksViewController = BooksCatalogueViewController()
         booksViewController.authorization = self.authorization
+        booksViewController.user = self.user
         navigationController?.pushViewController(booksViewController, animated: true)
     }
     
@@ -65,12 +67,40 @@ class LoginViewController: UIViewController {
                 if let response = response as? HTTPURLResponse {
                     if response.statusCode == 200 {
                         self.authorization = response.value(forHTTPHeaderField: "Authorization")!
-                        self.navigateToCatalogue()
-                    }
+                        if let data = data {
+                            do {
+                                self.user = try JSONDecoder().decode(User.self, from: data)
+                                self.navigateToCatalogue()
+                            } catch {
+                                print(error)
+                            }
+                        }
+                    } 
                 }
             }
         }
     }
+    
+    func didFailLogin() {
+        
+    }
+    
+    func setupView() {
+        self.viewCustom.showPasswordButton.addAction(UIAction {_ in
+            self.hideShowPassword()
+        }, for: .touchUpInside)
+    }
+    
+    func hideShowPassword() {
+        self.viewCustom.passwordTextField.isSecureTextEntry.toggle()
+        
+        if self.viewCustom.passwordTextField.isSecureTextEntry {
+            self.viewCustom.showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            self.viewCustom.showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    
 }
 
 
