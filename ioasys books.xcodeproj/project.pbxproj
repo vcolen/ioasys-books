@@ -17,6 +17,8 @@
 		7937CBBB27B4219500F7FA1F /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */; };
 		7937CBBD27B43ADA00F7FA1F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7937CBBC27B43ADA00F7FA1F /* UserModel.swift */; };
 		7937CBC227B4477400F7FA1F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7937CBC127B4477400F7FA1F /* SDWebImage */; };
+		794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794021E527B98C360057A07E /* BookmarkedBooks.swift */; };
+		794021E827B994E00057A07E /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794021E727B994E00057A07E /* UIStackViewExtension.swift */; };
 		79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */; };
 		79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */; };
 		79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */; };
@@ -44,6 +46,8 @@
 		7937CBB827B408C100F7FA1F /* Heebo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Medium.ttf"; sourceTree = "<group>"; };
 		7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
 		7937CBBC27B43ADA00F7FA1F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		794021E527B98C360057A07E /* BookmarkedBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooks.swift; sourceTree = "<group>"; };
+		794021E727B994E00057A07E /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooksViewController.swift; sourceTree = "<group>"; };
 		79A1A09527AFF30B00C2E0E6 /* ioasys books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ioasys books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				7937CBB227B403DB00F7FA1F /* UIFontExtension.swift */,
+				794021E727B994E00057A07E /* UIStackViewExtension.swift */,
 				792F481227B59ADF000391C4 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
@@ -98,11 +103,11 @@
 		7937CBB527B4067A00F7FA1F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */,
-				792F481827B5E1DC000391C4 /* TabBarViewController.swift */,
 				792F481027B593F2000391C4 /* BookDetailViewController.swift */,
 				79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */,
+				79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
+				792F481827B5E1DC000391C4 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			children = (
 				79F5B73727B137BF00EBEB6A /* BookModel.swift */,
 				7937CBBC27B43ADA00F7FA1F /* UserModel.swift */,
+				794021E527B98C360057A07E /* BookmarkedBooks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,8 +258,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A1A0AF27AFF60300C2E0E6 /* BooksCatalogueViewController.swift in Sources */,
+				794021E827B994E00057A07E /* UIStackViewExtension.swift in Sources */,
 				792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */,
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
+				794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */,
 				792F481327B59ADF000391C4 /* UIViewExtension.swift in Sources */,
 				79F5B73827B137BF00EBEB6A /* BookModel.swift in Sources */,
 				7937CBBD27B43ADA00F7FA1F /* UserModel.swift in Sources */,

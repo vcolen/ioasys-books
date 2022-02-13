@@ -10,31 +10,26 @@ import SDWebImage
 
 class BooksCatalogueViewController: UIViewController {
     
-    lazy var viewCustom = BooksCatalogueView()
+    lazy var customView = BooksCatalogueView()
     var books = [Book]()
-    var bookmarkedBooks = [String: Book]()
     var user: User?
     var authorization = ""
     
-    
-    
     override func loadView() {
         super.loadView()
-    
+        
         setupLogOutButtonAction()
         setupPageDescriptionView()
-        
-        didSucceedInLogin()
-        view = viewCustom
+        view = customView
     }
     
     func setupPageDescriptionView() {
-        self.viewCustom.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vindo, " : "Bem vinda, "
-        self.viewCustom.pageDescriptionView.mediumFontLabel.text = (self.user?.name)! + "!"
+        self.customView.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vindo, " : "Bem vinda, "
+        self.customView.pageDescriptionView.mediumFontLabel.text = (self.user?.name)! + "!"
     }
     
     func setupLogOutButtonAction() {
-        viewCustom.navigationTitleView.logOutButton.addAction(UIAction {_ in
+        customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
             self.logOut()
         }, for: .touchUpInside)
     }
@@ -47,6 +42,7 @@ class BooksCatalogueViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        didSucceedInLogin()
         self.navigationItem.hidesBackButton = true
     }
     
@@ -84,7 +80,6 @@ class BooksCatalogueViewController: UIViewController {
     func logOut() {
         
         let loginScreen = LoginViewController()
-        self.dismiss(animated: true)
         self.navigationController?.setViewControllers([loginScreen], animated: true)
     }
     
@@ -96,9 +91,12 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func loadBooksInUI() {
+        
+        customView.bookStackView.removeFullyAllArrangedSubviews()
+        
         for book in self.books {
             let view = customizeBookContainerView(with: book)
-            viewCustom.bookStackView.addArrangedSubview(view)
+            customView.bookStackView.addArrangedSubview(view)
         }
         customizeBookStackView()
     }
@@ -109,10 +107,15 @@ class BooksCatalogueViewController: UIViewController {
         view.bookTitleLabel.text = book.title
         view.bookPageCountLabel.text = "\(book.pageCount) Páginas"
         view.bookAuthorLabel.text = book.authors.joined(separator: ", ")
-        view.bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        
+        if let tabbar = tabBarController as? TabBarViewController {
+            tabbar.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
+        }
         
         view.bookmarkButton.addAction(UIAction { _ in
-            self.bookmark(book, using: view.bookmarkButton)
+            if let tabbar = self.tabBarController as? TabBarViewController {
+                tabbar.changeBookmarkedStatus(view.bookmarkButton, book: book)
+            }
         }, for: .touchUpInside)
         
         view.setOnClickListener {
@@ -123,7 +126,7 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func customizeBookStackView() {
-        for view in viewCustom.bookStackView.arrangedSubviews {
+        for view in customView.bookStackView.arrangedSubviews {
             view.layer.cornerRadius = 4
             view.layer.shadowRadius = 24
             view.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -131,22 +134,8 @@ class BooksCatalogueViewController: UIViewController {
             view.layer.shadowOpacity = 1.0
             NSLayoutConstraint.activate([
                 view.heightAnchor.constraint(equalToConstant: 160),
-                view.widthAnchor.constraint(equalTo: viewCustom.bookStackView.widthAnchor)
+                view.widthAnchor.constraint(equalTo: customView.bookStackView.widthAnchor)
             ])
-        }
-    }
-    
-    func bookmark(_ book: Book, using button: UIButton) {
-        
-        if button.imageView?.image == UIImage(systemName: "bookmark") {
-            bookmarkedBooks[book.id] = book
-            button.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        } else {
-            bookmarkedBooks.removeValue(forKey: book.id)
-            button.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        }
-        for bookk in self.bookmarkedBooks.values {
-            print(bookk.title)
         }
     }
 }

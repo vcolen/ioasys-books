@@ -15,12 +15,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func loadView() {
         super.loadView()
         
-        hidesBottomBarWhenPushed = true
         view = viewCustom
         setupView()
     }
@@ -56,7 +58,7 @@ class LoginViewController: UIViewController {
         tabBarViewController.authorization = self.authorization
         tabBarViewController.user = self.user
         
-        navigationController?.setViewControllers([tabBarViewController], animated: true)
+        navigationController?.pushViewController(tabBarViewController, animated: true)
     }
     
     func didTapLogin() {
@@ -87,11 +89,11 @@ class LoginViewController: UIViewController {
     
     func setupView() {
         self.viewCustom.showPasswordButton.addAction(UIAction {_ in
-            self.hideShowPassword()
+            self.changePasswordVisibility()
         }, for: .touchUpInside)
     }
     
-    func hideShowPassword() {
+    func changePasswordVisibility() {
         self.viewCustom.passwordTextField.isSecureTextEntry.toggle()
         
         if self.viewCustom.passwordTextField.isSecureTextEntry {

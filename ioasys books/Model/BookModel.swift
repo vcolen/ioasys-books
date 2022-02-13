@@ -14,7 +14,7 @@ struct Response: Codable {
 }
 
 // MARK: - Datum
-struct Book: Codable {
+struct Book: Codable, Equatable {
     let authors: [String]
     let title, description: String
     let pageCount: Int
