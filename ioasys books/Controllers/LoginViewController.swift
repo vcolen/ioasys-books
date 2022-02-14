@@ -133,12 +133,18 @@ class LoginViewController: UIViewController {
         }, for: .editingChanged)
         
         viewCustom.passwordTextField.addAction(UIAction {  _ in
-            if showEmailLabel {
+            if showPasswordLabel {
                 self.showLabel(label: self.viewCustom.passwordLabel)
             } else {
                 self.hideLabel(label: self.viewCustom.passwordLabel)
             }
         }, for: .editingChanged)
+        
+        viewCustom.emailTextField.autocorrectionType = .no
+        viewCustom.emailTextField.autocapitalizationType = .none
+        
+        viewCustom.passwordTextField.autocorrectionType = .no
+        viewCustom.passwordTextField.autocapitalizationType = .none
     }
     
     func hideLabel(label: UILabel) {
