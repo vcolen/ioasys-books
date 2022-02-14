@@ -19,6 +19,8 @@
 		7937CBC227B4477400F7FA1F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7937CBC127B4477400F7FA1F /* SDWebImage */; };
 		794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794021E527B98C360057A07E /* BookmarkedBooks.swift */; };
 		794021E827B994E00057A07E /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794021E727B994E00057A07E /* UIStackViewExtension.swift */; };
+		794021ED27B9BB7E0057A07E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794021EB27B9BB7E0057A07E /* Roboto-Medium.ttf */; };
+		794021EE27B9BB7E0057A07E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794021EC27B9BB7E0057A07E /* Roboto-Regular.ttf */; };
 		79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */; };
 		79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */; };
 		79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 		7937CBBC27B43ADA00F7FA1F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		794021E527B98C360057A07E /* BookmarkedBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooks.swift; sourceTree = "<group>"; };
 		794021E727B994E00057A07E /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		794021EB27B9BB7E0057A07E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		794021EC27B9BB7E0057A07E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooksViewController.swift; sourceTree = "<group>"; };
 		79A1A09527AFF30B00C2E0E6 /* ioasys books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ioasys books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,10 +86,8 @@
 		7937CBA827B4004900F7FA1F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */,
-				7937CBB027B4037900F7FA1F /* Heebo-Regular.ttf */,
-				7937CBB827B408C100F7FA1F /* Heebo-Medium.ttf */,
-				7937CBAE27B4036800F7FA1F /* Heebo-SemiBold.ttf */,
+				794021EA27B9BB6B0057A07E /* Roboto */,
+				794021E927B9BB540057A07E /* Heebo */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -129,6 +131,26 @@
 				79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */,
 			);
 			path = "System Delegate";
+			sourceTree = "<group>";
+		};
+		794021E927B9BB540057A07E /* Heebo */ = {
+			isa = PBXGroup;
+			children = (
+				7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */,
+				7937CBB027B4037900F7FA1F /* Heebo-Regular.ttf */,
+				7937CBB827B408C100F7FA1F /* Heebo-Medium.ttf */,
+				7937CBAE27B4036800F7FA1F /* Heebo-SemiBold.ttf */,
+			);
+			path = Heebo;
+			sourceTree = "<group>";
+		};
+		794021EA27B9BB6B0057A07E /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				794021EB27B9BB7E0057A07E /* Roboto-Medium.ttf */,
+				794021EC27B9BB7E0057A07E /* Roboto-Regular.ttf */,
+			);
+			path = Roboto;
 			sourceTree = "<group>";
 		};
 		79A1A08C27AFF30B00C2E0E6 = {
@@ -243,7 +265,9 @@
 			files = (
 				79A1A0A527AFF30C00C2E0E6 /* LaunchScreen.storyboard in Resources */,
 				7937CBB127B4037900F7FA1F /* Heebo-Regular.ttf in Resources */,
+				794021EE27B9BB7E0057A07E /* Roboto-Regular.ttf in Resources */,
 				7937CBAF27B4036800F7FA1F /* Heebo-SemiBold.ttf in Resources */,
+				794021ED27B9BB7E0057A07E /* Roboto-Medium.ttf in Resources */,
 				7937CBB927B408C100F7FA1F /* Heebo-Medium.ttf in Resources */,
 				7937CBBB27B4219500F7FA1F /* Heebo-Light.ttf in Resources */,
 				79A1A0BA27B0549800C2E0E6 /* Assets.xcassets in Resources */,

@@ -9,12 +9,45 @@ import UIKit
 
 class LoginFormView: UIView {
     
+    lazy var formStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 68
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     lazy var emailStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email"
+        label.font = .robotoMedium(ofSize: 12)
+        label.textColor = .clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var emailInputView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 1
+        view.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.font = .roboto(ofSize: 16)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
     lazy var passwordStackView: UIStackView = {
@@ -25,10 +58,9 @@ class LoginFormView: UIView {
         return stackView
     }()
     
-    lazy var emailLabel: UILabel = {
+    lazy var failLoginLabel: UILabel = {
         let label = UILabel()
-        label.text = "Email"
-        label.textColor = .clear
+        label.font = .robotoMedium(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -36,24 +68,10 @@ class LoginFormView: UIView {
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "Senha"
+        label.font = .robotoMedium(ofSize: 12)
+        label.textColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    lazy var emailInputView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 8
-        view.layer.borderWidth = 1
-        view.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     lazy var passwordInputView: UIView = {
@@ -75,6 +93,7 @@ class LoginFormView: UIView {
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Senha"
+        textField.font = .roboto(ofSize: 16)
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -91,15 +110,7 @@ class LoginFormView: UIView {
     lazy var inputStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 28
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    lazy var formStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 68
+        stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -107,7 +118,8 @@ class LoginFormView: UIView {
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 0.22, green: 0.08, blue: 0.29, alpha: 1.0)
-        button.setTitle("Entrar", for: .normal)
+        button.setTitle("E N T R A R", for: .normal)
+        button.titleLabel?.font = .heeboMedium(ofSize: 14)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -132,7 +144,7 @@ class LoginFormView: UIView {
         emailStackView.addArrangedSubview(emailLabel)
         emailStackView.addArrangedSubview(emailInputView)
         emailInputView.addSubview(emailTextField)
-        
+        emailStackView.addArrangedSubview(failLoginLabel)
         inputStackView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordInputView)
@@ -152,31 +164,38 @@ class LoginFormView: UIView {
             formStackView.topAnchor.constraint(equalTo: topAnchor, constant: 100), //Change this value when in final product
             formStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             formStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            formStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        //Input Stack View
-        NSLayoutConstraint.activate([
-            inputStackView.centerXAnchor.constraint(equalTo: formStackView.centerXAnchor)
         ])
         
         //Email Input View
         NSLayoutConstraint.activate([
-            emailInputView.heightAnchor.constraint(equalToConstant: 48)
+             emailInputView.heightAnchor.constraint(equalToConstant: 48),
+             emailInputView.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor)
         ])
         
         //Email Label
         NSLayoutConstraint.activate([
-            //emailLabel.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor, constant: 16)
+            emailLabel.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor, constant: 16)
         ])
         
         //Email Text Field
         self.stretch(emailTextField, to: emailInputView, top: 12, left: 16, bottom: -16, right: -12)
-
+        
+        
+        //Fail Login Label
+        NSLayoutConstraint.activate([
+            failLoginLabel.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor, constant: 21)
+        ])
+        
+        
+        //Password Label
+        NSLayoutConstraint.activate([
+            passwordLabel.leadingAnchor.constraint(equalTo: passwordStackView.leadingAnchor, constant: 16)
+        ])
         
         //Password Input View
         NSLayoutConstraint.activate([
-            passwordInputView.heightAnchor.constraint(equalToConstant: 48)
+            passwordInputView.heightAnchor.constraint(equalToConstant: 48),
+            passwordInputView.leadingAnchor.constraint(equalTo: passwordStackView.leadingAnchor)
         ])
         
         //Password Input Stack View

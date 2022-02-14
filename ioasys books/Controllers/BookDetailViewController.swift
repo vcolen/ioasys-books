@@ -15,9 +15,7 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+    
     }
     
     override func loadView() {
@@ -35,7 +33,7 @@ class BookDetailViewController: UIViewController {
             self.dismiss(animated: true)
         }, for: .touchUpInside)
         
-        view.bookImage.sd_setImage(with: URL(string: book?.imageUrl ?? " "))
+        view.bookImage.sd_setImage(with: URL(string: book?.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
         view.mainStackView.addArrangedSubview(view.bookImage)
         
         view.mainStackView.addArrangedSubview(view.bookTitleStackView)

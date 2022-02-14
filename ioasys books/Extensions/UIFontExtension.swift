@@ -23,4 +23,12 @@ extension UIFont {
     static func heebo(ofSize size: CGFloat) -> UIFont {
         UIFont(name: "Heebo", size: size) ?? .systemFont(ofSize: size)
     }
+    
+    static func roboto(ofSize size: CGFloat) -> UIFont {
+        UIFont(name: "Roboto", size: size) ?? .systemFont(ofSize: size)
+    }
+    
+    static func robotoMedium(ofSize size: CGFloat) -> UIFont {
+        UIFont(name: "Roboto-Medium", size: size) ?? .systemFont(ofSize: size)
+    }
 }

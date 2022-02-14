@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         
         view = viewCustom
         setupView()
+        setupTextFieldsActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +42,7 @@ class LoginViewController: UIViewController {
         
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        let data : Data = "email=desafio@ioasys.com.br&password=12341234&grant_type=password".data(using: .utf8)!
+        let data : Data = "email=\(self.viewCustom.emailTextField.text?.lowercased() ?? "")&password=\(self.viewCustom.passwordTextField.text ?? "")&grant_type=password".data(using: .utf8)!
         
         request.httpMethod = "POST"
         request.httpBody = data
@@ -77,13 +78,21 @@ class LoginViewController: UIViewController {
                                 print(error)
                             }
                         }
-                    } 
+                    }  else if response.statusCode == 401 {
+                        self.didFailLogin()
+                    }
                 }
             }
         }
     }
     
     func didFailLogin() {
+        viewCustom.emailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        viewCustom.emailInputView.layer.borderColor = CGColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        viewCustom.emailTextField.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        
+        viewCustom.failLoginLabel.text = "Endereço de email inválido"
+        viewCustom.failLoginLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         
     }
     
@@ -103,6 +112,40 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func setupTextFieldsActions() {
+        
+        var showEmailLabel: Bool {
+            viewCustom.emailTextField.hasText
+        }
+        
+        var showPasswordLabel: Bool {
+            viewCustom.passwordTextField.hasText
+        }
+        
+        viewCustom.emailTextField.addAction(UIAction {  _ in
+            if showEmailLabel {
+                self.showLabel(label: self.viewCustom.emailLabel)
+            } else {
+                self.hideLabel(label: self.viewCustom.emailLabel)
+            }
+        }, for: .editingChanged)
+        
+        viewCustom.passwordTextField.addAction(UIAction {  _ in
+            if showEmailLabel {
+                self.showLabel(label: self.viewCustom.passwordLabel)
+            } else {
+                self.hideLabel(label: self.viewCustom.passwordLabel)
+            }
+        }, for: .editingChanged)
+    }
+    
+    func hideLabel(label: UILabel) {
+        label.textColor = .clear
+    }
+    
+    func showLabel(label: UILabel) {
+        label.textColor = .black
+    }
 }
 
 
