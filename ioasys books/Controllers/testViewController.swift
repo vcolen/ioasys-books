@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class TestViewController: UIViewController {
     
     lazy var viewCustom = LoginView()
     var authorization = ""
@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
         viewCustom.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
             self?.didTapLogin()
         }, for: .touchUpInside)
-
     }
     
     func loginUser(completion: @escaping ((Data?, URLResponse?, Error?) -> Void)) {

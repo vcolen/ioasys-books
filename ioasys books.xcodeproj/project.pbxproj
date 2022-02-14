@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790A56B427BA82C30090F002 /* ioasysLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B327BA82C30090F002 /* ioasysLogoView.swift */; };
+		790A56B627BA846E0090F002 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B527BA846E0090F002 /* DummyViewController.swift */; };
+		790A56B827BA97B00090F002 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B727BA97B00090F002 /* LoginView.swift */; };
+		790A56BA27BAA8200090F002 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B927BAA8200090F002 /* testViewController.swift */; };
 		792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481027B593F2000391C4 /* BookDetailViewController.swift */; };
 		792F481327B59ADF000391C4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481227B59ADF000391C4 /* UIViewExtension.swift */; };
 		792F481927B5E1DC000391C4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481827B5E1DC000391C4 /* TabBarViewController.swift */; };
@@ -24,7 +28,6 @@
 		79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */; };
 		79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */; };
 		79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */; };
-		79A1A0A527AFF30C00C2E0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79A1A0A327AFF30C00C2E0E6 /* LaunchScreen.storyboard */; };
 		79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */; };
 		79A1A0AF27AFF60300C2E0E6 /* BooksCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */; };
 		79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */; };
@@ -39,6 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		790A56B327BA82C30090F002 /* ioasysLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ioasysLogoView.swift; sourceTree = "<group>"; };
+		790A56B527BA846E0090F002 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		790A56B727BA97B00090F002 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		790A56B927BAA8200090F002 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		792F481027B593F2000391C4 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		792F481227B59ADF000391C4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		792F481827B5E1DC000391C4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +63,6 @@
 		79A1A09527AFF30B00C2E0E6 /* ioasys books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ioasys books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		79A1A0A427AFF30C00C2E0E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79A1A0A627AFF30C00C2E0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCatalogueView.swift; sourceTree = "<group>"; };
 		79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCatalogueViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 				79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */,
 				79A1A0AE27AFF60300C2E0E6 /* BooksCatalogueViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
+				790A56B927BAA8200090F002 /* testViewController.swift */,
+				790A56B527BA846E0090F002 /* DummyViewController.swift */,
 				792F481827B5E1DC000391C4 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
@@ -192,9 +200,10 @@
 				79A8305927B34D7E00860D7C /* BookDetailView.swift */,
 				79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */,
 				79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */,
+				790A56B327BA82C30090F002 /* ioasysLogoView.swift */,
+				790A56B727BA97B00090F002 /* LoginView.swift */,
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* PageDescriptionView.swift */,
-				79A1A0A327AFF30C00C2E0E6 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,7 +272,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A1A0A527AFF30C00C2E0E6 /* LaunchScreen.storyboard in Resources */,
 				7937CBB127B4037900F7FA1F /* Heebo-Regular.ttf in Resources */,
 				794021EE27B9BB7E0057A07E /* Roboto-Regular.ttf in Resources */,
 				7937CBAF27B4036800F7FA1F /* Heebo-SemiBold.ttf in Resources */,
@@ -282,8 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A1A0AF27AFF60300C2E0E6 /* BooksCatalogueViewController.swift in Sources */,
+				790A56B627BA846E0090F002 /* DummyViewController.swift in Sources */,
 				794021E827B994E00057A07E /* UIStackViewExtension.swift in Sources */,
 				792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */,
+				790A56B827BA97B00090F002 /* LoginView.swift in Sources */,
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
 				794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */,
 				792F481327B59ADF000391C4 /* UIViewExtension.swift in Sources */,
@@ -297,25 +307,16 @@
 				792F481927B5E1DC000391C4 /* TabBarViewController.swift in Sources */,
 				7937CBB327B403DB00F7FA1F /* UIFontExtension.swift in Sources */,
 				79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */,
+				790A56BA27BAA8200090F002 /* testViewController.swift in Sources */,
 				79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */,
 				79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */,
 				79F5B74027B2DA3C00EBEB6A /* LoginFormView.swift in Sources */,
 				79F5B73E27B2C52900EBEB6A /* Constants.swift in Sources */,
+				790A56B427BA82C30090F002 /* ioasysLogoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		79A1A0A327AFF30C00C2E0E6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79A1A0A427AFF30C00C2E0E6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		79A1A0A727AFF30C00C2E0E6 /* Debug */ = {
