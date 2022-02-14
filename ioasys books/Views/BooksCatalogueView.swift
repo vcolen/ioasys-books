@@ -13,7 +13,7 @@ class BooksCatalogueView: UIView {
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = UIColor(red: 0.995, green: 0.995, blue: 0.995, alpha: 1.0) 
         scrollView.clipsToBounds = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -50,26 +50,34 @@ class BooksCatalogueView: UIView {
         return stackView
     }()
     
+    lazy var searchBarStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.backgroundColor = .white
+        stackView.spacing = 1
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.layer.cornerRadius = 8
+        stackView.layer.shadowRadius = 24
+        stackView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        stackView.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
+        stackView.layer.shadowOpacity = 1.0
+        
+        return stackView
+    }()
+    
+    lazy var searchButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     lazy var searchBarTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Procure um livro"
-        textField.borderStyle = .roundedRect
         textField.clearsOnBeginEditing = true
-        textField.leftViewMode = .always
-        textField.tintColor = .black
-        textField.backgroundColor = .white
-        textField.layer.cornerRadius = 8
-        textField.layer.shadowRadius = 24
-        textField.layer.shadowOffset = CGSize(width: 0, height: 4)
-        textField.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
-        textField.layer.shadowOpacity = 1.0
-        
-        
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let image = UIImage(systemName: "magnifyingglass")
-        imageView.image = image
-        textField.leftView = imageView
+        textField.backgroundColor = .clear
         
         return textField
     }()
@@ -91,7 +99,11 @@ class BooksCatalogueView: UIView {
         mainStackView.addArrangedSubview(titleStackView)
         titleStackView.addArrangedSubview(navigationTitleView)
         titleStackView.addArrangedSubview(pageDescriptionView)
-        mainStackView.addArrangedSubview(searchBarTextField)
+        mainStackView.addArrangedSubview(searchBarStackView)
+        
+        searchBarStackView.addArrangedSubview(searchButton)
+        searchBarStackView.addArrangedSubview(searchBarTextField)
+        
         mainStackView.addArrangedSubview(bookStackView)
     }
     
@@ -108,11 +120,24 @@ class BooksCatalogueView: UIView {
             titleStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
         ])
         
-        //Search bar Text Field
+        //Search bar stack view
         NSLayoutConstraint.activate([
-            searchBarTextField.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
-            searchBarTextField.heightAnchor.constraint(equalToConstant: 40)
+            searchBarStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
+            searchBarStackView.heightAnchor.constraint(equalToConstant: 40)
         ])
+        
+        //Search Button
+        NSLayoutConstraint.activate([
+            searchButton.widthAnchor.constraint(equalToConstant: 30),
+            searchButton.heightAnchor.constraint(equalToConstant: 30),
+            searchButton.leadingAnchor.constraint(equalTo: searchBarStackView.leadingAnchor, constant: 13)
+        ])
+        
+//        //Search bar Text Field
+//        NSLayoutConstraint.activate([
+//            searchBarTextField.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
+//            searchBarTextField.heightAnchor.constraint(equalToConstant: 40)
+//        ])
         
         //Book Stack View
         NSLayoutConstraint.activate([

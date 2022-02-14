@@ -20,6 +20,10 @@ class BooksCatalogueViewController: UIViewController {
         
         setupLogOutButtonAction()
         setupPageDescriptionView()
+        customView.searchButton.addAction( UIAction {_ in
+            self.didSucceedInLogin()
+        }
+                                           , for: .touchUpInside)
         view = customView
     }
     
@@ -42,9 +46,12 @@ class BooksCatalogueViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
-    func fetchBooks(completion: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
-        let url = URL(string: K.URLs.books + "page=1")
-        var getRequest = URLRequest(url: url!)
+    func fetchBooks(n: String, completion: @escaping ((Data?, URLResponse?, Error?) -> Void) ) {
+        let escapedString = n.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let originalString = "https://books.ioasys.com.br/api/v1/books?page=1&amount=25&title=\(escapedString!)"
+        
+        let newUrl = URL(string: originalString)
+        var getRequest = URLRequest(url: newUrl!)
         getRequest.addValue("Bearer \(authorization)", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: getRequest) { data, response, error in
             completion(data, response, error)
@@ -52,7 +59,7 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func didSucceedInLogin() {
-        fetchBooks { data, response, error in
+        fetchBooks(n: customView.searchBarTextField.text ?? "alo alo") { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -135,6 +142,4 @@ class BooksCatalogueViewController: UIViewController {
         }
     }
 }
-
-
 

@@ -21,9 +21,7 @@ class BookDetailViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        
         loadBookDataInUI()
-        //view = customView
     }
     
     func loadBookDataInUI() {

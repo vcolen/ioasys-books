@@ -10,7 +10,8 @@ import Foundation
 
 struct Response: Codable {
     let data: [Book]
-    let page, totalItems, totalPages: Int
+    let page, totalItems: Int?
+    let totalPages: Float?
 }
 
 // MARK: - Datum
@@ -24,7 +25,7 @@ struct Book: Codable, Equatable {
     let isbn10, isbn13, publisher: String
     let published: Int
     let id: String
-
+    
     enum CodingKeys: String, CodingKey {
         case authors, title
         case description

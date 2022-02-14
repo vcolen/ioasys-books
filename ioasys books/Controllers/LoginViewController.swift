@@ -42,7 +42,9 @@ class LoginViewController: UIViewController {
         
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        let data : Data = "email=\(self.viewCustom.emailTextField.text?.lowercased() ?? "")&password=\(self.viewCustom.passwordTextField.text ?? "")&grant_type=password".data(using: .utf8)!
+//        let data : Data = "email=\(self.viewCustom.emailTextField.text?.lowercased() ?? "")&password=\(self.viewCustom.passwordTextField.text ?? "")&grant_type=password".data(using: .utf8)!
+        
+        let data : Data = "email=desafio@ioasys.com.br&password=12341234".data(using: .utf8)!
         
         request.httpMethod = "POST"
         request.httpBody = data
