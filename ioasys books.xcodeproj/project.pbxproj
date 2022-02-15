@@ -94,17 +94,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		7937CBB427B405EF00F7FA1F /* Extensions */ = {
+		7937CBB427B405EF00F7FA1F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				7937CBB227B403DB00F7FA1F /* UIFontExtension.swift */,
 				794021E727B994E00057A07E /* UIStackViewExtension.swift */,
 				792F481227B59ADF000391C4 /* UIViewExtension.swift */,
 			);
-			path = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
-		7937CBB527B4067A00F7FA1F /* Controllers */ = {
+		7937CBB527B4067A00F7FA1F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				792F481027B593F2000391C4 /* BookDetailViewController.swift */,
@@ -113,7 +113,7 @@
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
 				792F481827B5E1DC000391C4 /* TabBarViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		7937CBB627B4068100F7FA1F /* Model */ = {
@@ -175,19 +175,20 @@
 			isa = PBXGroup;
 			children = (
 				79A1A0A627AFF30C00C2E0E6 /* Info.plist */,
+				79F9608327BB105B00561EA3 /* ViewModel */,
 				7937CBB727B4069A00F7FA1F /* System Delegate */,
 				7937CBB627B4068100F7FA1F /* Model */,
-				7937CBB527B4067A00F7FA1F /* Controllers */,
+				7937CBB527B4067A00F7FA1F /* Controller */,
 				79F5B73D27B2C52900EBEB6A /* Constants.swift */,
 				79A1A0B927B0549800C2E0E6 /* Assets.xcassets */,
-				7937CBB427B405EF00F7FA1F /* Extensions */,
+				7937CBB427B405EF00F7FA1F /* Extension */,
 				7937CBA827B4004900F7FA1F /* Fonts */,
-				79A1A0B027B00D2000C2E0E6 /* Views */,
+				79A1A0B027B00D2000C2E0E6 /* View */,
 			);
 			path = "ioasys books";
 			sourceTree = "<group>";
 		};
-		79A1A0B027B00D2000C2E0E6 /* Views */ = {
+		79A1A0B027B00D2000C2E0E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */,
@@ -199,7 +200,14 @@
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* PageDescriptionView.swift */,
 			);
-			path = Views;
+			path = View;
+			sourceTree = "<group>";
+		};
+		79F9608327BB105B00561EA3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

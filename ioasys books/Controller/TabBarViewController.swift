@@ -15,6 +15,7 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func loadView() {
@@ -42,7 +43,7 @@ class TabBarViewController: UITabBarController {
         
         let bookCatalogueNavigationController = UINavigationController(rootViewController: bookCatalogueViewController)
         bookCatalogueNavigationController.tabBarItem.title = "Início"
-        bookCatalogueNavigationController.tabBarItem.image = UIImage(systemName: "house")
+        bookCatalogueNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")
         
         return bookCatalogueNavigationController
     }
