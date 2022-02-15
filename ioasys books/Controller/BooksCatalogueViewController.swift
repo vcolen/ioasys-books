@@ -35,6 +35,7 @@ class BooksCatalogueViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        customView.bookStackView.removeFullyAllArrangedSubviews()
         didSucceedInLogin()
         self.navigationItem.hidesBackButton = true
     }
@@ -53,10 +54,9 @@ class BooksCatalogueViewController: UIViewController {
         }, for: .touchUpInside)
     }
     
-    fileprivate func loadBooksInUI() {
-        customView.bookStackView.removeFullyAllArrangedSubviews()
+    fileprivate func loadBooksInUI(books: [Book]) {
         
-        for book in self.books {
+        for book in books {
             let view = customizeBookContainerView(with: book)
             customView.bookStackView.addArrangedSubview(view)
         }
@@ -76,7 +76,7 @@ class BooksCatalogueViewController: UIViewController {
                             let safeData = try JSONDecoder().decode(Response.self, from: data!)
                             self.books = safeData.data
                             DispatchQueue.main.async {
-                                self.loadBooksInUI()
+                                self.loadBooksInUI(books: self.books)
                             }
                         } catch {
                             print(error)
@@ -103,7 +103,7 @@ class BooksCatalogueViewController: UIViewController {
                             let safeData = try JSONDecoder().decode(Response.self, from: data!)
                             self.books = safeData.data
                             DispatchQueue.main.async {
-                                self.loadBooksInUI()
+                                self.loadBooksInUI(books: self.books)
                             }
                         } catch {
                             print(error)
@@ -186,7 +186,7 @@ class BooksCatalogueViewController: UIViewController {
                                 self.books += safeData.data
                                 self.page += 1
                                 DispatchQueue.main.async {
-                                    self.loadBooksInUI()
+                                    self.loadBooksInUI(books: safeData.data)
                                 }
                             }
                         } catch {
@@ -202,7 +202,7 @@ class BooksCatalogueViewController: UIViewController {
 extension BooksCatalogueViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > scrollView.contentSize.height - 300 - scrollView.frame.size.height {
+        if position > scrollView.contentSize.height - 1000 - scrollView.frame.size.height {
             self.loadBooksOnPage(page: self.page)
         }
     }
