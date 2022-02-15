@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		790A56B427BA82C30090F002 /* ioasysLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B327BA82C30090F002 /* ioasysLogoView.swift */; };
+		790A56B427BA82C30090F002 /* MainLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B327BA82C30090F002 /* MainLogoView.swift */; };
 		790A56B827BA97B00090F002 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A56B727BA97B00090F002 /* LoginView.swift */; };
 		792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481027B593F2000391C4 /* BookDetailViewController.swift */; };
 		792F481327B59ADF000391C4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481227B59ADF000391C4 /* UIViewExtension.swift */; };
@@ -40,7 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		790A56B327BA82C30090F002 /* ioasysLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ioasysLogoView.swift; sourceTree = "<group>"; };
+		790A56B327BA82C30090F002 /* MainLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLogoView.swift; sourceTree = "<group>"; };
 		790A56B727BA97B00090F002 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		792F481027B593F2000391C4 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		792F481227B59ADF000391C4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 				79A8305927B34D7E00860D7C /* BookDetailView.swift */,
 				79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */,
 				79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */,
-				790A56B327BA82C30090F002 /* ioasysLogoView.swift */,
+				790A56B327BA82C30090F002 /* MainLogoView.swift */,
 				790A56B727BA97B00090F002 /* LoginView.swift */,
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* PageDescriptionView.swift */,
@@ -312,7 +312,7 @@
 				79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */,
 				79F5B74027B2DA3C00EBEB6A /* LoginFormView.swift in Sources */,
 				79F5B73E27B2C52900EBEB6A /* Constants.swift in Sources */,
-				790A56B427BA82C30090F002 /* ioasysLogoView.swift in Sources */,
+				790A56B427BA82C30090F002 /* MainLogoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,7 +25,7 @@ class LoginView: UIView {
         return stackView
     }()
     
-    lazy var logoView = ioasysLogoView()
+    lazy var logoView = MainLogoView()
     lazy var loginFormView = LoginFormView()
     
     

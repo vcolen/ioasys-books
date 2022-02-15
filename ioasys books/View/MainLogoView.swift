@@ -1,5 +1,5 @@
 //
-//  ioasysLogoView.swift
+//  MainLogoView.swift
 //  ioasys books
 //
 //  Created by Victor Colen on 14/02/22.
@@ -7,15 +7,9 @@
 
 import UIKit
 
-class ioasysLogoView: UIView {
-
-    lazy var mainView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+class MainLogoView: UIView {
     
-    lazy var logoStackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -51,18 +45,17 @@ class ioasysLogoView: UIView {
     }
     
     func configureSubviews() {
-        addSubview(mainView)
-        mainView.addSubview(logoStackView)
-        logoStackView.addArrangedSubview(logoImageView)
-        logoStackView.addArrangedSubview(booksLabel)
+        addSubview(mainStackView)
+        mainStackView.addArrangedSubview(logoImageView)
+        mainStackView.addArrangedSubview(booksLabel)
     }
     
     func setupConstraints() {
-        self.stretch(mainView)
-        
+     
+        //Main Stack View
         NSLayoutConstraint.activate([
-            logoStackView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
-            logoStackView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor)
+            mainStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mainStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
