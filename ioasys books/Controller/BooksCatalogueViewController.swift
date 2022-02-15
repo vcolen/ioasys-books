@@ -10,16 +10,47 @@ import SDWebImage
 
 class BooksCatalogueViewController: UIViewController {
     
-    lazy var customView = BooksCatalogueView()
+    var customView = BooksCatalogueView()
     private var books = [Book]()
     var user: User?
     var authorization = ""
+    var page: Int!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        customView.scrollView.delegate = self
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        self.page = 2
+        setupButtonsActions()
+        setupPageDescriptionView()
+        view = customView
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         didSucceedInLogin()
         self.navigationItem.hidesBackButton = true
+    }
+    
+  fileprivate func setupButtonsActions() {
+        customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
+            self.logOut()
+        }, for: .touchUpInside)
+        
+        customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
+            self.logOut()
+        }, for: .touchUpInside)
+        
+        customView.searchButton.addAction( UIAction {_ in
+            self.searchBook()
+        }, for: .touchUpInside)
     }
     
     fileprivate func loadBooksInUI() {
@@ -33,17 +64,6 @@ class BooksCatalogueViewController: UIViewController {
         customizeBookStackView()
     }
     
-    override func loadView() {
-        super.loadView()
-        
-        setupLogOutButtonAction()
-        setupPageDescriptionView()
-        customView.searchButton.addAction( UIAction {_ in
-            self.searchBook()
-        }, for: .touchUpInside)
-        
-        view = customView
-    }
     
     func searchBook() {
         Network.fetchBooksByTitle(bookTitle: customView.searchBarTextField.text ?? "", authorization: self.authorization) { data, response, error in
@@ -71,13 +91,7 @@ class BooksCatalogueViewController: UIViewController {
         self.customView.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vindo, " : "Bem vinda, "
         self.customView.pageDescriptionView.mediumFontLabel.text = (self.user?.name)! + "!"
     }
-    
-    func setupLogOutButtonAction() {
-        customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
-            self.logOut()
-        }, for: .touchUpInside)
-    }
-    
+        
     func didSucceedInLogin() {
         Network.fetchBooks(authorization: self.authorization) { data, response, error in
             if let error = error {
@@ -158,5 +172,40 @@ class BooksCatalogueViewController: UIViewController {
             button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
         }
     }
+    
+    func loadBooksOnPage(page: Int) {
+        Network.fetchBooksWithPagination(page: page, authorization: self.authorization) { data, response, error in
+            if let error = error {
+                print(error)
+            } else {
+                if let response = response as? HTTPURLResponse {
+                    if response.statusCode == 200 {
+                        do {
+                            let safeData = try JSONDecoder().decode(Response.self, from: data!)
+                            if !self.books.contains(safeData.data.first!) && self.page < 34 {
+                                self.books += safeData.data
+                                self.page += 1
+                                DispatchQueue.main.async {
+                                    self.loadBooksInUI()
+                                }
+                            }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension BooksCatalogueViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > scrollView.contentSize.height - 300 - scrollView.frame.size.height {
+            self.loadBooksOnPage(page: self.page)
+        }
+    }
+    
 }
 

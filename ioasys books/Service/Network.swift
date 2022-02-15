@@ -32,7 +32,20 @@ struct Network {
         authorization: String,
         completion: @escaping ((Data?, URLResponse?, Error?) -> Void)
     ) {
-        let page = 1
+        let url = URL(string: "https://books.ioasys.com.br/api/v1/books?page=1&amount=25)")
+        var getRequest = URLRequest(url: url!)
+        getRequest.addValue("Bearer \(authorization)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: getRequest) { data, response, error in
+            completion(data, response, error)
+        }.resume()
+    }
+    
+    
+    static func fetchBooksWithPagination(
+        page: Int,
+        authorization: String,
+        completion: @escaping ((Data?, URLResponse?, Error?) -> Void )
+    ) {
         let url = URL(string: "https://books.ioasys.com.br/api/v1/books?page=\(page)&amount=25)")
         var getRequest = URLRequest(url: url!)
         getRequest.addValue("Bearer \(authorization)", forHTTPHeaderField: "Authorization")
