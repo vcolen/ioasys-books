@@ -37,14 +37,10 @@ class BookmarkedBooksViewController: UIViewController {
     }
     
     func loadBooksInUI() {
-        
         customView.bookStackView.removeFullyAllArrangedSubviews()
-        
-        if let tabbar = self.tabBarController as? TabBarViewController {
-            for book in tabbar.bookmarkedBooks.books {
-                let view = customizeBookContainerView(with: book.value)
-                customView.bookStackView.addArrangedSubview(view)
-            }
+        for book in BookmarkedBooks().books {
+            let view = customizeBookContainerView(with: book.value)
+            customView.bookStackView.addArrangedSubview(view)
         }
         customizeBookStackView()
     }
@@ -56,14 +52,12 @@ class BookmarkedBooksViewController: UIViewController {
         view.pageCountLabel.text = "\(book.pageCount) Páginas"
         view.authorNameLabel.text = book.authors.joined(separator: ", ")
         
-        if let tabbar = self.tabBarController as? TabBarViewController {
-            tabbar.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
-        }
+//        if let tabbar = self.tabBarController as? TabBarViewController {
+//            tabbar.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
+//        }
         
         view.bookmarkButton.addAction(UIAction { _ in
-            if let tabbar = self.tabBarController as? TabBarViewController {
-                tabbar.changeBookmarkedStatus(view.bookmarkButton, book: book)
-            }
+            BookmarkedBooks().toggleBookmarkStatus(book: book)
         }, for: .touchUpInside)
         
         view.setOnClickListener {
@@ -89,7 +83,8 @@ class BookmarkedBooksViewController: UIViewController {
     
     func loadDetailView(of book: Book) {
         let bookDetailViewController = BookDetailViewController()
-        bookDetailViewController.book = book
+        let bookDetailViewModel = BookDetailViewModel(of: book)
+        bookDetailViewController.viewModel = bookDetailViewModel
         
         present(bookDetailViewController, animated: true)
     }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-
+//MARK: - Response
 struct Response: Codable {
     let data: [Book]
     let page, totalItems: Int?
     let totalPages: Float?
 }
 
-// MARK: - Datum
+// MARK: - Book
 struct Book: Codable, Equatable {
     let authors: [String]
     let title, description: String
@@ -38,5 +38,11 @@ struct Book: Codable, Equatable {
 enum Language: String, Codable {
     case ingles = "Inglês"
     case português = "Português"
+}
+
+extension Book {
+    var isBookmarked: Bool {
+        BookmarkedBooks().books[self.id] == self
+    }
 }
 

@@ -9,26 +9,6 @@ import UIKit
 
 class BookDetailView: UIView {
     
-    let bookInfoNameArray = [
-        "Páginas",
-        "Editora",
-        "Publicação",
-        "Idioma",
-        "Título Original",
-        "ISBN-10",
-        "ISBN-13"
-    ]
-    
-    let bookInfoValueArray = [
-        "304 Páginas",
-        "Editora Loyola",
-        "2020",
-        "Inglês",
-        "Change by Design",
-        "0062856626",
-        "978-0062856623"
-    ]
-    
     lazy var scrollView: UIScrollView = {
         var scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -110,36 +90,7 @@ class BookDetailView: UIView {
         return label
     }()
     
-    lazy var bookInfoName: UILabel = {
-        let label = UILabel()
-        label.text = "Páginas"
-        label.font = .heeboMedium(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
-    lazy var bookInfoValue: UILabel = {
-        let label = UILabel()
-        label.text = "304 páginas"
-        label.font = .heebo(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var bookInfoVerticalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.spacing = 7
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    lazy var bookInfoHorizontalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .equalSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
     
     lazy var reviewStackView: UIStackView = {
         let stackView = UIStackView()
@@ -194,6 +145,7 @@ class BookDetailView: UIView {
         
         //Main Stack View
         self.stretch(mainStackView, to: scrollView, top: 20, left: 24, bottom: -40, right: -24)
+        
         NSLayoutConstraint.activate([
             mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ])
@@ -207,3 +159,4 @@ class BookDetailView: UIView {
         ])
     }
 }
+

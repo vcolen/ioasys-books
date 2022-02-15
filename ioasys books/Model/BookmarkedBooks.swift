@@ -18,6 +18,24 @@ class BookmarkedBooks {
         }
     }
     
+    func removeBook(book: Book) {
+        self.books[book.id] = nil
+    }
+    
+    func bookmarkBook(book: Book) {
+        self.books[book.id] = book
+    }
+    
+    func toggleBookmarkStatus(book: Book) {
+        if book.isBookmarked {
+            self.books[book.id] = nil
+            print("desfavoritado")
+        } else {
+            self.books[book.id] = book
+            print("favoritdado")
+        }
+    }
+    
     init() {
         if let savedItems = UserDefaults.standard.data(forKey: "Bookmarked Books") {
             if let decodedItems = try? JSONDecoder().decode([String : Book].self, from: savedItems){

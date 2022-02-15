@@ -37,25 +37,6 @@ class LoginViewController: UIViewController {
 
     }
     
-    func loginUser(completion: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
-        let postUrl = URL(string: K.URLs.auth + "/sign-in")!
-        var request = URLRequest(url: postUrl)
-        
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-//        let data : Data = "email=\(self.viewCustom.emailTextField.text?.lowercased() ?? "")&password=\(self.viewCustom.passwordTextField.text ?? "")&grant_type=password".data(using: .utf8)!
-        
-        let data : Data = "email=desafio@ioasys.com.br&password=12341234".data(using: .utf8)!
-        
-        request.httpMethod = "POST"
-        request.httpBody = data
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                completion(data, response, error)
-            }
-        }.resume()
-    }
     
     func navigateToCatalogue() {
         let tabBarViewController = TabBarViewController()
@@ -66,7 +47,8 @@ class LoginViewController: UIViewController {
     }
     
     func didTapLogin() {
-        loginUser { data, response, error in
+        Network.loginUser(email: self.viewCustom.loginFormView.emailTextField.text!,
+                          password: self.viewCustom.loginFormView.passwordTextField.text!) { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -96,7 +78,6 @@ class LoginViewController: UIViewController {
         
         viewCustom.loginFormView.incorrectEmailLabel.text = "Endereço de email inválido"
         viewCustom.loginFormView.incorrectEmailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        
     }
     
     func setupView() {

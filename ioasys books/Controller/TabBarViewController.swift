@@ -11,7 +11,6 @@ class TabBarViewController: UITabBarController {
     
     var authorization: String?
     var user: User?
-    var bookmarkedBooks = BookmarkedBooks()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,6 @@ class TabBarViewController: UITabBarController {
         let bookCatalogueViewController = BooksCatalogueViewController()
         bookCatalogueViewController.user = self.user
         bookCatalogueViewController.authorization = self.authorization ?? ""
-        
         let bookCatalogueNavigationController = UINavigationController(rootViewController: bookCatalogueViewController)
         bookCatalogueNavigationController.tabBarItem.title = "Início"
         bookCatalogueNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")
@@ -55,23 +53,5 @@ class TabBarViewController: UITabBarController {
         bookmarkedBooksNavigationController.tabBarItem.image = UIImage(systemName: "bookmark.fill")
         
         return bookmarkedBooksNavigationController
-    }
-    
-    
-    func changeBookmarkedStatus(_ sender: UIButton, book: Book) {
-        if self.bookmarkedBooks.books[book.id] == book {
-            self.bookmarkedBooks.books[book.id] = nil
-        } else {
-            self.bookmarkedBooks.books[book.id] = book
-        }
-        setBookmarkButtonImage(for: sender, in: book)
-    }
-    
-    func setBookmarkButtonImage(for button: UIButton, in book: Book) {
-        if self.bookmarkedBooks.books[book.id] == book {
-            button.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
-        } else {
-            button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
-        }
     }
 }

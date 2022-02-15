@@ -11,9 +11,27 @@ import SDWebImage
 class BooksCatalogueViewController: UIViewController {
     
     lazy var customView = BooksCatalogueView()
-    var books = [Book]()
+    private var books = [Book]()
     var user: User?
     var authorization = ""
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        didSucceedInLogin()
+        self.navigationItem.hidesBackButton = true
+    }
+    
+    fileprivate func loadBooksInUI() {
+        customView.bookStackView.removeFullyAllArrangedSubviews()
+        
+        for book in self.books {
+            let view = customizeBookContainerView(with: book)
+            customView.bookStackView.addArrangedSubview(view)
+        }
+        
+        customizeBookStackView()
+    }
     
     override func loadView() {
         super.loadView()
@@ -21,10 +39,32 @@ class BooksCatalogueViewController: UIViewController {
         setupLogOutButtonAction()
         setupPageDescriptionView()
         customView.searchButton.addAction( UIAction {_ in
-            self.didSucceedInLogin()
-        }
-                                           , for: .touchUpInside)
+            self.searchBook()
+        }, for: .touchUpInside)
+        
         view = customView
+    }
+    
+    func searchBook() {
+        Network.fetchBooksByTitle(bookTitle: customView.searchBarTextField.text ?? "", authorization: self.authorization) { data, response, error in
+            if let error = error {
+                print(error)
+            } else {
+                if let response = response as? HTTPURLResponse {
+                    if response.statusCode == 200 {
+                        do {
+                            let safeData = try JSONDecoder().decode(Response.self, from: data!)
+                            self.books = safeData.data
+                            DispatchQueue.main.async {
+                                self.loadBooksInUI()
+                            }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func setupPageDescriptionView() {
@@ -38,28 +78,8 @@ class BooksCatalogueViewController: UIViewController {
         }, for: .touchUpInside)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        didSucceedInLogin()
-        self.navigationItem.hidesBackButton = true
-    }
-    
-    func fetchBooks(n: String, completion: @escaping ((Data?, URLResponse?, Error?) -> Void) ) {
-        let escapedString = n.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        let originalString = "https://books.ioasys.com.br/api/v1/books?page=1&amount=25&title=\(escapedString!)"
-        
-        let newUrl = URL(string: originalString)
-        var getRequest = URLRequest(url: newUrl!)
-        getRequest.addValue("Bearer \(authorization)", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: getRequest) { data, response, error in
-            completion(data, response, error)
-        }.resume()
-    }
-    
     func didSucceedInLogin() {
-        fetchBooks(n: customView.searchBarTextField.text ?? "alo alo") { data, response, error in
+        Network.fetchBooks(authorization: self.authorization) { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -81,50 +101,39 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func logOut() {
-        
         let loginScreen = LoginViewController()
         self.navigationController?.setViewControllers([loginScreen], animated: true)
     }
     
-    func loadDetailView(of book: Book) {
+    func presentDetailView(of book: Book) {
         let bookDetailViewController = BookDetailViewController()
-        bookDetailViewController.book = book
+        let bookDetailViewModel = BookDetailViewModel(of: book)
+        bookDetailViewController.viewModel = bookDetailViewModel
         
         present(bookDetailViewController, animated: true)
     }
     
-    func loadBooksInUI() {
-        
-        customView.bookStackView.removeFullyAllArrangedSubviews()
-        
-        for book in self.books {
-            let view = customizeBookContainerView(with: book)
-            customView.bookStackView.addArrangedSubview(view)
-        }
-        customizeBookStackView()
-    }
-    
     func customizeBookContainerView(with book: Book) -> BookContainerView {
+        let viewModel = BookContainerViewModel(book: book)
         let view = BookContainerView()
-        view.coverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
-        view.titleLabel.text = book.title
-        view.pageCountLabel.text = "\(book.pageCount) Páginas"
-        view.authorNameLabel.text = book.authors.joined(separator: ", ")
         
-        if let tabbar = tabBarController as? TabBarViewController {
-            tabbar.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
-        }
+        view.coverImageView.sd_setImage(with: viewModel.coverImageUrl)
+        view.titleLabel.text = viewModel.title
+        view.pageCountLabel.text = viewModel.pageCount
+        view.authorNameLabel.text = viewModel.authors
+        view.publishDateLabel.text = viewModel.publishedDate
+        view.bookmarkButton.imageView?.image = UIImage(
+            named: viewModel.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
+        )
         
         view.bookmarkButton.addAction(UIAction { _ in
-            if let tabbar = self.tabBarController as? TabBarViewController {
-                tabbar.changeBookmarkedStatus(view.bookmarkButton, book: book)
-            }
+            BookmarkedBooks().toggleBookmarkStatus(book: book)
+            self.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
         }, for: .touchUpInside)
         
         view.setOnClickListener {
-            self.loadDetailView(of: book)
+            self.presentDetailView(of: book)
         }
-        
         return view
     }
     
@@ -139,6 +148,14 @@ class BooksCatalogueViewController: UIViewController {
                 view.heightAnchor.constraint(equalToConstant: 160),
                 view.widthAnchor.constraint(equalTo: customView.bookStackView.widthAnchor)
             ])
+        }
+    }
+    
+    func setBookmarkButtonImage(for button: UIButton, in book: Book) {
+        if book.isBookmarked {
+            button.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
+        } else {
+            button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
         }
     }
 }

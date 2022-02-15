@@ -12,4 +12,9 @@ struct K {
         static let auth = "https://books.ioasys.com.br/api/v1/auth"
         static let books = "https://books.ioasys.com.br/api/v1/books?"
     }
+    
+    struct Images {
+        static let isNotBookmarked = "Bookmark Icon"
+        static let isBookmarked = "Bookmarked Icon"
+    }
 }
