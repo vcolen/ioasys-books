@@ -94,13 +94,13 @@ class LoginViewController: UIViewController {
         viewCustom.loginFormView.emailInputView.layer.borderColor = CGColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         viewCustom.loginFormView.emailTextField.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         
-        viewCustom.loginFormView.failLoginLabel.text = "Endereço de email inválido"
-        viewCustom.loginFormView.failLoginLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        viewCustom.loginFormView.incorrectEmailLabel.text = "Endereço de email inválido"
+        viewCustom.loginFormView.incorrectEmailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         
     }
     
     func setupView() {
-        self.viewCustom.loginFormView.showPasswordButton.addAction(UIAction {_ in
+        self.viewCustom.loginFormView.changePasswordVisibility.addAction(UIAction {_ in
             self.changePasswordVisibility()
         }, for: .touchUpInside)
     }
@@ -109,9 +109,9 @@ class LoginViewController: UIViewController {
         self.viewCustom.loginFormView.passwordTextField.isSecureTextEntry.toggle()
         
         if self.viewCustom.loginFormView.passwordTextField.isSecureTextEntry {
-            self.viewCustom.loginFormView.showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            self.viewCustom.loginFormView.changePasswordVisibility.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         } else {
-            self.viewCustom.loginFormView.showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+            self.viewCustom.loginFormView.changePasswordVisibility.setImage(UIImage(systemName: "eye"), for: .normal)
         }
     }
     
