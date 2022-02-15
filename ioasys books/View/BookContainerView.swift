@@ -13,96 +13,106 @@ class BookContainerView: UIView {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = "mainView"
         return view
     }()
     
-    lazy var bookContainerStackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 16
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "mainStackView"
         return stackView
     }()
     
-    lazy var bookCoverImageView: UIImageView = {
+    lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Book 1")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "coverImageView"
         return imageView
     }()
     
-    lazy var bookFullInfoStackView: UIStackView = {
+    lazy var infoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "infoStackView"
         return stackView
     }()
     
-    lazy var bookTitleAndAuthorStackView: UIStackView = {
+    lazy var titleAndAuthorStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "titleAndAuthorStackView"
         return stackView
     }()
     
-    lazy var bookTitleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Crossing the Chasm"
         label.font = .heeboMedium(ofSize: 16)
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "titleLabel"
         return label
     }()
     
-    lazy var bookAuthorLabel: UILabel = {
+    lazy var authorNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
         label.text = "Geoffrey A. Moore"
         label.numberOfLines = 1
         label.font = .heebo(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "authorNameLabel"
         return label
     }()
     
-    lazy var bookSecondaryInfoStackView: UIStackView = {
+    lazy var secondaryInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "secondaryInfoStackView"
         return stackView
     }()
     
-    lazy var bookPageCountLabel: UILabel = {
+    lazy var pageCountLabel: UILabel = {
         let label = UILabel()
         label.text = "150 páginas"
         label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
         label.font = .heebo(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "pageCountLabel"
         return label
     }()
     
-    lazy var bookPublisherLabel: UILabel = {
+    lazy var publisherLabel: UILabel = {
         let label = UILabel()
         label.text = "Editora Loyola"
         label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = .heebo(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "publisherLabel"
         return label
     }()
     
-    lazy var bookPublishedLabel: UILabel = {
+    lazy var publishDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Publicado em 2020"
         label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = .heebo(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "publishedDateLabel"
         return label
     }()
-    
     
     lazy var bookmarkButtonView: UIView = {
         let view = UIView()
@@ -116,6 +126,7 @@ class BookContainerView: UIView {
         button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "bookmarkButton"
         return button
     }()
     
@@ -132,17 +143,17 @@ class BookContainerView: UIView {
     
     func configureSubviews() {
         addSubview(mainView)
-        mainView.addSubview(bookContainerStackView)
-        bookContainerStackView.addArrangedSubview(bookCoverImageView)
-        bookContainerStackView.addArrangedSubview(bookFullInfoStackView)
-        bookFullInfoStackView.addArrangedSubview(bookTitleAndAuthorStackView)
-        bookTitleAndAuthorStackView.addArrangedSubview(bookTitleLabel)
-        bookTitleAndAuthorStackView.addArrangedSubview(bookAuthorLabel)
-        bookFullInfoStackView.addArrangedSubview(bookSecondaryInfoStackView)
-        bookSecondaryInfoStackView.addArrangedSubview(bookPageCountLabel)
-        bookSecondaryInfoStackView.addArrangedSubview(bookPublisherLabel)
-        bookSecondaryInfoStackView.addArrangedSubview(bookPublishedLabel)
-        bookContainerStackView.addArrangedSubview(bookmarkButtonView)
+        mainView.addSubview(mainStackView)
+        mainStackView.addArrangedSubview(coverImageView)
+        mainStackView.addArrangedSubview(infoStackView)
+        infoStackView.addArrangedSubview(titleAndAuthorStackView)
+        titleAndAuthorStackView.addArrangedSubview(titleLabel)
+        titleAndAuthorStackView.addArrangedSubview(authorNameLabel)
+        infoStackView.addArrangedSubview(secondaryInfoStackView)
+        secondaryInfoStackView.addArrangedSubview(pageCountLabel)
+        secondaryInfoStackView.addArrangedSubview(publisherLabel)
+        secondaryInfoStackView.addArrangedSubview(publishDateLabel)
+        mainStackView.addArrangedSubview(bookmarkButtonView)
         bookmarkButtonView.addSubview(bookmarkButton)
     }
     
@@ -151,23 +162,23 @@ class BookContainerView: UIView {
         //Main View
         self.stretch(mainView)
         
-        //Book Container Stack View
+        //Container Stack View
         NSLayoutConstraint.activate([
-            bookContainerStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -22.78),
-            bookContainerStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 24),
-            bookContainerStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16)
+            mainStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -22.78),
+            mainStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 24),
+            mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16)
         ])
         
-        //Book Cover Image View
+        //Cover Image View
         NSLayoutConstraint.activate([
-            bookCoverImageView.leadingAnchor.constraint(equalTo: bookContainerStackView.leadingAnchor),
-            bookCoverImageView.widthAnchor.constraint(equalToConstant: 81),
-            bookCoverImageView.heightAnchor.constraint(equalToConstant: 123)
+            coverImageView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
+            coverImageView.widthAnchor.constraint(equalToConstant: 81),
+            coverImageView.heightAnchor.constraint(equalToConstant: 123)
         ])
         
-        //Book Full Info Stack View
+        //Info Stack View
         NSLayoutConstraint.activate([
-            bookFullInfoStackView.topAnchor.constraint(equalTo: bookContainerStackView.topAnchor),
+            infoStackView.topAnchor.constraint(equalTo: mainStackView.topAnchor),
         ])
         
         //Bookmark Button View
@@ -180,7 +191,5 @@ class BookContainerView: UIView {
             bookmarkButton.topAnchor.constraint(equalTo: bookmarkButtonView.topAnchor),
             bookmarkButton.trailingAnchor.constraint(equalTo: bookmarkButtonView.trailingAnchor)
         ])
-        
     }
-    
 }

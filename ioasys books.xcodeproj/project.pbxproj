@@ -195,8 +195,8 @@
 				79A8305927B34D7E00860D7C /* BookDetailView.swift */,
 				79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */,
 				79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */,
-				790A56B327BA82C30090F002 /* MainLogoView.swift */,
 				790A56B727BA97B00090F002 /* LoginView.swift */,
+				790A56B327BA82C30090F002 /* MainLogoView.swift */,
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* PageDescriptionView.swift */,
 			);

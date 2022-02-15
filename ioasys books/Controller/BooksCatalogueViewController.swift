@@ -106,10 +106,10 @@ class BooksCatalogueViewController: UIViewController {
     
     func customizeBookContainerView(with book: Book) -> BookContainerView {
         let view = BookContainerView()
-        view.bookCoverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
-        view.bookTitleLabel.text = book.title
-        view.bookPageCountLabel.text = "\(book.pageCount) Páginas"
-        view.bookAuthorLabel.text = book.authors.joined(separator: ", ")
+        view.coverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
+        view.titleLabel.text = book.title
+        view.pageCountLabel.text = "\(book.pageCount) Páginas"
+        view.authorNameLabel.text = book.authors.joined(separator: ", ")
         
         if let tabbar = tabBarController as? TabBarViewController {
             tabbar.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
