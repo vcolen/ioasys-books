@@ -41,6 +41,7 @@
 		79F9608727BBDD0D00561EA3 /* BookInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608627BBDD0D00561EA3 /* BookInfoTableView.swift */; };
 		79F9608C27BBF41200561EA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608B27BBF41200561EA3 /* Network.swift */; };
 		79F9608E27BC315900561EA3 /* BookContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608D27BC315900561EA3 /* BookContainerViewModel.swift */; };
+		79F9609027BC775200561EA3 /* BookCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608F27BC775200561EA3 /* BookCatalogueViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		79F9608627BBDD0D00561EA3 /* BookInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoTableView.swift; sourceTree = "<group>"; };
 		79F9608B27BBF41200561EA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		79F9608D27BC315900561EA3 /* BookContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerViewModel.swift; sourceTree = "<group>"; };
+		79F9608F27BC775200561EA3 /* BookCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCatalogueViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,17 +184,17 @@
 		79A1A09727AFF30B00C2E0E6 /* ioasys books */ = {
 			isa = PBXGroup;
 			children = (
-				79A1A0A627AFF30C00C2E0E6 /* Info.plist */,
-				79F9608A27BBE50300561EA3 /* Service */,
-				79F9608327BB105B00561EA3 /* ViewModel */,
-				7937CBB727B4069A00F7FA1F /* System Delegate */,
-				7937CBB627B4068100F7FA1F /* Model */,
-				7937CBB527B4067A00F7FA1F /* Controller */,
-				79F5B73D27B2C52900EBEB6A /* Constants.swift */,
 				79A1A0B927B0549800C2E0E6 /* Assets.xcassets */,
+				79F5B73D27B2C52900EBEB6A /* Constants.swift */,
+				7937CBB527B4067A00F7FA1F /* Controller */,
 				7937CBB427B405EF00F7FA1F /* Extension */,
 				7937CBA827B4004900F7FA1F /* Fonts */,
+				79A1A0A627AFF30C00C2E0E6 /* Info.plist */,
+				7937CBB627B4068100F7FA1F /* Model */,
+				79F9608A27BBE50300561EA3 /* Service */,
+				7937CBB727B4069A00F7FA1F /* System Delegate */,
 				79A1A0B027B00D2000C2E0E6 /* View */,
+				79F9608327BB105B00561EA3 /* ViewModel */,
 			);
 			path = "ioasys books";
 			sourceTree = "<group>";
@@ -218,6 +220,7 @@
 			children = (
 				79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */,
 				79F9608D27BC315900561EA3 /* BookContainerViewModel.swift */,
+				79F9608F27BC775200561EA3 /* BookCatalogueViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
 				794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */,
 				792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */,
+				79F9609027BC775200561EA3 /* BookCatalogueViewModel.swift in Sources */,
 				79F5B73827B137BF00EBEB6A /* Book.swift in Sources */,
 				7937CBBD27B43ADA00F7FA1F /* User.swift in Sources */,
 				79F9608C27BBF41200561EA3 /* Network.swift in Sources */,

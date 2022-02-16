@@ -57,7 +57,7 @@ class BooksCatalogueView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.layer.cornerRadius = 8
         stackView.layer.shadowRadius = 24
-        stackView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        stackView.layer.shadowOffset = CGSize(width: 4, height: 0)
         stackView.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
         stackView.layer.shadowOpacity = 1.0
         

@@ -45,9 +45,6 @@ class BooksCatalogueViewController: UIViewController {
             self.logOut()
         }, for: .touchUpInside)
         
-        customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
-            self.logOut()
-        }, for: .touchUpInside)
         
         customView.searchButton.addAction( UIAction {_ in
             self.searchBook()

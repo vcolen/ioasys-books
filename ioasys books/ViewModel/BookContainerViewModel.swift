@@ -31,7 +31,7 @@ class BookContainerViewModel: NSObject, BookContainerViewModelProtocol {
         self.title = book.title
         self.authors = book.authors.joined(separator: ", ")
         self.coverImageUrl = URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg")!
-        self.pageCount = String(book.pageCount)
+        self.pageCount = "\(book.pageCount) páginas"
         self.publisher = book.publisher
         self.publishedDate = "Publicado em \(book.published)"
         self.isBookmarked = book.isBookmarked

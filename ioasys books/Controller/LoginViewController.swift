@@ -31,10 +31,10 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
         viewCustom.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
             self?.didTapLogin()
         }, for: .touchUpInside)
-
     }
     
     

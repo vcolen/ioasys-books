@@ -14,8 +14,7 @@ class BookmarkedBooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after oading the view.
-        
+        setupButtonsActions()
     }
     
     override func loadView() {
@@ -46,24 +45,26 @@ class BookmarkedBooksViewController: UIViewController {
     }
     
     func customizeBookContainerView(with book: Book) -> BookContainerView {
+        let viewModel = BookContainerViewModel(book: book)
         let view = BookContainerView()
-        view.coverImageView.sd_setImage(with: URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"))
-        view.titleLabel.text = book.title
-        view.pageCountLabel.text = "\(book.pageCount) Páginas"
-        view.authorNameLabel.text = book.authors.joined(separator: ", ")
         
-//        if let tabbar = self.tabBarController as? TabBarViewController {
-//            tabbar.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
-//        }
+        view.coverImageView.sd_setImage(with: viewModel.coverImageUrl)
+        view.titleLabel.text = viewModel.title
+        view.pageCountLabel.text = viewModel.pageCount
+        view.authorNameLabel.text = viewModel.authors
+        view.publishDateLabel.text = viewModel.publishedDate
+        view.bookmarkButton.imageView?.image = UIImage(
+            named: viewModel.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
+        )
         
         view.bookmarkButton.addAction(UIAction { _ in
             BookmarkedBooks().toggleBookmarkStatus(book: book)
+            self.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
         }, for: .touchUpInside)
         
         view.setOnClickListener {
-            self.loadDetailView(of: book)
+            self.presentDetailView(of: book)
         }
-        
         return view
     }
     
@@ -81,12 +82,58 @@ class BookmarkedBooksViewController: UIViewController {
         }
     }
     
-    func loadDetailView(of book: Book) {
+    func setBookmarkButtonImage(for button: UIButton, in book: Book) {
+        if book.isBookmarked {
+            button.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
+        } else {
+            button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
+        }
+    }
+    
+    func presentDetailView(of book: Book) {
         let bookDetailViewController = BookDetailViewController()
         let bookDetailViewModel = BookDetailViewModel(of: book)
         bookDetailViewController.viewModel = bookDetailViewModel
         
         present(bookDetailViewController, animated: true)
     }
+    
+    fileprivate func setupButtonsActions() {
+          customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
+              self.logOut()
+          }, for: .touchUpInside)
+          
+          
+          customView.searchButton.addAction( UIAction {_ in
+              //self.searchInBookmarkedBooks()
+          }, for: .touchUpInside)
+      }
+    
+    func logOut() {
+        let loginScreen = LoginViewController()
+        self.navigationController?.setViewControllers([loginScreen], animated: true)
+    }
+    
+//    func searchInBookmarkedBooks() {
+//        Network.fetchBooksByTitle(bookTitle: customView.searchBarTextField.text ?? "", authorization: self.authorization) { data, response, error in
+//            if let error = error {
+//                print(error)
+//            } else {
+//                if let response = response as? HTTPURLResponse {
+//                    if response.statusCode == 200 {
+//                        do {
+//                            let safeData = try JSONDecoder().decode(Response.self, from: data!)
+//                            self.books = safeData.data
+//                            DispatchQueue.main.async {
+//                                self.loadBooksInUI(books: self.books)
+//                            }
+//                        } catch {
+//                            print(error)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
