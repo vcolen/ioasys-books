@@ -17,7 +17,7 @@ struct Network {
         let postUrl = URL(string: K.URLs.auth + "/sign-in")!
         var request = URLRequest(url: postUrl)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        //        let data : Data = "email=\(email)&password=\(password)&grant_type=password".data(using: .utf8)!
+        //let data : Data = "email=\(email)&password=\(password)&grant_type=password".data(using: .utf8)!
         let data: Data = "email=desafio@ioasys.com.br&password=12341234".data(using: .utf8)!
         request.httpMethod = "POST"
         request.httpBody = data

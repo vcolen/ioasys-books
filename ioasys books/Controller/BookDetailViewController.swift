@@ -15,18 +15,7 @@ class BookDetailViewController: UIViewController {
             loadBookDataInUI()
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-    }
-    
-    override func loadView() {
-        super.loadView()
         
-        
-    }
-    
     func loadBookDataInUI() {
         let view = BookDetailView()
         

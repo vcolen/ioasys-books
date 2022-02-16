@@ -30,6 +30,7 @@ class LoginFormView: UIView {
     lazy var emailStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "emailStackView"
         return stackView
@@ -75,6 +76,7 @@ class LoginFormView: UIView {
     lazy var passwordStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "passwordStackView"
         return stackView

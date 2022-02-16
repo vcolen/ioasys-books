@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewCustom.loginFormView.loginButton.isEnabled = true
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -47,6 +48,7 @@ class LoginViewController: UIViewController {
     }
     
     func didTapLogin() {
+        viewCustom.loginFormView.loginButton.isEnabled = false
         Network.loginUser(email: self.viewCustom.loginFormView.emailTextField.text!,
                           password: self.viewCustom.loginFormView.passwordTextField.text!) { data, response, error in
             if let error = error {
@@ -72,12 +74,17 @@ class LoginViewController: UIViewController {
     }
     
     func didFailLogin() {
+        viewCustom.loginFormView.loginButton.isEnabled = true
         viewCustom.loginFormView.emailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         viewCustom.loginFormView.emailInputView.layer.borderColor = CGColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         viewCustom.loginFormView.emailTextField.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
         
-        viewCustom.loginFormView.incorrectEmailLabel.text = "Endereço de email inválido"
+        viewCustom.loginFormView.incorrectEmailLabel.text = "Email ou senha incorretos."
         viewCustom.loginFormView.incorrectEmailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        
+        viewCustom.loginFormView.passwordLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        viewCustom.loginFormView.passwordInputView.layer.borderColor = CGColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        viewCustom.loginFormView.passwordTextField.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
     }
     
     func setupView() {
