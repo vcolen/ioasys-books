@@ -34,11 +34,10 @@ class BookDetailViewController: UIViewController {
         view.bookAuthorLabel.text = viewModel.authors
         view.bookTitleStackView.addArrangedSubview(view.bookAuthorLabel)
         
-        
         view.mainStackView.addArrangedSubview(view.bookInfoStackView)
         view.bookInfoStackView.addArrangedSubview(view.bookInfoTitleLabel)
         
-        let bookInfoTable = BookInfoTableView()
+        let bookInfoTable = BookTableInfoView()
         
         view.bookInfoStackView.addArrangedSubview(bookInfoTable.bookInfoVerticalStackView)
         

@@ -12,28 +12,29 @@ protocol BookContainerViewModelProtocol {
     var title: String { get }
     var authors: String { get }
     var coverImageUrl: URL { get }
-    var pageCount: String { get }
-    var publisher: String { get }
-    var publishedDate: String { get }
+    var info: [String] { get }
     var isBookmarked: Bool { get }
 }
 
-class BookContainerViewModel: NSObject, BookContainerViewModelProtocol {
+class BookContainerViewModel: BookContainerViewModelProtocol {
     let title: String
     let authors: String
     let coverImageUrl: URL
-    let pageCount: String
-    let publisher: String
-    let publishedDate: String
+    let info: [String]
     var isBookmarked: Bool
+    
     
     init(book: Book) {
         self.title = book.title
         self.authors = book.authors.joined(separator: ", ")
         self.coverImageUrl = URL(string: book.imageUrl ?? "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg")!
-        self.pageCount = "\(book.pageCount) páginas"
-        self.publisher = book.publisher
-        self.publishedDate = "Publicado em \(book.published)"
+        
+        self.info = [
+            "\(book.pageCount) páginas",
+            book.publisher,
+            "Publicado em \(book.published)"
+        ]
+        
         self.isBookmarked = book.isBookmarked
     }
 }

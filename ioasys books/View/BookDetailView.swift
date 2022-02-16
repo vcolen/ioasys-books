@@ -90,8 +90,6 @@ class BookDetailView: UIView {
         return label
     }()
     
-    
-    
     lazy var reviewStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -110,9 +108,6 @@ class BookDetailView: UIView {
     
     lazy var reviewDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = """
-        The subject of “design thinking” is the rage at business schools, throughout corporations, and increasingly in the popular press—due in large part to the work of IDEO, a leading design firm, and its celebrated CEO, Tim Brown, who uses this book to show how the techniques and strategies of design belong at every level of business.
-"""
         label.font = .heebo(ofSize: 14)
         label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
         label.numberOfLines = 0

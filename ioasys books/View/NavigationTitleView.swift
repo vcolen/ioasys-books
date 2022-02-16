@@ -9,20 +9,19 @@ import UIKit
 
 class NavigationTitleView: UIView {
     
-    lazy var ioasysTitleLabel: UILabel = {
-       let l = UILabel()
-        l.text = "ioasys"
-        l.font = UIFont.systemFont(ofSize: 32, weight: .bold)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+    lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: K.Images.darkLogo)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     lazy var booksTitleLabel: UILabel = {
-       let l = UILabel()
-        l.text = "Books"
-        l.font = .heeboLight(ofSize: 32)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
+       let label = UILabel()
+        label.text = "Books"
+        label.font = .heeboLight(ofSize: 24)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var logOutButton: UIButton = {
@@ -64,7 +63,7 @@ class NavigationTitleView: UIView {
     func configureSubviews() {
         addSubview(navigationTitleMainStackView)
         navigationTitleMainStackView.addArrangedSubview(titleStackView)
-        titleStackView.addArrangedSubview(ioasysTitleLabel)
+        titleStackView.addArrangedSubview(logoImageView)
         titleStackView.addArrangedSubview(booksTitleLabel)
         navigationTitleMainStackView.addArrangedSubview(logOutButton)
     }
@@ -73,5 +72,11 @@ class NavigationTitleView: UIView {
         
         //Navigation Title Main Stack View
         self.stretch(navigationTitleMainStackView)
+        
+        //Logo image
+        NSLayoutConstraint.activate([
+            logoImageView.widthAnchor.constraint(equalToConstant: 92.8),
+            logoImageView.heightAnchor.constraint(equalToConstant: 32)
+        ])
     }
 }

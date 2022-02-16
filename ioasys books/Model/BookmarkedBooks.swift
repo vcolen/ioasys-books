@@ -29,10 +29,8 @@ class BookmarkedBooks {
     func toggleBookmarkStatus(book: Book) {
         if book.isBookmarked {
             self.books[book.id] = nil
-            print("desfavoritado")
         } else {
             self.books[book.id] = book
-            print("favoritdado")
         }
     }
     

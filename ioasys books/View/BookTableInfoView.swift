@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookInfoTableView: UIView {
+class BookTableInfoView: UIView {
     
     lazy var bookInfoName: UILabel = {
         let label = UILabel()

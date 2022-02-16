@@ -14,7 +14,15 @@ struct K {
     }
     
     struct Images {
+        //Bookmark Button
         static let isNotBookmarked = "Bookmark Icon"
         static let isBookmarked = "Bookmarked Icon"
+        
+        //Logo Images
+        static let brightLogo = "Logo"
+        static let darkLogo = "Logo Dark"
+        
+        //Background Image
+        static let loginBackgroundImage = "Login Background"
     }
 }

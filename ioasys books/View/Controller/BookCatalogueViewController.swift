@@ -1,5 +1,5 @@
 //
-//  BooksViewController.swift
+//  BookCatalogueViewController.swift
 //  ioasys books
 //
 //  Created by Victor Colen on 06/02/22.
@@ -8,12 +8,11 @@
 import UIKit
 import SDWebImage
 
-class BooksCatalogueViewController: UIViewController {
+class BookCatalogueViewController: UIViewController {
     
     var customView = BooksCatalogueView()
     private var books = [Book]()
-    var user: User?
-    var authorization = ""
+    var userViewModel: UserViewModel!
     var page: Int!
     
     override func viewDidLoad() {
@@ -40,13 +39,13 @@ class BooksCatalogueViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
-  fileprivate func setupButtonsActions() {
+    fileprivate func setupButtonsActions() {
         customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
             self.logOut()
         }, for: .touchUpInside)
         
         
-        customView.searchButton.addAction( UIAction {_ in
+        customView.searchbarView.searchButton.addAction( UIAction {_ in
             self.searchBook()
         }, for: .touchUpInside)
     }
@@ -63,7 +62,7 @@ class BooksCatalogueViewController: UIViewController {
     
     
     func searchBook() {
-        Network.fetchBooksByTitle(bookTitle: customView.searchBarTextField.text ?? "", authorization: self.authorization) { data, response, error in
+        Network.fetchBooksByTitle(bookTitle: customView.searchbarView.searchBarTextField.text ?? "", authorization: self.userViewModel.authorization) { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -73,6 +72,7 @@ class BooksCatalogueViewController: UIViewController {
                             let safeData = try JSONDecoder().decode(Response.self, from: data!)
                             self.books = safeData.data
                             DispatchQueue.main.async {
+                                self.customView.bookStackView.removeFullyAllArrangedSubviews()
                                 self.loadBooksInUI(books: self.books)
                             }
                         } catch {
@@ -85,12 +85,12 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func setupPageDescriptionView() {
-        self.customView.pageDescriptionView.regularFontLabel.text = self.user?.gender == "M" ? "Bem vindo, " : "Bem vinda, "
-        self.customView.pageDescriptionView.mediumFontLabel.text = (self.user?.name)! + "!"
+        self.customView.pageDescriptionView.regularFontLabel.text = self.userViewModel?.gender == "M" ? "Bem vindo, " : "Bem vinda, "
+        self.customView.pageDescriptionView.mediumFontLabel.text = (self.userViewModel?.name)! + "!"
     }
-        
+    
     func didSucceedInLogin() {
-        Network.fetchBooks(authorization: self.authorization) { data, response, error in
+        Network.fetchBooks(authorization: self.userViewModel.authorization) { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -130,9 +130,17 @@ class BooksCatalogueViewController: UIViewController {
         
         view.coverImageView.sd_setImage(with: viewModel.coverImageUrl)
         view.titleLabel.text = viewModel.title
-        view.pageCountLabel.text = viewModel.pageCount
         view.authorNameLabel.text = viewModel.authors
-        view.publishDateLabel.text = viewModel.publishedDate
+        
+        for info in viewModel.info {
+            let infoLabel = UILabel()
+            infoLabel.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+            infoLabel.font = .heebo(ofSize: 12)
+            infoLabel.text = info
+            
+            view.secondaryInfoStackView.addArrangedSubview(infoLabel)
+        }
+
         view.bookmarkButton.imageView?.image = UIImage(
             named: viewModel.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
         )
@@ -171,7 +179,7 @@ class BooksCatalogueViewController: UIViewController {
     }
     
     func loadBooksOnPage(page: Int) {
-        Network.fetchBooksWithPagination(page: page, authorization: self.authorization) { data, response, error in
+        Network.fetchBooksWithPagination(page: page, authorization: self.userViewModel.authorization) { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -196,7 +204,7 @@ class BooksCatalogueViewController: UIViewController {
     }
 }
 
-extension BooksCatalogueViewController: UIScrollViewDelegate {
+extension BookCatalogueViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > scrollView.contentSize.height - 1000 - scrollView.frame.size.height {

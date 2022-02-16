@@ -8,19 +8,18 @@
 import UIKit
 
 class LoginView: UIView {
-    
-    lazy var mainView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Login Background")!)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+        
     lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.backgroundColor = UIColor(patternImage: UIImage(named: "Login Background")!)
+        let image = UIImage(named: K.Images.loginBackgroundImage)!
+        let targetSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        let scaledImage = image.scalePreservingAspectRatio(
+            targetSize: targetSize
+        )
+        stackView.backgroundColor = UIColor(patternImage: scaledImage)
+        stackView.scalesLargeContentImage = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -49,9 +48,12 @@ class LoginView: UIView {
     }
     
     func setupConstraints() {
-
         //Main Stack View
         self.stretch(mainStackView)
+        
+        NSLayoutConstraint.activate([
+            //loginFormView.heightAnchor.constraint(equalToConstant: 350)
+        ])
     }
     
 }

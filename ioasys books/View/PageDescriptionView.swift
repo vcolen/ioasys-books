@@ -12,6 +12,7 @@ class PageDescriptionView: UIView {
     lazy var regularFontLabel: UILabel = {
         let label = UILabel()
         label.font = .heebo(ofSize: 18)
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
        return label
     }()
@@ -19,6 +20,7 @@ class PageDescriptionView: UIView {
     lazy var mediumFontLabel: UILabel = {
        let label = UILabel()
         label.font = .heeboMedium(ofSize: 18)
+        //label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

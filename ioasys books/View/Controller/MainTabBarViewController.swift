@@ -7,27 +7,18 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+class MainTabBarViewController: UITabBarController {
     
-    var authorization: String?
-    var user: User?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var userViewModel: UserViewModel!
         
-    }
-    
-    override func loadView() {
-        super.loadView()
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        hideKeyboardWhenTappedAround()
         setupViewControllers()
+        overrideUserInterfaceStyle = .light
     }
-    
+        
     func setupViewControllers() {
         viewControllers = [
             createBookCatalogueView(),
@@ -36,9 +27,8 @@ class TabBarViewController: UITabBarController {
     }
     
     func createBookCatalogueView() -> UINavigationController {
-        let bookCatalogueViewController = BooksCatalogueViewController()
-        bookCatalogueViewController.user = self.user
-        bookCatalogueViewController.authorization = self.authorization ?? ""
+        let bookCatalogueViewController = BookCatalogueViewController()
+        bookCatalogueViewController.userViewModel = self.userViewModel
         let bookCatalogueNavigationController = UINavigationController(rootViewController: bookCatalogueViewController)
         bookCatalogueNavigationController.tabBarItem.title = "Início"
         bookCatalogueNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")

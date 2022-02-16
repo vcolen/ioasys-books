@@ -30,6 +30,8 @@ class BooksCatalogueView: UIView {
         return stackView
     }()
     
+    lazy var searchbarView = SearchbarView()
+    
     //MARK: - Book layout
     
     lazy var mainStackView: UIStackView = {
@@ -50,38 +52,6 @@ class BooksCatalogueView: UIView {
         return stackView
     }()
     
-    lazy var searchBarStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.backgroundColor = .white
-        stackView.spacing = 1
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.layer.cornerRadius = 8
-        stackView.layer.shadowRadius = 24
-        stackView.layer.shadowOffset = CGSize(width: 4, height: 0)
-        stackView.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
-        stackView.layer.shadowOpacity = 1.0
-        
-        return stackView
-    }()
-    
-    lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        button.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    lazy var searchBarTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Procure um livro"
-        textField.clearsOnBeginEditing = true
-        textField.backgroundColor = .clear
-        
-        return textField
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -99,11 +69,7 @@ class BooksCatalogueView: UIView {
         mainStackView.addArrangedSubview(titleStackView)
         titleStackView.addArrangedSubview(navigationTitleView)
         titleStackView.addArrangedSubview(pageDescriptionView)
-        mainStackView.addArrangedSubview(searchBarStackView)
-        
-        searchBarStackView.addArrangedSubview(searchButton)
-        searchBarStackView.addArrangedSubview(searchBarTextField)
-        
+        mainStackView.addArrangedSubview(searchbarView)
         mainStackView.addArrangedSubview(bookStackView)
     }
     
@@ -122,23 +88,10 @@ class BooksCatalogueView: UIView {
         
         //Search bar stack view
         NSLayoutConstraint.activate([
-            searchBarStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
-            searchBarStackView.heightAnchor.constraint(equalToConstant: 40)
+            searchbarView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
+            searchbarView.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
-        //Search Button
-        NSLayoutConstraint.activate([
-            searchButton.widthAnchor.constraint(equalToConstant: 30),
-            searchButton.heightAnchor.constraint(equalToConstant: 30),
-            searchButton.leadingAnchor.constraint(equalTo: searchBarStackView.leadingAnchor, constant: 13)
-        ])
-        
-//        //Search bar Text Field
-//        NSLayoutConstraint.activate([
-//            searchBarTextField.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),
-//            searchBarTextField.heightAnchor.constraint(equalToConstant: 40)
-//        ])
-        
+                
         //Book Stack View
         NSLayoutConstraint.activate([
             bookStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 24),

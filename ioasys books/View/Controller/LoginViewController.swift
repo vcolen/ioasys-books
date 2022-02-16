@@ -10,12 +10,13 @@ import UIKit
 class LoginViewController: UIViewController {
     
     lazy var viewCustom = LoginView()
-    var authorization = ""
-    var user: User?
+    var userViewModel: UserViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        overrideUserInterfaceStyle = .dark
         viewCustom.loginFormView.loginButton.isEnabled = true
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
@@ -26,7 +27,7 @@ class LoginViewController: UIViewController {
         
         view = viewCustom
         setupView()
-        setupTextFieldsActions()
+        setupTextFields()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,15 +41,15 @@ class LoginViewController: UIViewController {
     
     
     func navigateToCatalogue() {
-        let tabBarViewController = TabBarViewController()
-        tabBarViewController.authorization = self.authorization
-        tabBarViewController.user = self.user
+        let tabBarViewController = MainTabBarViewController()
+        tabBarViewController.userViewModel = self.userViewModel
         
         navigationController?.setViewControllers([tabBarViewController], animated: true)
     }
     
     func didTapLogin() {
         viewCustom.loginFormView.loginButton.isEnabled = false
+        
         Network.loginUser(email: self.viewCustom.loginFormView.emailTextField.text!,
                           password: self.viewCustom.loginFormView.passwordTextField.text!) { data, response, error in
             if let error = error {
@@ -56,10 +57,11 @@ class LoginViewController: UIViewController {
             } else {
                 if let response = response as? HTTPURLResponse {
                     if response.statusCode == 200 {
-                        self.authorization = response.value(forHTTPHeaderField: "Authorization")!
                         if let data = data {
                             do {
-                                self.user = try JSONDecoder().decode(User.self, from: data)
+                                let user = try JSONDecoder().decode(User.self, from: data)
+                                self.userViewModel = UserViewModel(user: user)
+                                self.userViewModel.authorization = response.value(forHTTPHeaderField: "Authorization")!
                                 self.navigateToCatalogue()
                             } catch {
                                 print(error)
@@ -103,37 +105,24 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func setupTextFieldsActions() {
-        
-        var showEmailLabel: Bool {
-            viewCustom.loginFormView.emailTextField.hasText
-        }
-        
-        var showPasswordLabel: Bool {
-            viewCustom.loginFormView.passwordTextField.hasText
-        }
-        
+    func setupTextFields() {
+        //Email
         viewCustom.loginFormView.emailTextField.addAction(UIAction {  _ in
-            if showEmailLabel {
+            if self.viewCustom.loginFormView.emailTextField.hasText {
                 self.showLabel(label: self.viewCustom.loginFormView.emailLabel)
             } else {
                 self.hideLabel(label: self.viewCustom.loginFormView.emailLabel)
             }
         }, for: .editingChanged)
         
+        //Password
         viewCustom.loginFormView.passwordTextField.addAction(UIAction {  _ in
-            if showPasswordLabel {
+            if self.viewCustom.loginFormView.passwordTextField.hasText {
                 self.showLabel(label: self.viewCustom.loginFormView.passwordLabel)
             } else {
                 self.hideLabel(label: self.viewCustom.loginFormView.passwordLabel)
             }
         }, for: .editingChanged)
-        
-        viewCustom.loginFormView.emailTextField.autocorrectionType = .no
-        viewCustom.loginFormView.emailTextField.autocapitalizationType = .none
-        
-        viewCustom.loginFormView.passwordTextField.autocorrectionType = .no
-        viewCustom.loginFormView.passwordTextField.autocapitalizationType = .none
     }
     
     func hideLabel(label: UILabel) {

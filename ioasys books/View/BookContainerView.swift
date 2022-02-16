@@ -29,7 +29,6 @@ class BookContainerView: UIView {
     
     lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Book 1")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.accessibilityIdentifier = "coverImageView"
         return imageView
@@ -55,7 +54,6 @@ class BookContainerView: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Crossing the Chasm"
         label.font = .heeboMedium(ofSize: 16)
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
@@ -67,7 +65,6 @@ class BookContainerView: UIView {
     lazy var authorNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
-        label.text = "Geoffrey A. Moore"
         label.numberOfLines = 1
         label.font = .heebo(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,36 +79,6 @@ class BookContainerView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "secondaryInfoStackView"
         return stackView
-    }()
-    
-    lazy var pageCountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "150 páginas"
-        label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        label.font = .heebo(ofSize: 12)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "pageCountLabel"
-        return label
-    }()
-    
-    lazy var publisherLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Editora Loyola"
-        label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        label.font = .heebo(ofSize: 12)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "publisherLabel"
-        return label
-    }()
-    
-    lazy var publishDateLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Publicado em 2020"
-        label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-        label.font = .heebo(ofSize: 12)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "publishedDateLabel"
-        return label
     }()
     
     lazy var bookmarkButtonView: UIView = {
@@ -150,9 +117,6 @@ class BookContainerView: UIView {
         titleAndAuthorStackView.addArrangedSubview(titleLabel)
         titleAndAuthorStackView.addArrangedSubview(authorNameLabel)
         infoStackView.addArrangedSubview(secondaryInfoStackView)
-        secondaryInfoStackView.addArrangedSubview(pageCountLabel)
-        secondaryInfoStackView.addArrangedSubview(publisherLabel)
-        secondaryInfoStackView.addArrangedSubview(publishDateLabel)
         mainStackView.addArrangedSubview(bookmarkButtonView)
         bookmarkButtonView.addSubview(bookmarkButton)
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginFormView: UIView {
-
+    
     lazy var formStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -58,8 +58,17 @@ class LoginFormView: UIView {
     
     lazy var emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email"
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Email",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.26,
+                                                                         green: 0.27,
+                                                                         blue: 0.28,
+                                                                         alpha: 1.0)]
+        )
         textField.font = .roboto(ofSize: 16)
+        textField.textColor = .black
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = "emailTextField"
         return textField
@@ -112,8 +121,18 @@ class LoginFormView: UIView {
     
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Senha"
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Senha",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.26,
+                                                                         green: 0.27,
+                                                                         blue: 0.28,
+                                                                         alpha: 1.0)
+                        ]
+        )
         textField.font = .roboto(ofSize: 16)
+        textField.textColor = .black
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = "passwordTextField"
@@ -212,7 +231,7 @@ class LoginFormView: UIView {
         ])
         
         //MARK: - Password Constraints
-                
+        
         //Password Label
         NSLayoutConstraint.activate([
             passwordLabel.leadingAnchor.constraint(equalTo: passwordStackView.leadingAnchor, constant: 16)

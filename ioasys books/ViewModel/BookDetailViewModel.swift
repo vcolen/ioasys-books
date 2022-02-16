@@ -15,7 +15,7 @@ protocol BookDetailViewModelProtocol {
     var review: String { get }
 }
 
-class BookDetailViewModel: NSObject, BookDetailViewModelProtocol {
+class BookDetailViewModel: BookDetailViewModelProtocol {
     let title: String
     let coverImageUrl: URL
     let authors: String

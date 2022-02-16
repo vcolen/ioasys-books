@@ -50,9 +50,17 @@ class BookmarkedBooksViewController: UIViewController {
         
         view.coverImageView.sd_setImage(with: viewModel.coverImageUrl)
         view.titleLabel.text = viewModel.title
-        view.pageCountLabel.text = viewModel.pageCount
         view.authorNameLabel.text = viewModel.authors
-        view.publishDateLabel.text = viewModel.publishedDate
+        
+        for info in viewModel.info {
+            let infoLabel = UILabel()
+            infoLabel.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+            infoLabel.font = .heebo(ofSize: 12)
+            infoLabel.text = info
+            
+            view.secondaryInfoStackView.addArrangedSubview(infoLabel)
+        }
+        
         view.bookmarkButton.imageView?.image = UIImage(
             named: viewModel.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
         )
@@ -104,7 +112,7 @@ class BookmarkedBooksViewController: UIViewController {
           }, for: .touchUpInside)
           
           
-          customView.searchButton.addAction( UIAction {_ in
+        customView.searchbarView.searchButton.addAction( UIAction {_ in
               //self.searchInBookmarkedBooks()
           }, for: .touchUpInside)
       }
