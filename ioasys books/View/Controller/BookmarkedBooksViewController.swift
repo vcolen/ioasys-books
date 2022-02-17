@@ -121,27 +121,5 @@ class BookmarkedBooksViewController: UIViewController {
         let loginScreen = LoginViewController()
         self.navigationController?.setViewControllers([loginScreen], animated: true)
     }
-    
-//    func searchInBookmarkedBooks() {
-//        Network.fetchBooksByTitle(bookTitle: customView.searchBarTextField.text ?? "", authorization: self.authorization) { data, response, error in
-//            if let error = error {
-//                print(error)
-//            } else {
-//                if let response = response as? HTTPURLResponse {
-//                    if response.statusCode == 200 {
-//                        do {
-//                            let safeData = try JSONDecoder().decode(Response.self, from: data!)
-//                            self.books = safeData.data
-//                            DispatchQueue.main.async {
-//                                self.loadBooksInUI(books: self.books)
-//                            }
-//                        } catch {
-//                            print(error)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
 

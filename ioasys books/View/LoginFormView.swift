@@ -12,7 +12,7 @@ class LoginFormView: UIView {
     lazy var formStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 68
+        stackView.spacing = UIScreen.main.bounds.height/15
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "formStackView"
         return stackView
@@ -74,7 +74,7 @@ class LoginFormView: UIView {
         return textField
     }()
     
-    lazy var incorrectEmailLabel: UILabel = {
+    lazy var problematicEmailLabel: UILabel = {
         let label = UILabel()
         label.font = .robotoMedium(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -139,6 +139,14 @@ class LoginFormView: UIView {
         return textField
     }()
     
+    lazy var problematicPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.font = .robotoMedium(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "problematicPasswordLabel"
+        return label
+    }()
+    
     lazy var changePasswordVisibility: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "eye.slash"), for: .normal) //other is "eye"
@@ -178,13 +186,14 @@ class LoginFormView: UIView {
         emailStackView.addArrangedSubview(emailLabel)
         emailStackView.addArrangedSubview(emailInputView)
         emailInputView.addSubview(emailTextField)
-        emailStackView.addArrangedSubview(incorrectEmailLabel)
+        emailStackView.addArrangedSubview(problematicEmailLabel)
         inputStackView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordInputView)
         passwordInputView.addSubview(passwordInputStackView)
         passwordInputStackView.addArrangedSubview(passwordTextField)
         passwordInputStackView.addArrangedSubview(changePasswordVisibility)
+        passwordStackView.addArrangedSubview(problematicPasswordLabel)
         formStackView.addArrangedSubview(loginButton)
     }
     
@@ -198,6 +207,7 @@ class LoginFormView: UIView {
             formStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             formStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             formStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            formStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10)
         ])
         
         //Input Stack View
@@ -227,7 +237,7 @@ class LoginFormView: UIView {
         
         //Incorrect Email Label
         NSLayoutConstraint.activate([
-            incorrectEmailLabel.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor, constant: 21)
+            problematicEmailLabel.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor, constant: 21)
         ])
         
         //MARK: - Password Constraints
@@ -245,6 +255,11 @@ class LoginFormView: UIView {
         
         //Password Input Stack View
         self.stretch(passwordInputStackView, to: passwordInputView, top: 12, left: 16, bottom: -12, right: -16)
+        
+        //Problematic Password Label
+        NSLayoutConstraint.activate([
+            problematicPasswordLabel.leadingAnchor.constraint(equalTo: passwordStackView.leadingAnchor, constant: 21)
+        ])
         
         //Change password Visibility Button
         NSLayoutConstraint.activate([

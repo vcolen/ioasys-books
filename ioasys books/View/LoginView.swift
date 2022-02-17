@@ -12,7 +12,7 @@ class LoginView: UIView {
     lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        //stackView.distribution = .fillEqually
         stackView.scalesLargeContentImage = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addBackground(imageName: K.Images.loginBackgroundImage)
@@ -47,7 +47,7 @@ class LoginView: UIView {
         self.stretch(mainStackView)
         
         NSLayoutConstraint.activate([
-            //loginFormView.heightAnchor.constraint(equalToConstant: 350)
+            loginFormView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/2.4)
         ])
     }
     

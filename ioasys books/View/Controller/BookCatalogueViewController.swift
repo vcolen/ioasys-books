@@ -11,9 +11,9 @@ import SDWebImage
 class BookCatalogueViewController: UIViewController {
     
     var customView = BooksCatalogueView()
-    private var books = [Book]()
     var userViewModel: UserViewModel!
     var page: Int!
+    private var books = [Book]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,27 +60,32 @@ class BookCatalogueViewController: UIViewController {
         customizeBookStackView()
     }
     
-    
     func searchBook() {
-        Network.fetchBooksByTitle(bookTitle: customView.searchbarView.searchBarTextField.text ?? "", authorization: self.userViewModel.authorization) { data, response, error in
-            if let error = error {
-                print(error)
-            } else {
-                if let response = response as? HTTPURLResponse {
-                    if response.statusCode == 200 {
-                        do {
-                            let safeData = try JSONDecoder().decode(Response.self, from: data!)
-                            self.books = safeData.data
-                            DispatchQueue.main.async {
-                                self.customView.bookStackView.removeFullyAllArrangedSubviews()
-                                self.loadBooksInUI(books: self.books)
+        if let bookTitle = customView.searchbarView.searchBarTextField.text {
+            Network.fetchBooksByTitle(bookTitle: bookTitle, authorization: self.userViewModel.authorization) { data, response, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    if let response = response as? HTTPURLResponse {
+                        if response.statusCode == 200 {
+                            do {
+                                let safeData = try JSONDecoder().decode(Response.self, from: data!)
+                                self.books = safeData.data
+                                self.page = 1
+                                DispatchQueue.main.async {
+                                    self.customView.bookStackView.removeFullyAllArrangedSubviews()
+                                    self.loadBooksInUI(books: self.books)
+                                }
+                            } catch {
+                                print(error)
                             }
-                        } catch {
-                            print(error)
                         }
                     }
                 }
             }
+        } else {
+            self.page = 1
+            loadBooksInUI(books: self.books)
         }
     }
     
@@ -140,7 +145,7 @@ class BookCatalogueViewController: UIViewController {
             
             view.secondaryInfoStackView.addArrangedSubview(infoLabel)
         }
-
+        
         view.bookmarkButton.imageView?.image = UIImage(
             named: viewModel.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
         )
@@ -211,6 +216,5 @@ extension BookCatalogueViewController: UIScrollViewDelegate {
             self.loadBooksOnPage(page: self.page)
         }
     }
-    
 }
 

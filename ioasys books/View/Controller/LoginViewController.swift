@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
         viewCustom.loginFormView.loginButton.isEnabled = true
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
+        viewCustom.loginFormView.emailTextField.delegate = self
+        viewCustom.loginFormView.passwordTextField.delegate = self
     }
     
     override func loadView() {
@@ -57,11 +59,44 @@ class LoginViewController: UIViewController {
         navigationController?.setViewControllers([tabBarViewController], animated: true)
     }
     
+    func askToFillEmailTextField(withMessage message: String) {
+        viewCustom.loginFormView.emailLabel.textColor = .errorRed
+        viewCustom.loginFormView.emailInputView.layer.borderColor = .errorRed
+        viewCustom.loginFormView.emailTextField.textColor = .errorRed
+        viewCustom.loginFormView.problematicEmailLabel.textColor = .errorRed
+        
+        viewCustom.loginFormView.problematicEmailLabel.text = message
+    }
+    
+    func askToFillPasswordTextField(withMessage message: String) {
+        viewCustom.loginFormView.passwordLabel.textColor = .errorRed
+        viewCustom.loginFormView.passwordInputView.layer.borderColor = .errorRed
+        viewCustom.loginFormView.passwordTextField.textColor = .errorRed
+        viewCustom.loginFormView.problematicPasswordLabel.textColor = .errorRed
+        
+        viewCustom.loginFormView.problematicPasswordLabel.text = message
+    }
+    
     func didTapLogin() {
+        
+        guard viewCustom.loginFormView.emailTextField.text != "" else {
+            askToFillEmailTextField(withMessage: "Por favor, preencha o campo do email.")
+            return
+        }
+        
+        guard viewCustom.loginFormView.passwordTextField.text != ""  else {
+            askToFillPasswordTextField(withMessage: "Por favor, preencha o campo da senha.")
+            return
+        }
+        
+        let email = viewCustom.loginFormView.emailTextField.text!
+        let password = viewCustom.loginFormView.passwordTextField.text!
+        
+        //Preventing user from making multiple API requests
         viewCustom.loginFormView.loginButton.isEnabled = false
         
-        Network.loginUser(email: self.viewCustom.loginFormView.emailTextField.text!,
-                          password: self.viewCustom.loginFormView.passwordTextField.text!) { data, response, error in
+        Network.loginUser(email: email,
+                          password: password) { data, response, error in
             if let error = error {
                 print(error)
             } else {
@@ -87,16 +122,8 @@ class LoginViewController: UIViewController {
     
     func didFailLogin() {
         viewCustom.loginFormView.loginButton.isEnabled = true
-        viewCustom.loginFormView.emailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        viewCustom.loginFormView.emailInputView.layer.borderColor = CGColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        viewCustom.loginFormView.emailTextField.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        
-        viewCustom.loginFormView.incorrectEmailLabel.text = "Email ou senha incorretos."
-        viewCustom.loginFormView.incorrectEmailLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        
-        viewCustom.loginFormView.passwordLabel.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        viewCustom.loginFormView.passwordInputView.layer.borderColor = CGColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
-        viewCustom.loginFormView.passwordTextField.textColor = UIColor(red: 0.74, green: 0.31, blue: 0.31, alpha: 1.0)
+        askToFillEmailTextField(withMessage: "Email ou senha incorretos.")
+        askToFillPasswordTextField(withMessage: "")
     }
     
     func setupView() {
@@ -142,6 +169,13 @@ class LoginViewController: UIViewController {
     
     func showLabel(label: UILabel) {
         label.textColor = .black
+    }
+}
+
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .black
     }
 }
 
