@@ -13,14 +13,9 @@ class LoginView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        let image = UIImage(named: K.Images.loginBackgroundImage)!
-        let targetSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        let scaledImage = image.scalePreservingAspectRatio(
-            targetSize: targetSize
-        )
-        stackView.backgroundColor = UIColor(patternImage: scaledImage)
         stackView.scalesLargeContentImage = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addBackground(imageName: K.Images.loginBackgroundImage)
         return stackView
     }()
     

@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         overrideUserInterfaceStyle = .dark
         viewCustom.loginFormView.loginButton.isEnabled = true
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -35,6 +35,16 @@ class LoginViewController: UIViewController {
         
         
         viewCustom.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
+            UIView.animate(withDuration: 0.25) {
+                self?.viewCustom.loginFormView.loginButton.backgroundColor = UIColor(red: 0.11,
+                                                                                     green: 0.03,
+                                                                                     blue: 0.20,
+                                                                                     alpha: 1.0)
+                self?.viewCustom.loginFormView.loginButton.backgroundColor = UIColor(red: 0.22,
+                                                                                     green: 0.08,
+                                                                                     blue: 0.29,
+                                                                                     alpha: 1.0)
+            }
             self?.didTapLogin()
         }, for: .touchUpInside)
     }
@@ -106,6 +116,7 @@ class LoginViewController: UIViewController {
     }
     
     func setupTextFields() {
+        
         //Email
         viewCustom.loginFormView.emailTextField.addAction(UIAction {  _ in
             if self.viewCustom.loginFormView.emailTextField.hasText {

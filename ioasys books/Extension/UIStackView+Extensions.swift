@@ -19,5 +19,4 @@ extension UIStackView {
             removeFully(view: view)
         }
     }
-    
 }
