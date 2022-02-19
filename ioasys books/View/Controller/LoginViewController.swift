@@ -7,10 +7,28 @@
 
 import UIKit
 
+class SpinnerViewController: UIViewController {
+    var spinner = UIActivityIndicatorView(style: .large)
+
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+}
+
 class LoginViewController: UIViewController {
     
     lazy var customView = LoginView()
+    //var activityIndicatorView = ActivityIndicatorView()
     var loginViewModel: LoginViewModel!
+    var spinnerViewController = SpinnerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +52,16 @@ class LoginViewController: UIViewController {
         setupTextFields()
     }
     
+    
+    
+    func createSpinnerView() {
+        // add the spinner view controller
+        addChild(spinnerViewController)
+        spinnerViewController.view.frame = view.frame
+        view.addSubview(spinnerViewController.view)
+        spinnerViewController.didMove(toParent: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -53,6 +81,7 @@ class LoginViewController: UIViewController {
         tabBarViewController.userViewModel = user
         tabBarViewController.authorization = authorization
         
+        stopSpinning()
         navigationController?.setViewControllers([tabBarViewController], animated: true)
     }
     
@@ -77,6 +106,13 @@ class LoginViewController: UIViewController {
         customView.loginFormView.problematicPasswordLabel.text = message
     }
     
+    func stopSpinning() {
+        // then remove the spinner view controller
+        spinnerViewController.willMove(toParent: nil)
+        spinnerViewController.view.removeFromSuperview()
+        spinnerViewController.removeFromParent()
+    }
+    
     func didTapLogin() {
         guard customView.loginFormView.emailTextField.text != "" else {
             askToFillEmailTextField(withMessage: "Por favor, preencha o campo do email.")
@@ -94,14 +130,17 @@ class LoginViewController: UIViewController {
         let email = customView.loginFormView.emailTextField.text!
         let password = customView.loginFormView.passwordTextField.text!
         
+        createSpinnerView()
         loginViewModel.loginUser(email: email, password: password) { user, authorization, error in
             guard let user = user else {
                 self.didFailLogin()
+                self.stopSpinning()
                 return
             }
             
             guard let authorization = authorization else {
                 self.didFailLogin()
+                self.stopSpinning()
                 return
             }
 

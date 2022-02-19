@@ -15,6 +15,7 @@
 		792E23AC27BFC50F004BE151 /* BookCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AB27BFC50F004BE151 /* BookCatalogueViewModel.swift */; };
 		792E23AE27BFCF57004BE151 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AD27BFCF57004BE151 /* UserViewModel.swift */; };
 		792E23B027C13716004BE151 /* BookmarkedBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */; };
+		792E23B227C1601E004BE151 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23B127C1601E004BE151 /* ActivityIndicatorView.swift */; };
 		792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481027B593F2000391C4 /* BookDetailViewController.swift */; };
 		792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481227B59ADF000391C4 /* UIView+Extensions.swift */; };
 		792F481927B5E1DC000391C4 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */; };
@@ -62,6 +63,7 @@
 		792E23AB27BFC50F004BE151 /* BookCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCatalogueViewModel.swift; sourceTree = "<group>"; };
 		792E23AD27BFCF57004BE151 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooksViewModel.swift; sourceTree = "<group>"; };
+		792E23B127C1601E004BE151 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		792F481027B593F2000391C4 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		792F481227B59ADF000391C4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -221,19 +223,20 @@
 		79A1A0B027B00D2000C2E0E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				792E23B127C1601E004BE151 /* ActivityIndicatorView.swift */,
 				79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */,
-				792E23A227BE7C68004BE151 /* Launch Screen.storyboard */,
 				79A8305927B34D7E00860D7C /* BookDetailView.swift */,
-				79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */,
-				79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */,
 				79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */,
-				79EF0A7027BD1C8B00EEA0ED /* SearchbarView.swift */,
+				79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */,
 				7937CBB527B4067A00F7FA1F /* Controller */,
+				792E23A227BE7C68004BE151 /* Launch Screen.storyboard */,
+				79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */,
 				79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */,
 				790A56B727BA97B00090F002 /* LoginView.swift */,
 				790A56B327BA82C30090F002 /* MainLogoView.swift */,
 				79A1A0B127B00D8600C2E0E6 /* NavigationTitleView.swift */,
 				79A1A0B327B0145D00C2E0E6 /* PageDescriptionView.swift */,
+				79EF0A7027BD1C8B00EEA0ED /* SearchbarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				792E23A527BE9739004BE151 /* UIColor+Extensions.swift in Sources */,
 				79F9608C27BBF41200561EA3 /* Network.swift in Sources */,
 				79EF0A7127BD1C8B00EEA0ED /* SearchbarView.swift in Sources */,
+				792E23B227C1601E004BE151 /* ActivityIndicatorView.swift in Sources */,
 				79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */,
 				79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */,
 				792E23AC27BFC50F004BE151 /* BookCatalogueViewModel.swift in Sources */,
