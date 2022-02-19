@@ -12,7 +12,9 @@
 		792E23A327BE7C68004BE151 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 792E23A227BE7C68004BE151 /* Launch Screen.storyboard */; };
 		792E23A527BE9739004BE151 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23A427BE9739004BE151 /* UIColor+Extensions.swift */; };
 		792E23A727BE97B9004BE151 /* CGColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23A627BE97B9004BE151 /* CGColor+Extensions.swift */; };
-		792E23AA27BE9E60004BE151 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 792E23A927BE9E60004BE151 /* IQKeyboardManagerSwift */; };
+		792E23AC27BFC50F004BE151 /* BookCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AB27BFC50F004BE151 /* BookCatalogueViewModel.swift */; };
+		792E23AE27BFCF57004BE151 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AD27BFCF57004BE151 /* UserViewModel.swift */; };
+		792E23B027C13716004BE151 /* BookmarkedBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */; };
 		792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481027B593F2000391C4 /* BookDetailViewController.swift */; };
 		792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481227B59ADF000391C4 /* UIView+Extensions.swift */; };
 		792F481927B5E1DC000391C4 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */; };
@@ -39,7 +41,7 @@
 		79A8305A27B34D7E00860D7C /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8305927B34D7E00860D7C /* BookDetailView.swift */; };
 		79D56CB027BE785200F87F29 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */; };
 		79EF0A7127BD1C8B00EEA0ED /* SearchbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7027BD1C8B00EEA0ED /* SearchbarView.swift */; };
-		79EF0A7327BD86D500EEA0ED /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7227BD86D500EEA0ED /* UserViewModel.swift */; };
+		79EF0A7327BD86D500EEA0ED /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7227BD86D500EEA0ED /* LoginViewModel.swift */; };
 		79EF0A7527BD9F6500EEA0ED /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7427BD9F6500EEA0ED /* UIImage+Extensions.swift */; };
 		79F5B73827B137BF00EBEB6A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73727B137BF00EBEB6A /* Book.swift */; };
 		79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */; };
@@ -48,7 +50,7 @@
 		79F9608527BBCF9F00561EA3 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */; };
 		79F9608727BBDD0D00561EA3 /* BookTableInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */; };
 		79F9608C27BBF41200561EA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608B27BBF41200561EA3 /* Network.swift */; };
-		79F9608E27BC315900561EA3 /* BookContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608D27BC315900561EA3 /* BookContainerViewModel.swift */; };
+		79F9608E27BC315900561EA3 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608D27BC315900561EA3 /* BookViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,9 @@
 		792E23A227BE7C68004BE151 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		792E23A427BE9739004BE151 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		792E23A627BE97B9004BE151 /* CGColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+Extensions.swift"; sourceTree = "<group>"; };
+		792E23AB27BFC50F004BE151 /* BookCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCatalogueViewModel.swift; sourceTree = "<group>"; };
+		792E23AD27BFCF57004BE151 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooksViewModel.swift; sourceTree = "<group>"; };
 		792F481027B593F2000391C4 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		792F481227B59ADF000391C4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +89,7 @@
 		79A8305927B34D7E00860D7C /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		79EF0A7027BD1C8B00EEA0ED /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
-		79EF0A7227BD86D500EEA0ED /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		79EF0A7227BD86D500EEA0ED /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		79EF0A7427BD9F6500EEA0ED /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		79F5B73727B137BF00EBEB6A /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +98,7 @@
 		79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableInfoView.swift; sourceTree = "<group>"; };
 		79F9608B27BBF41200561EA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		79F9608D27BC315900561EA3 /* BookContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerViewModel.swift; sourceTree = "<group>"; };
+		79F9608D27BC315900561EA3 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +107,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7937CBC227B4477400F7FA1F /* SDWebImage in Frameworks */,
-				792E23AA27BE9E60004BE151 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,8 +242,11 @@
 			isa = PBXGroup;
 			children = (
 				79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */,
-				79F9608D27BC315900561EA3 /* BookContainerViewModel.swift */,
-				79EF0A7227BD86D500EEA0ED /* UserViewModel.swift */,
+				79F9608D27BC315900561EA3 /* BookViewModel.swift */,
+				792E23AB27BFC50F004BE151 /* BookCatalogueViewModel.swift */,
+				792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */,
+				792E23AD27BFCF57004BE151 /* UserViewModel.swift */,
+				79EF0A7227BD86D500EEA0ED /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -271,7 +278,6 @@
 			name = "ioasys books";
 			packageProductDependencies = (
 				7937CBC127B4477400F7FA1F /* SDWebImage */,
-				792E23A927BE9E60004BE151 /* IQKeyboardManagerSwift */,
 			);
 			productName = "ioasys books";
 			productReference = 79A1A09527AFF30B00C2E0E6 /* ioasys books.app */;
@@ -303,7 +309,6 @@
 			mainGroup = 79A1A08C27AFF30B00C2E0E6;
 			packageReferences = (
 				7937CBC027B4477300F7FA1F /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				792E23A827BE9E60004BE151 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 79A1A09627AFF30B00C2E0E6 /* Products */;
 			projectDirPath = "";
@@ -342,7 +347,7 @@
 				792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */,
 				790A56B827BA97B00090F002 /* LoginView.swift in Sources */,
 				79F9608727BBDD0D00561EA3 /* BookTableInfoView.swift in Sources */,
-				79EF0A7327BD86D500EEA0ED /* UserViewModel.swift in Sources */,
+				79EF0A7327BD86D500EEA0ED /* LoginViewModel.swift in Sources */,
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
 				794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */,
 				792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */,
@@ -354,6 +359,7 @@
 				79EF0A7127BD1C8B00EEA0ED /* SearchbarView.swift in Sources */,
 				79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */,
 				79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */,
+				792E23AC27BFC50F004BE151 /* BookCatalogueViewModel.swift in Sources */,
 				79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */,
 				79A8305A27B34D7E00860D7C /* BookDetailView.swift in Sources */,
 				79F9608527BBCF9F00561EA3 /* BookDetailViewModel.swift in Sources */,
@@ -363,10 +369,12 @@
 				792E23A727BE97B9004BE151 /* CGColor+Extensions.swift in Sources */,
 				79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */,
 				79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */,
-				79F9608E27BC315900561EA3 /* BookContainerViewModel.swift in Sources */,
+				79F9608E27BC315900561EA3 /* BookViewModel.swift in Sources */,
 				79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */,
+				792E23B027C13716004BE151 /* BookmarkedBooksViewModel.swift in Sources */,
 				79F5B74027B2DA3C00EBEB6A /* LoginFormView.swift in Sources */,
 				79F5B73E27B2C52900EBEB6A /* Constants.swift in Sources */,
+				792E23AE27BFCF57004BE151 /* UserViewModel.swift in Sources */,
 				790A56B427BA82C30090F002 /* MainLogoView.swift in Sources */,
 				79EF0A7527BD9F6500EEA0ED /* UIImage+Extensions.swift in Sources */,
 			);
@@ -569,14 +577,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		792E23A827BE9E60004BE151 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 		7937CBC027B4477300F7FA1F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -588,11 +588,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		792E23A927BE9E60004BE151 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 792E23A827BE9E60004BE151 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
 		7937CBC127B4477400F7FA1F /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7937CBC027B4477300F7FA1F /* XCRemoteSwiftPackageReference "SDWebImage" */;

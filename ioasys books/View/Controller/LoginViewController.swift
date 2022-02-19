@@ -9,25 +9,27 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    lazy var viewCustom = LoginView()
-    var userViewModel: UserViewModel!
+    lazy var customView = LoginView()
+    var loginViewModel: LoginViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         overrideUserInterfaceStyle = .dark
-        viewCustom.loginFormView.loginButton.isEnabled = true
+        customView.loginFormView.loginButton.isEnabled = true
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
-        viewCustom.loginFormView.emailTextField.delegate = self
-        viewCustom.loginFormView.passwordTextField.delegate = self
+        customView.loginFormView.emailTextField.delegate = self
+        customView.loginFormView.passwordTextField.delegate = self
+        self.customView.setOnClickListener {
+            self.view.endEditing(true)
+        }
     }
     
     override func loadView() {
         super.loadView()
         
-        view = viewCustom
+        view = customView
         setupView()
         setupTextFields()
     }
@@ -35,130 +37,119 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        viewCustom.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
+        customView.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
+            self?.view.endEditing(true)
             UIView.animate(withDuration: 0.25) {
-                self?.viewCustom.loginFormView.loginButton.backgroundColor = UIColor(red: 0.11,
-                                                                                     green: 0.03,
-                                                                                     blue: 0.20,
-                                                                                     alpha: 1.0)
-                self?.viewCustom.loginFormView.loginButton.backgroundColor = UIColor(red: 0.22,
-                                                                                     green: 0.08,
-                                                                                     blue: 0.29,
-                                                                                     alpha: 1.0)
+                self?.customView.loginFormView.loginButton.backgroundColor = .buttonPurple
+                self?.customView.loginFormView.loginButton.backgroundColor = .buttonPressedPurple
             }
             self?.didTapLogin()
         }, for: .touchUpInside)
+        self.loginViewModel = LoginViewModel()
     }
     
-    
-    func navigateToCatalogue() {
+    func navigateToCatalogue(user: UserViewModel, authorization: String) {
         let tabBarViewController = MainTabBarViewController()
-        tabBarViewController.userViewModel = self.userViewModel
+        tabBarViewController.userViewModel = user
+        tabBarViewController.authorization = authorization
         
         navigationController?.setViewControllers([tabBarViewController], animated: true)
     }
     
     func askToFillEmailTextField(withMessage message: String) {
-        viewCustom.loginFormView.emailLabel.textColor = .errorRed
-        viewCustom.loginFormView.emailInputView.layer.borderColor = .errorRed
-        viewCustom.loginFormView.emailTextField.textColor = .errorRed
-        viewCustom.loginFormView.problematicEmailLabel.textColor = .errorRed
+        customView.loginFormView.emailLabel.textColor = .errorRed
+        customView.loginFormView.emailInputView.layer.borderColor = .errorRed
+        customView.loginFormView.emailTextField.textColor = .errorRed
         
-        viewCustom.loginFormView.problematicEmailLabel.text = message
+        customView.loginFormView.problematicEmailLabel.textColor = .errorRed
+        customView.loginFormView.problematicEmailLabel.text = message
     }
     
     func askToFillPasswordTextField(withMessage message: String) {
-        viewCustom.loginFormView.passwordLabel.textColor = .errorRed
-        viewCustom.loginFormView.passwordInputView.layer.borderColor = .errorRed
-        viewCustom.loginFormView.passwordTextField.textColor = .errorRed
-        viewCustom.loginFormView.problematicPasswordLabel.textColor = .errorRed
+        customView.loginFormView.problematicEmailLabel.textColor = .clear
+        customView.loginFormView.problematicEmailLabel.text = ""
         
-        viewCustom.loginFormView.problematicPasswordLabel.text = message
+        customView.loginFormView.passwordLabel.textColor = .errorRed
+        customView.loginFormView.passwordInputView.layer.borderColor = .errorRed
+        customView.loginFormView.passwordTextField.textColor = .errorRed
+        customView.loginFormView.problematicPasswordLabel.textColor = .errorRed
+        
+        customView.loginFormView.problematicPasswordLabel.text = message
     }
     
     func didTapLogin() {
-        
-        guard viewCustom.loginFormView.emailTextField.text != "" else {
+        guard customView.loginFormView.emailTextField.text != "" else {
             askToFillEmailTextField(withMessage: "Por favor, preencha o campo do email.")
             return
         }
         
-        guard viewCustom.loginFormView.passwordTextField.text != ""  else {
+        guard customView.loginFormView.passwordTextField.text != ""  else {
             askToFillPasswordTextField(withMessage: "Por favor, preencha o campo da senha.")
             return
         }
         
-        let email = viewCustom.loginFormView.emailTextField.text!
-        let password = viewCustom.loginFormView.passwordTextField.text!
-        
         //Preventing user from making multiple API requests
-        viewCustom.loginFormView.loginButton.isEnabled = false
+        customView.loginFormView.loginButton.isEnabled = false
         
-        Network.loginUser(email: email,
-                          password: password) { data, response, error in
-            if let error = error {
-                print(error)
-            } else {
-                if let response = response as? HTTPURLResponse {
-                    if response.statusCode == 200 {
-                        if let data = data {
-                            do {
-                                let user = try JSONDecoder().decode(User.self, from: data)
-                                self.userViewModel = UserViewModel(user: user)
-                                self.userViewModel.authorization = response.value(forHTTPHeaderField: "Authorization")!
-                                self.navigateToCatalogue()
-                            } catch {
-                                print(error)
-                            }
-                        }
-                    }  else if response.statusCode == 401 {
-                        self.didFailLogin()
-                    }
-                }
+        let email = customView.loginFormView.emailTextField.text!
+        let password = customView.loginFormView.passwordTextField.text!
+        
+        loginViewModel.loginUser(email: email, password: password) { user, authorization, error in
+            guard let user = user else {
+                self.didFailLogin()
+                return
+            }
+            
+            guard let authorization = authorization else {
+                self.didFailLogin()
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.navigateToCatalogue(user: user, authorization: authorization)
             }
         }
     }
     
     func didFailLogin() {
-        viewCustom.loginFormView.loginButton.isEnabled = true
+        customView.loginFormView.loginButton.isEnabled = true
         askToFillEmailTextField(withMessage: "Email ou senha incorretos.")
-        askToFillPasswordTextField(withMessage: "")
+        customView.loginFormView.problematicPasswordLabel.text = ""
     }
     
     func setupView() {
-        self.viewCustom.loginFormView.changePasswordVisibility.addAction(UIAction {_ in
+        self.customView.loginFormView.changePasswordVisibility.addAction(UIAction {_ in
             self.changePasswordVisibility()
         }, for: .touchUpInside)
     }
     
     func changePasswordVisibility() {
-        self.viewCustom.loginFormView.passwordTextField.isSecureTextEntry.toggle()
+        self.customView.loginFormView.passwordTextField.isSecureTextEntry.toggle()
         
-        if self.viewCustom.loginFormView.passwordTextField.isSecureTextEntry {
-            self.viewCustom.loginFormView.changePasswordVisibility.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        if self.customView.loginFormView.passwordTextField.isSecureTextEntry {
+            self.customView.loginFormView.changePasswordVisibility.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         } else {
-            self.viewCustom.loginFormView.changePasswordVisibility.setImage(UIImage(systemName: "eye"), for: .normal)
+            self.customView.loginFormView.changePasswordVisibility.setImage(UIImage(systemName: "eye"), for: .normal)
         }
     }
     
     func setupTextFields() {
         
         //Email
-        viewCustom.loginFormView.emailTextField.addAction(UIAction {  _ in
-            if self.viewCustom.loginFormView.emailTextField.hasText {
-                self.showLabel(label: self.viewCustom.loginFormView.emailLabel)
+        customView.loginFormView.emailTextField.addAction(UIAction {  _ in
+            if self.customView.loginFormView.emailTextField.hasText {
+                self.showLabel(label: self.customView.loginFormView.emailLabel, color: .black, text: "Email")
             } else {
-                self.hideLabel(label: self.viewCustom.loginFormView.emailLabel)
+                self.hideLabel(label: self.customView.loginFormView.emailLabel)
             }
         }, for: .editingChanged)
         
         //Password
-        viewCustom.loginFormView.passwordTextField.addAction(UIAction {  _ in
-            if self.viewCustom.loginFormView.passwordTextField.hasText {
-                self.showLabel(label: self.viewCustom.loginFormView.passwordLabel)
+        customView.loginFormView.passwordTextField.addAction(UIAction {  _ in
+            if self.customView.loginFormView.passwordTextField.hasText {
+                self.showLabel(label: self.customView.loginFormView.passwordLabel, color: .black, text: "Senha")
             } else {
-                self.hideLabel(label: self.viewCustom.loginFormView.passwordLabel)
+                self.hideLabel(label: self.customView.loginFormView.passwordLabel)
             }
         }, for: .editingChanged)
     }
@@ -167,16 +158,26 @@ class LoginViewController: UIViewController {
         label.textColor = .clear
     }
     
-    func showLabel(label: UILabel) {
+    func showLabel(label: UILabel, color: UIColor, text: String) {
         label.textColor = .black
     }
+    
+    func moveTextField(_ textField: UITextField, distance: CGFloat, up: Bool) {
+        let movement = CGFloat(up ? -distance : distance)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        }
+    }
 }
-
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height, up: true)
         textField.textColor = .black
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height, up: false)
+    }
 }
-
-

@@ -15,7 +15,7 @@ class BookDetailViewController: UIViewController {
             loadBookDataInUI()
         }
     }
-        
+    
     func loadBookDataInUI() {
         let view = BookDetailView()
         

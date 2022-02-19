@@ -10,6 +10,7 @@ import UIKit
 class BookmarkedBooksViewController: UIViewController {
     
     var customView = BooksCatalogueView()
+    var bookmarkedBooks: BookmarkedBooksViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,9 @@ class BookmarkedBooksViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        self.customView.setOnClickListener {
+            self.view.endEditing(true)
+        }
         setupPageDescriptionView()
         view = customView
     }
@@ -27,6 +31,7 @@ class BookmarkedBooksViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        self.bookmarkedBooks = BookmarkedBooksViewModel()
         loadBooksInUI()
     }
     
@@ -37,22 +42,21 @@ class BookmarkedBooksViewController: UIViewController {
     
     func loadBooksInUI() {
         customView.bookStackView.removeFullyAllArrangedSubviews()
-        for book in BookmarkedBooks().books {
-            let view = customizeBookContainerView(with: book.value)
+        for book in bookmarkedBooks.bookmarkedBooks {
+            let view = customizeBookContainerView(with: book)
             customView.bookStackView.addArrangedSubview(view)
         }
         customizeBookStackView()
     }
     
-    func customizeBookContainerView(with book: Book) -> BookContainerView {
-        let viewModel = BookContainerViewModel(book: book)
+    func customizeBookContainerView(with book: BookViewModel) -> BookContainerView {
         let view = BookContainerView()
         
-        view.coverImageView.sd_setImage(with: viewModel.coverImageUrl)
-        view.titleLabel.text = viewModel.title
-        view.authorNameLabel.text = viewModel.authors
+        view.coverImageView.sd_setImage(with: book.coverImageUrl)
+        view.titleLabel.text = book.title
+        view.authorNameLabel.text = book.authors
         
-        for info in viewModel.info {
+        for info in book.info {
             let infoLabel = UILabel()
             infoLabel.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
             infoLabel.font = .heebo(ofSize: 12)
@@ -61,18 +65,20 @@ class BookmarkedBooksViewController: UIViewController {
             view.secondaryInfoStackView.addArrangedSubview(infoLabel)
         }
         
-        view.bookmarkButton.imageView?.image = UIImage(
-            named: viewModel.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
-        )
+        view.bookmarkButton.setImage(UIImage(
+            named: book.isBookmarked ? K.Images.isBookmarked : K.Images.isNotBookmarked
+        ), for: .normal)
         
         view.bookmarkButton.addAction(UIAction { _ in
-            BookmarkedBooks().toggleBookmarkStatus(book: book)
+            book.changeBookmarkedStatus()
             self.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
         }, for: .touchUpInside)
         
         view.setOnClickListener {
-            self.presentDetailView(of: book)
+            let bookDetailViewModel = book.getDetailViewModelVersion()
+            self.presentDetailView(of: bookDetailViewModel)
         }
+        
         return view
     }
     
@@ -90,7 +96,7 @@ class BookmarkedBooksViewController: UIViewController {
         }
     }
     
-    func setBookmarkButtonImage(for button: UIButton, in book: Book) {
+    func setBookmarkButtonImage(for button: UIButton, in book: BookViewModel) {
         if book.isBookmarked {
             button.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
         } else {
@@ -98,10 +104,11 @@ class BookmarkedBooksViewController: UIViewController {
         }
     }
     
-    func presentDetailView(of book: Book) {
+    func presentDetailView(of book: BookDetailViewModel) {
         let bookDetailViewController = BookDetailViewController()
-        let bookDetailViewModel = BookDetailViewModel(of: book)
-        bookDetailViewController.viewModel = bookDetailViewModel
+        bookDetailViewController.overrideUserInterfaceStyle = .light
+        
+        bookDetailViewController.viewModel = book
         
         present(bookDetailViewController, animated: true)
     }

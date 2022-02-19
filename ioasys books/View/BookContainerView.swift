@@ -90,7 +90,7 @@ class BookContainerView: UIView {
     lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.tintColor = UIColor(red:0.67, green: 0.15, blue: 0.5, alpha: 1.0)
-        button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
+        button.setImage(UIImage(named: K.Images.isNotBookmarked), for: .normal)
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "bookmarkButton"

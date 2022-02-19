@@ -2,25 +2,22 @@
 //  UserViewModel.swift
 //  ioasys books
 //
-//  Created by Victor Colen on 16/02/22.
+//  Created by Victor Colen on 18/02/22.
 //
 
 import Foundation
 
 protocol UserViewModelProtocol {
-    var authorization: String { get }
-    var name: String { get }
-    var gender: String { get }
+    var userName: String { get }
+    var userGender: String { get }
 }
 
 class UserViewModel: UserViewModelProtocol {
-    var authorization: String
-    let name: String
-    let gender: String
+    let userName: String
+    let userGender: String
     
     init(user: User) {
-        self.authorization = user.authorization ?? "No authorization"
-        self.name = user.name
-        self.gender = user.gender
+        self.userName = user.name
+        self.userGender = user.gender
     }
 }

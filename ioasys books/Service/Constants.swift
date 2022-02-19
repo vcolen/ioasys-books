@@ -14,6 +14,10 @@ struct K {
     }
     
     struct Images {
+        
+        //Default Book Cover
+        static let defaultBookCover = "https://d2drtqy2ezsot0.cloudfront.net/Book-0.jpg"
+        
         //Bookmark Button
         static let isNotBookmarked = "Bookmark Icon"
         static let isBookmarked = "Bookmarked Icon"
