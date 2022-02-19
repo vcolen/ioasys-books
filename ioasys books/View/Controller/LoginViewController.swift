@@ -174,10 +174,16 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height, up: true)
+        if textField == customView.loginFormView.emailTextField {
+        customView.loginFormView.emailInputView.layer.borderColor = .black
+        } else {
+            customView.loginFormView.passwordInputView.layer.borderColor = .black
+        }
         textField.textColor = .black
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height, up: false)
+        customView.loginFormView.emailInputView.layer.borderColor = .grayish
     }
 }

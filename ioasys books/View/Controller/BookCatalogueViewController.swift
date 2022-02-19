@@ -15,6 +15,7 @@ class BookCatalogueViewController: UIViewController {
     var bookCatalogueViewModel: BookCatalogueViewModel!
     private let customView = BooksCatalogueView()
     private var books = [BookViewModel]()
+    private var defaultBooks = [BookViewModel]()
     private var totalPages: Float!
     private var currentPage: Int!
     
@@ -42,11 +43,12 @@ class BookCatalogueViewController: UIViewController {
                 return
             }
             
+            self.defaultBooks = books
             self.books = books
             self.totalPages = totalPages
             
             DispatchQueue.main.async {
-                self.loadBooksInUI(books: self.books)
+                self.loadBooksInUI(books: self.defaultBooks)
             }
         }
         view = customView
@@ -57,10 +59,13 @@ class BookCatalogueViewController: UIViewController {
         super.viewWillAppear(animated)
         
         clearCatalogue()
-        self.currentPage = 2
-        loadBooksInUI(books: self.books)
+        currentPage = 2
+        loadBooksInUI(books: self.defaultBooks)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        books = defaultBooks
+    }
     fileprivate func setupButtonsActions() {
         customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
             self.logOut()
@@ -176,7 +181,7 @@ class BookCatalogueViewController: UIViewController {
 extension BookCatalogueViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > scrollView.contentSize.height - 800 - scrollView.frame.size.height {
+        if position > scrollView.contentSize.height - 100 - scrollView.frame.size.height {
             bookCatalogueViewModel.loadBooksOnPage(page: self.currentPage) { newBooks, page in
                 if newBooks != nil && !newBooks!.isEmpty {
                     if !self.books.contains(where: {$0.info == newBooks![0].info} ) {

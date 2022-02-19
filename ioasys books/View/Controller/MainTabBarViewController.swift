@@ -39,6 +39,7 @@ class MainTabBarViewController: UITabBarController {
     
     func createBookmarkedBooksView() -> UINavigationController {
         let bookmarkedBooksViewController = BookmarkedBooksViewController()
+        bookmarkedBooksViewController.authorization = self.authorization
         let bookmarkedBooksNavigationController = UINavigationController(rootViewController: bookmarkedBooksViewController)
         bookmarkedBooksNavigationController.tabBarItem.title = "Favoritos"
         bookmarkedBooksNavigationController.tabBarItem.image = UIImage(systemName: "bookmark.fill")

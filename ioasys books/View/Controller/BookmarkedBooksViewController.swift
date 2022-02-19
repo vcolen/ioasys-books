@@ -10,7 +10,9 @@ import UIKit
 class BookmarkedBooksViewController: UIViewController {
     
     var customView = BooksCatalogueView()
-    var bookmarkedBooks: BookmarkedBooksViewModel!
+    var bookmarkedBooksViewModel: BookmarkedBooksViewModel!
+    var bookmarkedBooks = [BookViewModel]()
+    var authorization: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,8 @@ class BookmarkedBooksViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        self.bookmarkedBooks = BookmarkedBooksViewModel()
-        loadBooksInUI()
+        self.bookmarkedBooksViewModel = BookmarkedBooksViewModel(authorization: self.authorization)
+        loadBooksInUI(books: bookmarkedBooksViewModel.bookmarkedBooks)
     }
     
     func setupPageDescriptionView() {
@@ -40,13 +42,17 @@ class BookmarkedBooksViewController: UIViewController {
         self.customView.pageDescriptionView.mediumFontLabel.text = "favoritos"
     }
     
-    func loadBooksInUI() {
-        customView.bookStackView.removeFullyAllArrangedSubviews()
-        for book in bookmarkedBooks.bookmarkedBooks {
+    func loadBooksInUI(books: [BookViewModel]) {
+        clearBookmarkedBooks()
+        for book in books {
             let view = customizeBookContainerView(with: book)
             customView.bookStackView.addArrangedSubview(view)
         }
         customizeBookStackView()
+    }
+    
+    func clearBookmarkedBooks() {
+        customView.bookStackView.removeFullyAllArrangedSubviews()
     }
     
     func customizeBookContainerView(with book: BookViewModel) -> BookContainerView {
@@ -114,15 +120,18 @@ class BookmarkedBooksViewController: UIViewController {
     }
     
     fileprivate func setupButtonsActions() {
-          customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
-              self.logOut()
-          }, for: .touchUpInside)
-          
-          
+        customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
+            self.logOut()
+        }, for: .touchUpInside)
+        
         customView.searchbarView.searchButton.addAction( UIAction {_ in
-              //self.searchInBookmarkedBooks()
-          }, for: .touchUpInside)
-      }
+            self.bookmarkedBooksViewModel.searchBookmarkedBooks(bookTitle:
+                                                                    self.customView.searchbarView.searchBarTextField.text ?? ""
+            ) { bookmarkedBooks in
+                self.loadBooksInUI(books: bookmarkedBooks)
+            }
+        }, for: .touchUpInside)
+    }
     
     func logOut() {
         let loginScreen = LoginViewController()

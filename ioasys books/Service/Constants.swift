@@ -28,5 +28,6 @@ struct K {
         
         //Background Image
         static let loginBackgroundImage = "Login Background"
+        static let launchScreenBackground = "Launch Screen Background"
     }
 }

@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Background" translatesAutoresizingMaskIntoConstraints="NO" id="fpV-M7-ACo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch Screen Background" translatesAutoresizingMaskIntoConstraints="NO" id="fpV-M7-ACo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fcQ-S9-mMd">
@@ -53,7 +53,7 @@
     </scenes>
     <resources>
         <image name="Books Label" width="84" height="25"/>
-        <image name="Login Background" width="375" height="812"/>
+        <image name="Launch Screen Background" width="375" height="812"/>
         <image name="Logo" width="153" height="54"/>
     </resources>
 </document>

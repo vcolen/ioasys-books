@@ -13,6 +13,7 @@ class LoginFormView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = UIScreen.main.bounds.height/17
+        stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "formStackView"
         return stackView

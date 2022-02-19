@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "WhatsApp Image 2022-02-19 at 12.21.03.jpeg",
+      "filename" : "BG@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "BG@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "BG@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
