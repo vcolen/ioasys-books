@@ -16,6 +16,7 @@
 		792E23AE27BFCF57004BE151 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AD27BFCF57004BE151 /* UserViewModel.swift */; };
 		792E23B027C13716004BE151 /* BookmarkedBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */; };
 		792E23B227C1601E004BE151 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23B127C1601E004BE151 /* ActivityIndicatorView.swift */; };
+		792E23B427C18B07004BE151 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E23B327C18B07004BE151 /* SpinnerViewController.swift */; };
 		792F481127B593F2000391C4 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481027B593F2000391C4 /* BookDetailViewController.swift */; };
 		792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481227B59ADF000391C4 /* UIView+Extensions.swift */; };
 		792F481927B5E1DC000391C4 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */; };
@@ -64,6 +65,7 @@
 		792E23AD27BFCF57004BE151 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooksViewModel.swift; sourceTree = "<group>"; };
 		792E23B127C1601E004BE151 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		792E23B327C18B07004BE151 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		792F481027B593F2000391C4 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		792F481227B59ADF000391C4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				792F481027B593F2000391C4 /* BookDetailViewController.swift */,
 				79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */,
 				79A1A0AE27AFF60300C2E0E6 /* BookCatalogueViewController.swift */,
+				792E23B327C18B07004BE151 /* SpinnerViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
 				792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */,
 			);
@@ -363,6 +366,7 @@
 				792E23B227C1601E004BE151 /* ActivityIndicatorView.swift in Sources */,
 				79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */,
 				79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */,
+				792E23B427C18B07004BE151 /* SpinnerViewController.swift in Sources */,
 				792E23AC27BFC50F004BE151 /* BookCatalogueViewModel.swift in Sources */,
 				79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */,
 				79A8305A27B34D7E00860D7C /* BookDetailView.swift in Sources */,

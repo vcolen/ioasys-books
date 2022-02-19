@@ -7,26 +7,10 @@
 
 import UIKit
 
-class SpinnerViewController: UIViewController {
-    var spinner = UIActivityIndicatorView(style: .large)
-
-    override func loadView() {
-        view = UIView()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
-
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.startAnimating()
-        view.addSubview(spinner)
-
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    }
-}
-
 class LoginViewController: UIViewController {
     
     lazy var customView = LoginView()
-    //var activityIndicatorView = ActivityIndicatorView()
+    var activityIndicatorView = ActivityIndicatorView()
     var loginViewModel: LoginViewModel!
     var spinnerViewController = SpinnerViewController()
     
@@ -52,8 +36,6 @@ class LoginViewController: UIViewController {
         setupTextFields()
     }
     
-    
-    
     func createSpinnerView() {
         // add the spinner view controller
         addChild(spinnerViewController)
@@ -62,9 +44,17 @@ class LoginViewController: UIViewController {
         spinnerViewController.didMove(toParent: self)
     }
     
+    func stopSpinning() {
+        // remove the spinner view controller
+        spinnerViewController.willMove(toParent: nil)
+        spinnerViewController.view.removeFromSuperview()
+        spinnerViewController.removeFromParent()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Animation when button is pressed
         customView.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
             self?.view.endEditing(true)
             UIView.animate(withDuration: 0.25) {
@@ -81,6 +71,7 @@ class LoginViewController: UIViewController {
         tabBarViewController.userViewModel = user
         tabBarViewController.authorization = authorization
         
+        //deactivating the loading screen
         stopSpinning()
         navigationController?.setViewControllers([tabBarViewController], animated: true)
     }
@@ -104,13 +95,6 @@ class LoginViewController: UIViewController {
         customView.loginFormView.problematicPasswordLabel.textColor = .errorRed
         
         customView.loginFormView.problematicPasswordLabel.text = message
-    }
-    
-    func stopSpinning() {
-        // then remove the spinner view controller
-        spinnerViewController.willMove(toParent: nil)
-        spinnerViewController.view.removeFromSuperview()
-        spinnerViewController.removeFromParent()
     }
     
     func didTapLogin() {
