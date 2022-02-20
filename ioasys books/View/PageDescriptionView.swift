@@ -9,6 +9,17 @@ import UIKit
 
 class PageDescriptionView: UIView {
     
+    lazy var mainStackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.alignment = .leading
+        stackView.spacing = 0
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "PageDescriptionView.mainStackView"
+        
+        return stackView
+    }()
+    
     lazy var regularFontLabel: UILabel = {
         let label = UILabel()
         label.font = .heebo(ofSize: 18)
@@ -26,17 +37,6 @@ class PageDescriptionView: UIView {
         label.accessibilityIdentifier = "PageDescriptionView.mediumFontLabel"
         
         return label
-    }()
-    
-    lazy var mainStackView: UIStackView = {
-       let stackView = UIStackView()
-        stackView.alignment = .leading
-        stackView.spacing = 0
-        stackView.axis = .horizontal
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.accessibilityIdentifier = "PageDescriptionView.mainStackView"
-        
-        return stackView
     }()
     
     func configureSubviews() {

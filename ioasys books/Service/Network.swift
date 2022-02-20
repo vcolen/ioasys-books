@@ -65,6 +65,4 @@ struct Network {
             completion(data, response, error)
         }.resume()
     }
-    
-    
 }
