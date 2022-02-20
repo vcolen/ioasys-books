@@ -14,6 +14,7 @@ class BookContainerView: UIView {
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = "BookContainerView.mainView"
+        
         return view
     }()
     
@@ -24,6 +25,7 @@ class BookContainerView: UIView {
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookContainerView.mainStackView"
+        
         return stackView
     }()
     
@@ -31,6 +33,7 @@ class BookContainerView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.accessibilityIdentifier = "BookContainerView.coverImageView"
+        
         return imageView
     }()
     
@@ -40,6 +43,7 @@ class BookContainerView: UIView {
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookContainerView.infoStackView"
+        
         return stackView
     }()
     
@@ -49,6 +53,7 @@ class BookContainerView: UIView {
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookContainerView.titleAndAuthorStackView"
+        
         return stackView
     }()
     
@@ -59,6 +64,7 @@ class BookContainerView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookContainerView.titleLabel"
+        
         return label
     }()
     
@@ -69,6 +75,7 @@ class BookContainerView: UIView {
         label.font = .heebo(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookContainerView.authorNameLabel"
+        
         return label
     }()
     
@@ -78,12 +85,15 @@ class BookContainerView: UIView {
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookContainerView.secondaryInfoStackView"
+        
         return stackView
     }()
     
     lazy var bookmarkButtonView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = "BookContainerView.bookmarkButtonView"
+        
         return view
     }()
     
@@ -94,6 +104,7 @@ class BookContainerView: UIView {
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "BookContainerView.bookmarkButton"
+        
         return button
     }()
     

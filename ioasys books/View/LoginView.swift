@@ -15,6 +15,7 @@ class LoginView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addBackground(imageName: K.Images.loginBackgroundImage)
         stackView.accessibilityIdentifier = "LoginView.mainStackView"
+        
         return stackView
     }()
     

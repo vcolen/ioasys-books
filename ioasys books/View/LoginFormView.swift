@@ -16,6 +16,7 @@ class LoginFormView: UIView {
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.formStackView"
+        
         return stackView
     }()
     
@@ -25,6 +26,7 @@ class LoginFormView: UIView {
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.inputStackView"
+        
         return stackView
     }()
     
@@ -34,6 +36,7 @@ class LoginFormView: UIView {
         stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.emailStackView"
+        
         return stackView
     }()
     
@@ -44,6 +47,7 @@ class LoginFormView: UIView {
         label.textColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "LoginFormView.emailLabel"
+        
         return label
     }()
     
@@ -54,6 +58,7 @@ class LoginFormView: UIView {
         view.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = "LoginFormView.emailInputView"
+        
         return view
     }()
     
@@ -72,6 +77,7 @@ class LoginFormView: UIView {
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = "LoginFormView.emailTextField"
+        
         return textField
     }()
     
@@ -80,6 +86,7 @@ class LoginFormView: UIView {
         label.font = .robotoMedium(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "LoginFormView.incorrectEmailLabel"
+        
         return label
     }()
     
@@ -89,6 +96,7 @@ class LoginFormView: UIView {
         stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.passwordStackView"
+        
         return stackView
     }()
     
@@ -99,6 +107,7 @@ class LoginFormView: UIView {
         label.textColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "LoginFormView.passwordLabel"
+        
         return label
     }()
     
@@ -109,6 +118,7 @@ class LoginFormView: UIView {
         view.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = "LoginFormView.passwordInputView"
+        
         return view
     }()
     
@@ -117,6 +127,7 @@ class LoginFormView: UIView {
         stackview.spacing = 5
         stackview.translatesAutoresizingMaskIntoConstraints = false
         stackview.accessibilityIdentifier = "LoginFormView.passwordInputStackView"
+        
         return stackview
     }()
     
@@ -137,6 +148,7 @@ class LoginFormView: UIView {
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = "LoginFormView.passwordTextField"
+        
         return textField
     }()
     
@@ -145,15 +157,17 @@ class LoginFormView: UIView {
         label.font = .robotoMedium(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "LoginFormView.problematicPasswordLabel"
+        
         return label
     }()
     
     lazy var changePasswordVisibility: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "eye.slash"), for: .normal) //other is "eye"
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         button.tintColor = UIColor(red: 0.46, green: 0.46, blue: 0.47, alpha: 1.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "LoginFormView.changePasswordVisibility"
+        
         return button
     }()
     
@@ -165,6 +179,7 @@ class LoginFormView: UIView {
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "LoginFormView.loginButton"
+        
         return button
     }()
     

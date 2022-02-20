@@ -24,6 +24,7 @@ class PageDescriptionView: UIView {
         label.font = .heeboMedium(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "PageDescriptionView.mediumFontLabel"
+        
         return label
     }()
     
@@ -34,6 +35,7 @@ class PageDescriptionView: UIView {
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "PageDescriptionView.mainStackView"
+        
         return stackView
     }()
     

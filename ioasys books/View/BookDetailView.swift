@@ -14,6 +14,7 @@ class BookDetailView: UIView {
         scrollView.backgroundColor = .white
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.accessibilityIdentifier = "BookDetailView.scrollView"
+        
         return scrollView
     }()
     
@@ -24,6 +25,7 @@ class BookDetailView: UIView {
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookDetailView.mainStackView"
+        
         return stackView
     }()
     
@@ -33,6 +35,7 @@ class BookDetailView: UIView {
         label.font = .heeboMedium(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookDetailView.detailLabel"
+        
         return label
     }()
     
@@ -42,6 +45,7 @@ class BookDetailView: UIView {
         button.tintColor = UIColor(red: 0.67, green: 0.15, blue: 0.5, alpha: 1.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "BookDetailView.closeModalButton"
+        
         return button
     }()
     
@@ -50,6 +54,7 @@ class BookDetailView: UIView {
         imageView.image = UIImage(named: "Book")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.accessibilityIdentifier = "BookDetailView.bookImage"
+        
         return imageView
     }()
     
@@ -59,6 +64,7 @@ class BookDetailView: UIView {
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookDetailView.bookTitleStackView"
+        
         return stackView
     }()
     
@@ -69,6 +75,7 @@ class BookDetailView: UIView {
         label.font = .heeboMedium(ofSize: 28)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookDetailView.bookTitleLabel"
+        
         return label
     }()
     
@@ -79,6 +86,7 @@ class BookDetailView: UIView {
         label.textColor = UIColor(red: 0.67, green: 0.15, blue: 0.5, alpha: 1.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookDetailView.bookAuthorLabel"
+        
         return label
     }()
     
@@ -88,6 +96,7 @@ class BookDetailView: UIView {
         stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookDetailView.bookInfoStackView"
+        
         return stackView
     }()
     
@@ -97,6 +106,7 @@ class BookDetailView: UIView {
         label.font = .heeboMedium(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookDetailView.bookInfoTitleLabel"
+        
         return label
     }()
     
@@ -106,6 +116,7 @@ class BookDetailView: UIView {
         stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BookDetailView.reviewStackView"
+        
         return stackView
     }()
     
@@ -115,6 +126,7 @@ class BookDetailView: UIView {
         label.font = .heeboMedium(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookDetailView.reviewTitleLabel"
+        
         return label
     }()
     
@@ -125,6 +137,7 @@ class BookDetailView: UIView {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "BookDetailView.reviewDescriptionLabel"
+        
         return label
     }()
     

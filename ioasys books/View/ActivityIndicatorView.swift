@@ -14,12 +14,14 @@ class ActivityIndicatorView: UIView {
         view.backgroundColor = UIColor(red: 0, green: 0.9, blue: 0, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = "ActivityIndicatorView.mainView"
+        
         return view
     }()
     
     lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
         return activityIndicator
     }()
     

@@ -15,6 +15,7 @@ class MainLogoView: UIView {
         stackView.alignment = .leading
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "MainLogoView.mainStackView"
+        
         return stackView
     }()
     
@@ -23,6 +24,7 @@ class MainLogoView: UIView {
         imageView.image = UIImage(named: "Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.accessibilityIdentifier = "MainLogoView.logoImageView"
+        
         return imageView
     }()
     
@@ -33,6 +35,7 @@ class MainLogoView: UIView {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "MainLogoView.booksLabel"
+        
         return label
     }()
     
