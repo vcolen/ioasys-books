@@ -29,7 +29,7 @@ class BookmarkedBooksViewModel: BookmarkedBooksViewModelProtocol {
         if bookTitle != "" {
             var bookmarkedBooks = [BookViewModel]()
             for book in self.bookmarkedBooks {
-                if book.title.contains(bookTitle.capitalized) {
+                if book.title.localizedCaseInsensitiveContains(bookTitle) {
                     bookmarkedBooks.append(book)
                 }
             }
