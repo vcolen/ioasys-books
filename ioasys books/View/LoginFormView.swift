@@ -13,7 +13,6 @@ class LoginFormView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = UIScreen.main.bounds.height/17
-        stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.formStackView"
         
@@ -23,7 +22,8 @@ class LoginFormView: UIView {
     lazy var inputStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.inputStackView"
         
@@ -34,6 +34,7 @@ class LoginFormView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 4
+        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.emailStackView"
         
@@ -94,6 +95,7 @@ class LoginFormView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 4
+        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "LoginFormView.passwordStackView"
         
@@ -235,6 +237,11 @@ class LoginFormView: UIView {
         
         //MARK: - Email Constraints
         
+        //Email Stack View
+        NSLayoutConstraint.activate([
+            emailStackView.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor),
+            emailStackView.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor)
+        ])
         
         //Email Label
         NSLayoutConstraint.activate([
@@ -243,12 +250,12 @@ class LoginFormView: UIView {
         
         //Email Input View
         NSLayoutConstraint.activate([
-            emailInputView.heightAnchor.constraint(lessThanOrEqualToConstant: 48),
+            emailInputView.heightAnchor.constraint(equalToConstant: 48),
             emailInputView.leadingAnchor.constraint(equalTo: emailStackView.leadingAnchor)
         ])
         
         //Email Text Field
-        self.stretch(emailTextField, to: emailInputView, top: 12, left: 16, bottom: -12, right: -16)
+        self.stretch(emailTextField, to: emailInputView, left: 16, right: -16)
         
         
         //Incorrect Email Label
@@ -257,6 +264,12 @@ class LoginFormView: UIView {
         ])
         
         //MARK: - Password Constraints
+        
+        //Password Stack View
+        NSLayoutConstraint.activate([
+            passwordStackView.leadingAnchor.constraint(equalTo: inputStackView.leadingAnchor),
+            passwordStackView.trailingAnchor.constraint(equalTo: inputStackView.trailingAnchor)
+        ])
         
         //Password Label
         NSLayoutConstraint.activate([
@@ -270,7 +283,7 @@ class LoginFormView: UIView {
         ])
         
         //Password Input Stack View
-        self.stretch(passwordInputStackView, to: passwordInputView, top: 12, left: 16, bottom: -12, right: -16)
+        self.stretch(passwordInputStackView, to: passwordInputView, left: 16, right: -16)
         
         //Problematic Password Label
         NSLayoutConstraint.activate([
@@ -279,15 +292,16 @@ class LoginFormView: UIView {
         
         //Change password Visibility Button
         NSLayoutConstraint.activate([
-            changePasswordVisibility.widthAnchor.constraint(equalToConstant: 22),
-            changePasswordVisibility.heightAnchor.constraint(equalToConstant: 16)
+            changePasswordVisibility.widthAnchor.constraint(equalToConstant: 22)
         ])
         
         //MARK: - Login
         
         //Login Button
         NSLayoutConstraint.activate([
-            loginButton.heightAnchor.constraint(greaterThanOrEqualTo: emailInputView.heightAnchor)
+            loginButton.heightAnchor.constraint(greaterThanOrEqualTo: emailInputView.heightAnchor),
+            loginButton.leadingAnchor.constraint(equalTo: formStackView.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: formStackView.trailingAnchor)
         ])
     }
 }

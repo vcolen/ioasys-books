@@ -34,9 +34,9 @@ class BookViewModel: BookViewModelProtocol {
         self.authors = book.authors.joined(separator: ", ")
         self.coverImageUrl = URL(string: book.imageUrl ?? K.Images.defaultBookCover)!
         self.info = [
-            String(book.pageCount),
+            "\(book.pageCount) páginas",
             book.publisher,
-            String(book.published)
+           "Publicado em \(book.published)"
         ]
     }
     
