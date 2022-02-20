@@ -118,8 +118,8 @@
 		7937CBA827B4004900F7FA1F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				794021EA27B9BB6B0057A07E /* Roboto */,
 				794021E927B9BB540057A07E /* Heebo */,
+				794021EA27B9BB6B0057A07E /* Roboto */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -127,12 +127,12 @@
 		7937CBB427B405EF00F7FA1F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				792E23A627BE97B9004BE151 /* CGColor+Extensions.swift */,
+				792E23A427BE9739004BE151 /* UIColor+Extensions.swift */,
 				7937CBB227B403DB00F7FA1F /* UIFont+Extensions.swift */,
+				79EF0A7427BD9F6500EEA0ED /* UIImage+Extensions.swift */,
 				794021E727B994E00057A07E /* UIStackView+Extensions.swift */,
 				792F481227B59ADF000391C4 /* UIView+Extensions.swift */,
-				79EF0A7427BD9F6500EEA0ED /* UIImage+Extensions.swift */,
-				792E23A427BE9739004BE151 /* UIColor+Extensions.swift */,
-				792E23A627BE97B9004BE151 /* CGColor+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -140,12 +140,12 @@
 		7937CBB527B4067A00F7FA1F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				79A1A0AE27AFF60300C2E0E6 /* BookCatalogueViewController.swift */,
 				792F481027B593F2000391C4 /* BookDetailViewController.swift */,
 				79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */,
-				79A1A0AE27AFF60300C2E0E6 /* BookCatalogueViewController.swift */,
-				792E23B327C18B07004BE151 /* SpinnerViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
 				792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */,
+				792E23B327C18B07004BE151 /* SpinnerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,8 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				79F5B73727B137BF00EBEB6A /* Book.swift */,
-				7937CBBC27B43ADA00F7FA1F /* User.swift */,
 				794021E527B98C360057A07E /* BookmarkedBooks.swift */,
+				7937CBBC27B43ADA00F7FA1F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,8 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				7937CBBA27B4219500F7FA1F /* Heebo-Light.ttf */,
-				7937CBB027B4037900F7FA1F /* Heebo-Regular.ttf */,
 				7937CBB827B408C100F7FA1F /* Heebo-Medium.ttf */,
+				7937CBB027B4037900F7FA1F /* Heebo-Regular.ttf */,
 				7937CBAE27B4036800F7FA1F /* Heebo-SemiBold.ttf */,
 			);
 			path = Heebo;
@@ -244,12 +244,12 @@
 		79F9608327BB105B00561EA3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */,
-				79F9608D27BC315900561EA3 /* BookViewModel.swift */,
 				792E23AB27BFC50F004BE151 /* BookCatalogueViewModel.swift */,
+				79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */,
 				792E23AF27C13716004BE151 /* BookmarkedBooksViewModel.swift */,
-				792E23AD27BFCF57004BE151 /* UserViewModel.swift */,
+				79F9608D27BC315900561EA3 /* BookViewModel.swift */,
 				79EF0A7227BD86D500EEA0ED /* LoginViewModel.swift */,
+				792E23AD27BFCF57004BE151 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -257,8 +257,8 @@
 		79F9608A27BBE50300561EA3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				79F9608B27BBF41200561EA3 /* Network.swift */,
 				79F5B73D27B2C52900EBEB6A /* Constants.swift */,
+				79F9608B27BBF41200561EA3 /* Network.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

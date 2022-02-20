@@ -8,16 +8,26 @@
 import UIKit
 
 class SearchbarView: UIView {
+    
+    lazy var mainView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 8
+        view.layer.shadowRadius = 24
+        view.layer.shadowOffset = CGSize(width: 4, height: 0)
+        view.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
+        view.layer.shadowOpacity = 1.0
+        view.accessibilityIdentifier = "SearchbarView.mainView"
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
     lazy var searchBarStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .white
-        stackView.spacing = 1
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.layer.cornerRadius = 8
-        stackView.layer.shadowRadius = 24
-        stackView.layer.shadowOffset = CGSize(width: 4, height: 0)
-        stackView.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
-        stackView.layer.shadowOpacity = 1.0
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.spacing = 13
         stackView.accessibilityIdentifier = "SearchbarView.searchBarStackView"
         
         return stackView
@@ -40,6 +50,7 @@ class SearchbarView: UIView {
         textField.clearsOnBeginEditing = true
         textField.backgroundColor = .clear
         textField.accessibilityIdentifier = "SearchbarView.searchBarTextField"
+        textField.autocorrectionType = .no
         
         return textField
     }()
@@ -56,23 +67,33 @@ class SearchbarView: UIView {
     }
     
     func configureSubviews() {
-        addSubview(searchBarStackView)
+        addSubview(mainView)
+        mainView.addSubview(searchBarStackView)
         searchBarStackView.addArrangedSubview(searchButton)
         searchBarStackView.addArrangedSubview(searchBarTextField)
     }
     
     func setupConstraints() {
-        //Search bar stack view
-        self.stretch(searchBarStackView)
+        
+        //Main View
+        self.stretch(mainView)
         NSLayoutConstraint.activate([
-            searchBarStackView.heightAnchor.constraint(equalToConstant: 40)
+            mainView.heightAnchor.constraint(equalToConstant: 40)
         ])
+        
+        
+        //Search bar stack view
+        self.stretch(searchBarStackView, to: mainView, left: 16, right: -16)
         
         //Search Button
         NSLayoutConstraint.activate([
             searchButton.widthAnchor.constraint(equalToConstant: 30),
-            searchButton.heightAnchor.constraint(equalToConstant: 30),
-            searchButton.leadingAnchor.constraint(equalTo: searchBarStackView.leadingAnchor, constant: 13)
+            searchButton.centerYAnchor.constraint(equalTo: searchBarStackView.centerYAnchor)
+        ])
+        
+        //Search bar Text Field
+        NSLayoutConstraint.activate([
+            searchBarTextField.centerYAnchor.constraint(equalTo: searchBarStackView.centerYAnchor)
         ])
     }
 }
