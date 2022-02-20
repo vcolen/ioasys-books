@@ -16,6 +16,7 @@ class BooksCatalogueView: UIView {
         scrollView.backgroundColor = UIColor(red: 0.995, green: 0.995, blue: 0.995, alpha: 1.0) 
         scrollView.clipsToBounds = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.accessibilityIdentifier = "BookCatalogueView.scrollView"
         return scrollView
     }()
     
@@ -27,6 +28,7 @@ class BooksCatalogueView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "BookCatalogueView.titleStackView"
         return stackView
     }()
     
@@ -40,6 +42,7 @@ class BooksCatalogueView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 32
+        stackView.accessibilityIdentifier = "BookCatalogueView.mainStackView"
         return stackView
     }()
     
@@ -49,6 +52,7 @@ class BooksCatalogueView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 20
+        stackView.accessibilityIdentifier = "BookCatalogueView.bookStackView"
         return stackView
     }()
     

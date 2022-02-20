@@ -66,6 +66,7 @@ class BookCatalogueViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         books = defaultBooks
     }
+    
     fileprivate func setupButtonsActions() {
         customView.navigationTitleView.logOutButton.addAction(UIAction {_ in
             self.logOut()
@@ -73,6 +74,7 @@ class BookCatalogueViewController: UIViewController {
         
         customView.searchbarView.searchButton.addAction( UIAction {_ in
             self.view.endEditing(true)
+            
             let bookTitle = self.customView.searchbarView.searchBarTextField.text ?? ""
             self.bookCatalogueViewModel.searchBook(bookTitle: bookTitle) {books, error in
                 guard error == nil else {

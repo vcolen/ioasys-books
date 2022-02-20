@@ -18,6 +18,7 @@ class SearchbarView: UIView {
         stackView.layer.shadowOffset = CGSize(width: 4, height: 0)
         stackView.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.09)
         stackView.layer.shadowOpacity = 1.0
+        stackView.accessibilityIdentifier = "SearchbarView.searchBarStackView"
         
         return stackView
     }()
@@ -27,6 +28,8 @@ class SearchbarView: UIView {
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "SearchbarView.searchButton"
+        
         return button
     }()
     
@@ -36,6 +39,7 @@ class SearchbarView: UIView {
         textField.placeholder = "Procure um livro"
         textField.clearsOnBeginEditing = true
         textField.backgroundColor = .clear
+        textField.accessibilityIdentifier = "SearchbarView.searchBarTextField"
         
         return textField
     }()

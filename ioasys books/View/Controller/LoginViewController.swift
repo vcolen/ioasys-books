@@ -117,17 +117,21 @@ class LoginViewController: UIViewController {
         createSpinnerView()
         loginViewModel.loginUser(email: email, password: password) { user, authorization, error in
             guard let user = user else {
-                self.didFailLogin()
-                self.stopSpinning()
+                DispatchQueue.main.async {
+                    self.stopSpinning()
+                    self.didFailLogin()
+                }
                 return
             }
             
             guard let authorization = authorization else {
-                self.didFailLogin()
-                self.stopSpinning()
+                DispatchQueue.main.async {
+                    self.stopSpinning()
+                    self.didFailLogin()
+                }
                 return
             }
-
+            
             DispatchQueue.main.async {
                 self.navigateToCatalogue(user: user, authorization: authorization)
             }
@@ -196,9 +200,9 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height, up: true)
+        moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height + 10, up: true)
         if textField == customView.loginFormView.emailTextField {
-        customView.loginFormView.emailInputView.layer.borderColor = .black
+            customView.loginFormView.emailInputView.layer.borderColor = .black
         } else {
             customView.loginFormView.passwordInputView.layer.borderColor = .black
         }
@@ -206,7 +210,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height, up: false)
+        moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height + 10, up: false)
         customView.loginFormView.emailInputView.layer.borderColor = .grayish
     }
 }

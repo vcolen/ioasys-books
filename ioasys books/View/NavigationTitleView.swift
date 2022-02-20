@@ -13,6 +13,8 @@ class NavigationTitleView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: K.Images.darkLogo)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "NavigationTitleView.logoImageView"
+        
         return imageView
     }()
     
@@ -21,6 +23,8 @@ class NavigationTitleView: UIView {
         label.text = "Books"
         label.font = .heeboLight(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "NavigationTitleView.booksTitleLabel"
+        
         return label
     }()
     
@@ -28,6 +32,8 @@ class NavigationTitleView: UIView {
         let button = UIButton()
         button.setImage(UIImage(named: "Log Out Icon"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "NavigationTitleView.logOutButton"
+        
         return button
     }()
     
@@ -36,6 +42,7 @@ class NavigationTitleView: UIView {
         stackView.spacing = 12.2
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "NavigationTitleView.titleStackView"
 
         return stackView
     }()
@@ -45,6 +52,8 @@ class NavigationTitleView: UIView {
         stackView.distribution = .equalCentering
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "NavigationTitleView.navigationTitleMainStackView"
+        
         return stackView
     }()
     

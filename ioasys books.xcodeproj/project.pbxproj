@@ -41,7 +41,6 @@
 		79A1A0B827B0424900C2E0E6 /* BookContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */; };
 		79A1A0BA27B0549800C2E0E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79A1A0B927B0549800C2E0E6 /* Assets.xcassets */; };
 		79A8305A27B34D7E00860D7C /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8305927B34D7E00860D7C /* BookDetailView.swift */; };
-		79D56CB027BE785200F87F29 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */; };
 		79EF0A7127BD1C8B00EEA0ED /* SearchbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7027BD1C8B00EEA0ED /* SearchbarView.swift */; };
 		79EF0A7327BD86D500EEA0ED /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7227BD86D500EEA0ED /* LoginViewModel.swift */; };
 		79EF0A7527BD9F6500EEA0ED /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF0A7427BD9F6500EEA0ED /* UIImage+Extensions.swift */; };
@@ -91,7 +90,6 @@
 		79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerView.swift; sourceTree = "<group>"; };
 		79A1A0B927B0549800C2E0E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79A8305927B34D7E00860D7C /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
-		79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		79EF0A7027BD1C8B00EEA0ED /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
 		79EF0A7227BD86D500EEA0ED /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		79EF0A7427BD9F6500EEA0ED /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */,
 				7937CBB527B4067A00F7FA1F /* Controller */,
 				792E23A227BE7C68004BE151 /* Launch Screen.storyboard */,
-				79D56CAF27BE785200F87F29 /* LaunchScreenView.swift */,
 				79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */,
 				790A56B727BA97B00090F002 /* LoginView.swift */,
 				790A56B327BA82C30090F002 /* MainLogoView.swift */,
@@ -357,7 +354,6 @@
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
 				794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */,
 				792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */,
-				79D56CB027BE785200F87F29 /* LaunchScreenView.swift in Sources */,
 				79F5B73827B137BF00EBEB6A /* Book.swift in Sources */,
 				7937CBBD27B43ADA00F7FA1F /* User.swift in Sources */,
 				792E23A527BE9739004BE151 /* UIColor+Extensions.swift in Sources */,

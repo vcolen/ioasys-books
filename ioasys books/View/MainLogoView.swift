@@ -14,6 +14,7 @@ class MainLogoView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "MainLogoView.mainStackView"
         return stackView
     }()
     
@@ -21,6 +22,7 @@ class MainLogoView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "MainLogoView.logoImageView"
         return imageView
     }()
     
@@ -30,6 +32,7 @@ class MainLogoView: UIView {
         label.font = .heeboLight(ofSize: 32)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "MainLogoView.booksLabel"
         return label
     }()
     

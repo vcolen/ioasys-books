@@ -14,14 +14,16 @@ class PageDescriptionView: UIView {
         label.font = .heebo(ofSize: 18)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "PageDescriptionView.regularFontLabel"
+        
        return label
     }()
     
     lazy var mediumFontLabel: UILabel = {
        let label = UILabel()
         label.font = .heeboMedium(ofSize: 18)
-        //label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "PageDescriptionView.mediumFontLabel"
         return label
     }()
     
@@ -31,6 +33,7 @@ class PageDescriptionView: UIView {
         stackView.spacing = 0
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "PageDescriptionView.mainStackView"
         return stackView
     }()
     

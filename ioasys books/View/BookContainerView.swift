@@ -13,7 +13,7 @@ class BookContainerView: UIView {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.accessibilityIdentifier = "mainView"
+        view.accessibilityIdentifier = "BookContainerView.mainView"
         return view
     }()
     
@@ -23,14 +23,14 @@ class BookContainerView: UIView {
         stackView.spacing = 16
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.accessibilityIdentifier = "mainStackView"
+        stackView.accessibilityIdentifier = "BookContainerView.mainStackView"
         return stackView
     }()
     
     lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.accessibilityIdentifier = "coverImageView"
+        imageView.accessibilityIdentifier = "BookContainerView.coverImageView"
         return imageView
     }()
     
@@ -39,7 +39,7 @@ class BookContainerView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.accessibilityIdentifier = "infoStackView"
+        stackView.accessibilityIdentifier = "BookContainerView.infoStackView"
         return stackView
     }()
     
@@ -48,7 +48,7 @@ class BookContainerView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.accessibilityIdentifier = "titleAndAuthorStackView"
+        stackView.accessibilityIdentifier = "BookContainerView.titleAndAuthorStackView"
         return stackView
     }()
     
@@ -58,7 +58,7 @@ class BookContainerView: UIView {
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "titleLabel"
+        label.accessibilityIdentifier = "BookContainerView.titleLabel"
         return label
     }()
     
@@ -68,7 +68,7 @@ class BookContainerView: UIView {
         label.numberOfLines = 1
         label.font = .heebo(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "authorNameLabel"
+        label.accessibilityIdentifier = "BookContainerView.authorNameLabel"
         return label
     }()
     
@@ -77,7 +77,7 @@ class BookContainerView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.accessibilityIdentifier = "secondaryInfoStackView"
+        stackView.accessibilityIdentifier = "BookContainerView.secondaryInfoStackView"
         return stackView
     }()
     
@@ -93,7 +93,7 @@ class BookContainerView: UIView {
         button.setImage(UIImage(named: K.Images.isNotBookmarked), for: .normal)
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.accessibilityIdentifier = "bookmarkButton"
+        button.accessibilityIdentifier = "BookContainerView.bookmarkButton"
         return button
     }()
     

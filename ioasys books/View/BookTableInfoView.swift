@@ -13,6 +13,7 @@ class BookTableInfoView: UIView {
         let label = UILabel()
         label.font = .heeboMedium(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "BookTableInfoView.bookInfoName"
         return label
     }()
     
@@ -20,6 +21,7 @@ class BookTableInfoView: UIView {
         let label = UILabel()
         label.font = .heebo(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "BookTableInfoView.bookInfoValue"
         return label
     }()
     
@@ -28,6 +30,7 @@ class BookTableInfoView: UIView {
         stackView.spacing = 7
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "BookTableInfoView.bookInfoVerticalStackView"
         return stackView
     }()
     
@@ -35,6 +38,7 @@ class BookTableInfoView: UIView {
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "BookTableInfoView.bookInfoHorizontalStackView"
         return stackView
     }()
 }

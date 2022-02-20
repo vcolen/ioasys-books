@@ -26,13 +26,16 @@ class BookmarkedBooksViewModel: BookmarkedBooksViewModelProtocol {
     }
     
     func searchBookmarkedBooks(bookTitle: String, completion: @escaping ([BookViewModel]) -> Void) {
-        var bookmarkedBooks = [BookViewModel]()
-        for book in self.bookmarkedBooks {
-            if book.title.contains(bookTitle) {
-                bookmarkedBooks.append(book)
+        if bookTitle != "" {
+            var bookmarkedBooks = [BookViewModel]()
+            for book in self.bookmarkedBooks {
+                if book.title.contains(bookTitle.capitalized) {
+                    bookmarkedBooks.append(book)
+                }
             }
+            completion(bookmarkedBooks)
+        } else {
+            completion(self.bookmarkedBooks)
         }
-        completion(bookmarkedBooks)
     }
-    
 }
