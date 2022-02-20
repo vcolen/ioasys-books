@@ -19,22 +19,8 @@ class BookCatalogueViewController: UIViewController {
     private var totalPages: Float!
     private var currentPage: Int!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        customView.scrollView.delegate = self
-    }
-    
-    override func loadView() {
-        super.loadView()
-        
-        self.customView.setOnClickListener {
-            self.view.endEditing(true)
-        }
-        setupButtonsActions()
-        setupPageDescriptionView()
-        bookCatalogueViewModel = BookCatalogueViewModel(authorization: self.authorization)
-        bookCatalogueViewModel.didSucceedInLogin {books, totalPages, error in
+    fileprivate func didSucceedInLogin() {
+        bookCatalogueViewModel.didSucceedInLogin { books, totalPages, error in
             guard let books = books else {
                 return
             }
@@ -51,8 +37,23 @@ class BookCatalogueViewController: UIViewController {
                 self.loadBooksInUI(books: self.defaultBooks)
             }
         }
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        setupButtonsActions()
+        setupPageDescriptionView()
         view = customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        customView.scrollView.delegate = self
         self.navigationItem.hidesBackButton = true
+        bookCatalogueViewModel = BookCatalogueViewModel(authorization: self.authorization)
+        didSucceedInLogin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +65,9 @@ class BookCatalogueViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Then it's not needed to make an extra API call every time the view loads
         books = defaultBooks
     }
     
@@ -72,23 +76,13 @@ class BookCatalogueViewController: UIViewController {
             self.logOut()
         }, for: .touchUpInside)
         
-        customView.searchbarView.searchButton.addAction( UIAction {_ in
+        //Cancel keyboard when touching the view
+        self.customView.setOnClickListener {
             self.view.endEditing(true)
-            
-            let bookTitle = self.customView.searchbarView.searchBarTextField.text ?? ""
-            self.bookCatalogueViewModel.searchBook(bookTitle: bookTitle) {books, error in
-                guard error == nil else {
-                    return
-                }
-                
-                if let books = books {
-                    DispatchQueue.main.async {
-                        self.books = books
-                        self.clearCatalogue()
-                        self.loadBooksInUI(books: self.books)
-                    }
-                }
-            }
+        }
+        
+        customView.searchbarView.searchButton.addAction( UIAction {_ in
+            self.searchButtonPressed()
         }, for: .touchUpInside)
     }
     
@@ -105,17 +99,17 @@ class BookCatalogueViewController: UIViewController {
         self.customView.pageDescriptionView.mediumFontLabel.text = (self.userViewModel?.userName)! + "!"
     }
     
-    func clearCatalogue() {
+    fileprivate func clearCatalogue() {
         customView.bookStackView.removeFullyAllArrangedSubviews()
     }
     
-    func logOut() {
+    fileprivate func logOut() {
         clearCatalogue()
         let loginScreen = LoginViewController()
         self.navigationController?.setViewControllers([loginScreen], animated: true)
     }
     
-    func customizeBookContainerView(with book: BookViewModel) -> BookContainerView {
+    fileprivate func customizeBookContainerView(with book: BookViewModel) -> BookContainerView {
         let view = BookContainerView()
         
         view.coverImageView.sd_setImage(with: book.coverImageUrl)
@@ -140,6 +134,7 @@ class BookCatalogueViewController: UIViewController {
             self.setBookmarkButtonImage(for: view.bookmarkButton, in: book)
         }, for: .touchUpInside)
         
+        //Show the detail view of the book when pressed
         view.setOnClickListener {
             let bookDetailViewModel = book.getDetailViewModelVersion()
             self.presentDetailView(of: bookDetailViewModel)
@@ -148,16 +143,16 @@ class BookCatalogueViewController: UIViewController {
         return view
     }
     
-    func presentDetailView(of book: BookDetailViewModel) {
+    fileprivate func presentDetailView(of book: BookDetailViewModel) {
         let bookDetailViewController = BookDetailViewController()
         bookDetailViewController.overrideUserInterfaceStyle = .light
         
-        bookDetailViewController.viewModel = book
+        bookDetailViewController.bookDetailViewModel = book
         
         present(bookDetailViewController, animated: true)
     }
     
-    func customizeBookStackView() {
+    fileprivate func customizeBookStackView() {
         for view in customView.bookStackView.arrangedSubviews {
             view.layer.cornerRadius = 4
             view.layer.shadowRadius = 24
@@ -171,11 +166,30 @@ class BookCatalogueViewController: UIViewController {
         }
     }
     
-    func setBookmarkButtonImage(for button: UIButton, in book: BookViewModel) {
+    fileprivate func setBookmarkButtonImage(for button: UIButton, in book: BookViewModel) {
         if book.isBookmarked {
             button.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
         } else {
             button.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
+        }
+    }
+    
+    fileprivate func searchButtonPressed() {
+        self.view.endEditing(true)
+        
+        let bookTitle = self.customView.searchbarView.searchBarTextField.text ?? ""
+        self.bookCatalogueViewModel.searchBook(bookTitle: bookTitle) {books, error in
+            guard error == nil else {
+                return
+            }
+            
+            if let books = books {
+                DispatchQueue.main.async {
+                    self.books = books
+                    self.clearCatalogue()
+                    self.loadBooksInUI(books: self.books)
+                }
+            }
         }
     }
 }
@@ -185,12 +199,15 @@ extension BookCatalogueViewController: UIScrollViewDelegate {
         let position = scrollView.contentOffset.y
         if position > scrollView.contentSize.height - 100 - scrollView.frame.size.height {
             bookCatalogueViewModel.loadBooksOnPage(page: self.currentPage) { newBooks, page in
-                if newBooks != nil && !newBooks!.isEmpty {
-                    if !self.books.contains(where: {$0.info == newBooks![0].info} ) {
-                        self.books += newBooks!
-                        self.currentPage += 1
-                        DispatchQueue.main.async {
-                            self.loadBooksInUI(books: newBooks!)
+                if let newBooks = newBooks {
+                    if !newBooks.isEmpty {
+                        //checking if the same page wasnt downloaded twice
+                        if !self.books.contains(where: {$0.info == newBooks[0].info} ) {
+                            self.books += newBooks
+                            self.currentPage += 1
+                            DispatchQueue.main.async {
+                                self.loadBooksInUI(books: newBooks)
+                            }
                         }
                     }
                 }

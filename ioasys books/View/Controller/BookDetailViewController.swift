@@ -10,7 +10,7 @@ import UIKit
 class BookDetailViewController: UIViewController {
     
     let customView = BookDetailView()
-    var viewModel: BookDetailViewModel! {
+    var bookDetailViewModel: BookDetailViewModel! {
         didSet {
             loadBookDataInUI()
         }
@@ -23,15 +23,15 @@ class BookDetailViewController: UIViewController {
             self.dismiss(animated: true)
         }, for: .touchUpInside)
         
-        view.bookImage.sd_setImage(with: viewModel.coverImageUrl)
+        view.bookImage.sd_setImage(with: bookDetailViewModel.coverImageUrl)
         view.mainStackView.addArrangedSubview(view.bookImage)
         
         view.mainStackView.addArrangedSubview(view.bookTitleStackView)
         
-        view.bookTitleLabel.text = viewModel.title
+        view.bookTitleLabel.text = bookDetailViewModel.title
         view.bookTitleStackView.addArrangedSubview(view.bookTitleLabel)
         
-        view.bookAuthorLabel.text = viewModel.authors
+        view.bookAuthorLabel.text = bookDetailViewModel.authors
         view.bookTitleStackView.addArrangedSubview(view.bookAuthorLabel)
         
         view.mainStackView.addArrangedSubview(view.bookInfoStackView)
@@ -42,7 +42,7 @@ class BookDetailViewController: UIViewController {
         view.bookInfoStackView.addArrangedSubview(bookInfoTable.bookInfoVerticalStackView)
         
         
-        for info in viewModel.info {
+        for info in bookDetailViewModel.info {
             let stackView = UIStackView()
             stackView.distribution = .equalSpacing
             stackView.axis = .horizontal
@@ -64,7 +64,7 @@ class BookDetailViewController: UIViewController {
         
         view.reviewStackView.addArrangedSubview(view.reviewTitleLabel)
         
-        view.reviewDescriptionLabel.text = viewModel.review
+        view.reviewDescriptionLabel.text = bookDetailViewModel.review
         view.reviewStackView.addArrangedSubview(view.reviewDescriptionLabel)
         
         //Book Image

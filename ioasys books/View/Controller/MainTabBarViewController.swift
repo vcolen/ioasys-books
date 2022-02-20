@@ -30,6 +30,7 @@ class MainTabBarViewController: UITabBarController {
         let bookCatalogueViewController = BookCatalogueViewController()
         bookCatalogueViewController.userViewModel = self.userViewModel
         bookCatalogueViewController.authorization = self.authorization
+        
         let bookCatalogueNavigationController = UINavigationController(rootViewController: bookCatalogueViewController)
         bookCatalogueNavigationController.tabBarItem.title = "Início"
         bookCatalogueNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")
@@ -40,6 +41,7 @@ class MainTabBarViewController: UITabBarController {
     func createBookmarkedBooksView() -> UINavigationController {
         let bookmarkedBooksViewController = BookmarkedBooksViewController()
         bookmarkedBooksViewController.authorization = self.authorization
+        
         let bookmarkedBooksNavigationController = UINavigationController(rootViewController: bookmarkedBooksViewController)
         bookmarkedBooksNavigationController.tabBarItem.title = "Favoritos"
         bookmarkedBooksNavigationController.tabBarItem.image = UIImage(systemName: "bookmark.fill")

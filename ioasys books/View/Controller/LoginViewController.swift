@@ -9,24 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    lazy var customView = LoginView()
-    var activityIndicatorView = ActivityIndicatorView()
+    let customView = LoginView()
+    let spinnerViewController = SpinnerViewController()
     var loginViewModel: LoginViewModel!
-    var spinnerViewController = SpinnerViewController()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        overrideUserInterfaceStyle = .dark
-        customView.loginFormView.loginButton.isEnabled = true
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        self.tabBarController?.tabBar.isHidden = true
-        customView.loginFormView.emailTextField.delegate = self
-        customView.loginFormView.passwordTextField.delegate = self
-        self.customView.setOnClickListener {
-            self.view.endEditing(true)
-        }
-    }
     
     override func loadView() {
         super.loadView()
@@ -34,6 +19,24 @@ class LoginViewController: UIViewController {
         view = customView
         setupView()
         setupTextFields()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.loginViewModel = LoginViewModel()
+        setupDelegates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        customView.loginFormView.loginButton.isEnabled = true
+    }
+    
+    func setupDelegates() {
+        customView.loginFormView.emailTextField.delegate = self
+        customView.loginFormView.passwordTextField.delegate = self
     }
     
     func createSpinnerView() {
@@ -50,22 +53,7 @@ class LoginViewController: UIViewController {
         spinnerViewController.view.removeFromSuperview()
         spinnerViewController.removeFromParent()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        //Animation when button is pressed
-        customView.loginFormView.loginButton.addAction(UIAction { [weak self] _ in
-            self?.view.endEditing(true)
-            UIView.animate(withDuration: 0.25) {
-                self?.customView.loginFormView.loginButton.backgroundColor = .buttonPurple
-                self?.customView.loginFormView.loginButton.backgroundColor = .buttonPressedPurple
-            }
-            self?.didTapLogin()
-        }, for: .touchUpInside)
-        self.loginViewModel = LoginViewModel()
-    }
-    
     func navigateToCatalogue(user: UserViewModel, authorization: String) {
         let tabBarViewController = MainTabBarViewController()
         tabBarViewController.userViewModel = user
@@ -145,8 +133,27 @@ class LoginViewController: UIViewController {
     }
     
     func setupView() {
+        overrideUserInterfaceStyle = .dark
+        self.tabBarController?.tabBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        //Cancel keyboard when touching the view
+        self.customView.setOnClickListener {
+            self.view.endEditing(true)
+        }
+        
         self.customView.loginFormView.changePasswordVisibility.addAction(UIAction {_ in
             self.changePasswordVisibility()
+        }, for: .touchUpInside)
+        
+        //Button press animation
+        customView.loginFormView.loginButton.addAction(UIAction { _ in
+            self.view.endEditing(true)
+            UIView.animate(withDuration: 0.25) {
+                self.customView.loginFormView.loginButton.backgroundColor = .buttonPurple
+                self.customView.loginFormView.loginButton.backgroundColor = .buttonPressedPurple
+            }
+            self.didTapLogin()
         }, for: .touchUpInside)
     }
     
@@ -189,6 +196,7 @@ class LoginViewController: UIViewController {
         label.textColor = .black
     }
     
+    //Needed to not hide textfield when keyboard shows up
     func moveTextField(_ textField: UITextField, distance: CGFloat, up: Bool) {
         let movement = CGFloat(up ? -distance : distance)
         
@@ -201,11 +209,14 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         moveTextField(textField, distance: customView.loginFormView.formStackView.bounds.height + 10, up: true)
+        
+        //Changing border color depending on focus
         if textField == customView.loginFormView.emailTextField {
             customView.loginFormView.emailInputView.layer.borderColor = .black
         } else {
             customView.loginFormView.passwordInputView.layer.borderColor = .black
         }
+        
         textField.textColor = .black
     }
     

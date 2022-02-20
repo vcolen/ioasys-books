@@ -114,7 +114,7 @@ class BookmarkedBooksViewController: UIViewController {
         let bookDetailViewController = BookDetailViewController()
         bookDetailViewController.overrideUserInterfaceStyle = .light
         
-        bookDetailViewController.viewModel = book
+        bookDetailViewController.bookDetailViewModel = book
         
         present(bookDetailViewController, animated: true)
     }
