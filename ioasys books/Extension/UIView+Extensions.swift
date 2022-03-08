@@ -7,7 +7,8 @@
 
 import UIKit
 
-// MARK: ClickListener
+//MARK: - Click action
+
 class ClickListener: UITapGestureRecognizer {
     var onClick : (() -> Void)? = nil
 }
@@ -25,6 +26,8 @@ extension UIView {
             onClick()
         }
     }
+    
+    //MARK: - Constraints
     
     func stretch(_ view: UIView, to otherView: UIView? = nil, top: CGFloat = 0, left: CGFloat = 0, bottom: CGFloat = 0, right: CGFloat = 0) {
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +49,8 @@ extension UIView {
         }
     }
     
+   //MARK: - Add Background
+    
     func addBackground(imageName: String, contentMode: UIView.ContentMode = .scaleToFill) {
         // setup the UIImageView
         let backgroundImageView = UIImageView(frame: UIScreen.main.bounds)
@@ -60,6 +65,4 @@ extension UIView {
             backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor), backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor), backgroundImageView.topAnchor.constraint(equalTo: topAnchor), backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
-    
 }
