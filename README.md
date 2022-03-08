@@ -8,7 +8,7 @@
 </p>
 
 ## What is it about?
-### It's a challenge the participants of an iOS bootcamp had to do, in order to get to the next cahllenge, which will be in groups.
+### It's a challenge the participants of an iOS bootcamp had to do, in order to get to the next challenge, which will be in groups.
 
 ## What does it do?
 ### The user signs in when the app launches, then it has access to all the library provided by an API. You can see the book details when you press on it and can also bookmark it. Then, you can log out.
