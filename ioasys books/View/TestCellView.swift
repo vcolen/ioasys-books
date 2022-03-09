@@ -111,8 +111,6 @@ class BookCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configureSubviews()
-        setupConstraints()
     }
     
     required init?(coder: NSCoder) {

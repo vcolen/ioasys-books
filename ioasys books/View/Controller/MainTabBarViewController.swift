@@ -21,9 +21,9 @@ class MainTabBarViewController: UITabBarController {
         
     func setupViewControllers() {
         viewControllers = [
-            createTestView()
-//            createBookCatalogueView(),
-//            createBookmarkedBooksView()
+            createTestView(),
+            createBookCatalogueView(),
+            createBookmarkedBooksView()
         ]
     }
     

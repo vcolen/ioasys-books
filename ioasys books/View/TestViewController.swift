@@ -148,6 +148,9 @@ extension TestViewController: UITableViewDataSource {
         let book = books[indexPath.row]
         cell.configure(book: book)
         
+        cell.configureSubviews()
+        cell.setupConstraints()
+        
         return cell
     }
 }
