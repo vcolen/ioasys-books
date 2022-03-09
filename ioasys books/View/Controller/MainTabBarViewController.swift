@@ -21,24 +21,11 @@ class MainTabBarViewController: UITabBarController {
         
     func setupViewControllers() {
         viewControllers = [
-            createTestView(),
             createBookCatalogueView(),
             createBookmarkedBooksView()
         ]
     }
-    
-    func createTestView() -> UINavigationController {
-        let bookCatalogueViewController = TestViewController()
-        bookCatalogueViewController.userViewModel = self.userViewModel
-        bookCatalogueViewController.authorization = self.authorization
         
-        let bookCatalogueNavigationController = UINavigationController(rootViewController: bookCatalogueViewController)
-        bookCatalogueNavigationController.tabBarItem.title = "Início"
-        bookCatalogueNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")
-        
-        return bookCatalogueNavigationController
-    }
-    
     func createBookCatalogueView() -> UINavigationController {
         let bookCatalogueViewController = BookCatalogueViewController()
         bookCatalogueViewController.userViewModel = self.userViewModel

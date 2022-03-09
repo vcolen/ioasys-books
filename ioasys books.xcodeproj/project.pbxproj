@@ -48,7 +48,6 @@
 		79F5B73A27B2AFDC00EBEB6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */; };
 		79F5B73E27B2C52900EBEB6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73D27B2C52900EBEB6A /* Constants.swift */; };
 		79F5B74027B2DA3C00EBEB6A /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */; };
-		79F69B1D27D6E24E00912476 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F69B1C27D6E24E00912476 /* TestViewController.swift */; };
 		79F69B1F27D6E2E500912476 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F69B1E27D6E2E500912476 /* BookCell.swift */; };
 		79F9608527BBCF9F00561EA3 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */; };
 		79F9608727BBDD0D00561EA3 /* BookTableInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */; };
@@ -99,7 +98,6 @@
 		79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		79F5B73D27B2C52900EBEB6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79F5B73F27B2DA3C00EBEB6A /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
-		79F69B1C27D6E24E00912476 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		79F69B1E27D6E2E500912476 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		79F9608427BBCF9F00561EA3 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		79F9608627BBDD0D00561EA3 /* BookTableInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableInfoView.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				792E23B127C1601E004BE151 /* ActivityIndicatorView.swift */,
-				79F69B1C27D6E24E00912476 /* TestViewController.swift */,
 				79F69B1E27D6E2E500912476 /* BookCell.swift */,
 				79A1A0B727B0424900C2E0E6 /* BookContainerView.swift */,
 				79A8305927B34D7E00860D7C /* BookDetailView.swift */,
@@ -357,7 +354,6 @@
 				790A56B827BA97B00090F002 /* LoginView.swift in Sources */,
 				79F9608727BBDD0D00561EA3 /* BookTableInfoView.swift in Sources */,
 				79EF0A7327BD86D500EEA0ED /* LoginViewModel.swift in Sources */,
-				79F69B1D27D6E24E00912476 /* TestViewController.swift in Sources */,
 				79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */,
 				794021E627B98C360057A07E /* BookmarkedBooks.swift in Sources */,
 				792F481327B59ADF000391C4 /* UIView+Extensions.swift in Sources */,
