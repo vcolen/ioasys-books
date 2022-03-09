@@ -22,6 +22,9 @@ class BookmarkedBooksViewModel: BookmarkedBooksViewModelProtocol {
         for book in BookmarkedBooks().books.values {
             self.bookmarkedBooks.append(BookViewModel(book: book))
         }
+        bookmarkedBooks.sort { book1, book2 in
+             book1.title < book2.title
+         }
         self.authorization = authorization
     }
     

@@ -150,7 +150,6 @@ class BookCell: UITableViewCell {
         }
         
         bookmarkButton.addAction(UIAction { _ in
-            print("apertou")
             book.changeBookmarkedStatus()
             if book.isBookmarked {
                 self.bookmarkButton.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)

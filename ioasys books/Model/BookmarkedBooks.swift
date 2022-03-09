@@ -18,20 +18,11 @@ class BookmarkedBooks {
         }
     }
     
-    func removeBook(book: Book) {
-        self.books[book.id] = nil
-    }
-    
-    func bookmarkBook(book: Book) {
-        self.books[book.id] = book
-    }
     
     func toggleBookmarkStatus(book: Book) {
         if book.isBookmarked {
-            print("desfavoritou")
             self.books[book.id] = nil
         } else {
-            print("favoritou")
             self.books[book.id] = book
         }
     }
