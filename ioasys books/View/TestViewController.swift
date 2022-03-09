@@ -41,6 +41,7 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        searchController.searchResultsUpdater = self
         bookCatalogueViewModel = BookCatalogueViewModel(authorization: self.authorization)
         didSucceedInLogin()
     }
@@ -54,7 +55,7 @@ class TestViewController: UIViewController {
     }
     
     func setupTableView() {
-        tableView.register(BookCell.self, forCellReuseIdentifier: "joga")
+        tableView.register(BookCell.self, forCellReuseIdentifier: K.CellIds.bookCellId)
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -100,6 +101,23 @@ class TestViewController: UIViewController {
         
         present(bookDetailViewController, animated: true)
     }
+    
+    fileprivate func searchBook() {
+        
+        let bookTitle = searchController.searchBar.text ?? ""
+        self.bookCatalogueViewModel.searchBook(bookTitle: bookTitle) {books, error in
+            guard error == nil else {
+                return
+            }
+            
+            if let books = books {
+                DispatchQueue.main.async {
+                    self.books = books
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension TestViewController: UITableViewDelegate {
@@ -115,7 +133,11 @@ extension TestViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
+        guard !searchController.isActive else {
+            return
+        }
+        
         if indexPath.row == self.books.count - 5 {
             
             bookCatalogueViewModel.loadBooksOnPage(page: self.currentPage) { newBooks, page in
@@ -144,7 +166,7 @@ extension TestViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "joga", for: indexPath) as! BookCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIds.bookCellId, for: indexPath) as! BookCell
         let book = books[indexPath.row]
         cell.configure(book: book)
         
@@ -154,4 +176,11 @@ extension TestViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension TestViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        searchBook()
+    }
+}
+
 

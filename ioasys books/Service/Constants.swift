@@ -30,4 +30,8 @@ struct K {
         static let loginBackgroundImage = "Login Background"
         static let launchScreenBackground = "Launch Screen Background"
     }
+    
+    struct CellIds {
+        static let bookCellId = "Book Cell"
+    }
 }
