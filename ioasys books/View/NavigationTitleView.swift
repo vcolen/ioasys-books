@@ -74,7 +74,7 @@ class NavigationTitleView: UIView {
         navigationTitleMainStackView.addArrangedSubview(titleStackView)
         titleStackView.addArrangedSubview(logoImageView)
         titleStackView.addArrangedSubview(booksTitleLabel)
-        navigationTitleMainStackView.addArrangedSubview(logOutButton)
+       //navigationTitleMainStackView.addArrangedSubview(logOutButton)
     }
     
     func setupConstraints() {
@@ -84,8 +84,8 @@ class NavigationTitleView: UIView {
         
         //Logo image
         NSLayoutConstraint.activate([
-            logoImageView.widthAnchor.constraint(equalToConstant: 92.8),
-            logoImageView.heightAnchor.constraint(equalToConstant: 32)
+            //logoImageView.widthAnchor.constraint(equalToConstant: 92.8),
+           // logoImageView.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
 }
