@@ -32,7 +32,6 @@
 		794021ED27B9BB7E0057A07E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794021EB27B9BB7E0057A07E /* Roboto-Medium.ttf */; };
 		794021EE27B9BB7E0057A07E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794021EC27B9BB7E0057A07E /* Roboto-Regular.ttf */; };
 		79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */; };
-		7994887327D9014300CAC1B2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7994887227D9014300CAC1B2 /* TestViewController.swift */; };
 		79A1A09927AFF30B00C2E0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */; };
 		79A1A09B27AFF30B00C2E0E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */; };
 		79A1A0AD27AFF3C400C2E0E6 /* BooksCatalogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1A0AC27AFF3C400C2E0E6 /* BooksCatalogueView.swift */; };
@@ -81,7 +80,6 @@
 		794021EB27B9BB7E0057A07E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		794021EC27B9BB7E0057A07E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBooksViewController.swift; sourceTree = "<group>"; };
-		7994887227D9014300CAC1B2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		79A1A09527AFF30B00C2E0E6 /* ioasys books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ioasys books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A1A09827AFF30B00C2E0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79A1A09A27AFF30B00C2E0E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				792F481027B593F2000391C4 /* BookDetailViewController.swift */,
 				79446AFD27B69EB800B237B7 /* BookmarkedBooksViewController.swift */,
 				79F5B73927B2AFDC00EBEB6A /* LoginViewController.swift */,
-				7994887227D9014300CAC1B2 /* TestViewController.swift */,
 				792F481827B5E1DC000391C4 /* MainTabBarViewController.swift */,
 				792E23B327C18B07004BE151 /* SpinnerViewController.swift */,
 			);
@@ -371,7 +368,6 @@
 				79A1A0B227B00D8600C2E0E6 /* NavigationTitleView.swift in Sources */,
 				792E23B427C18B07004BE151 /* SpinnerViewController.swift in Sources */,
 				792E23AC27BFC50F004BE151 /* BookCatalogueViewModel.swift in Sources */,
-				7994887327D9014300CAC1B2 /* TestViewController.swift in Sources */,
 				79446AFE27B69EB800B237B7 /* BookmarkedBooksViewController.swift in Sources */,
 				79A8305A27B34D7E00860D7C /* BookDetailView.swift in Sources */,
 				79F9608527BBCF9F00561EA3 /* BookDetailViewModel.swift in Sources */,

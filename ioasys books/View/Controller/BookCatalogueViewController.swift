@@ -31,15 +31,10 @@ class BookCatalogueViewController: UIViewController {
         self.navigationItem.titleView = NavigationTitleView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.currentPage = 2
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.currentPage = 2
         view.backgroundColor = .white
         searchController.searchResultsUpdater = self
         bookCatalogueViewModel = BookCatalogueViewModel(authorization: self.authorization)
@@ -114,6 +109,7 @@ class BookCatalogueViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.books = books
                     self.tableView.reloadData()
+                    self.currentPage = 2
                 }
             }
         }

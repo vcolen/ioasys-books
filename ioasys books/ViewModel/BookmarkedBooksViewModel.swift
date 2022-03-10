@@ -17,7 +17,6 @@ class BookmarkedBooksViewModel: BookmarkedBooksViewModelProtocol {
     var bookmarkedBooks = [BookViewModel]()
     var authorization: String
     
-    
     init(authorization: String) {
         for book in BookmarkedBooks().books.values {
             self.bookmarkedBooks.append(BookViewModel(book: book))
