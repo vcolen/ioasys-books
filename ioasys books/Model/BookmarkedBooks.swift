@@ -18,7 +18,6 @@ class BookmarkedBooks {
         }
     }
     
-    
     func toggleBookmarkStatus(book: Book) {
         if book.isBookmarked {
             self.books[book.id] = nil

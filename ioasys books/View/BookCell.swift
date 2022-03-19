@@ -149,40 +149,32 @@ class BookCell: UITableViewCell {
             secondaryInfoStackView.addArrangedSubview(infoLabel)
         }
         
-        bookmarkButton.addAction(UIAction { _ in
-            book.changeBookmarkedStatus()
-            if book.isBookmarked {
-                self.bookmarkButton.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
-            } else {
-                self.bookmarkButton.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
-            }
-        }, for: .touchUpInside)
-        
-//        layer.cornerRadius = 4
-//        layer.shadowRadius = 24
-//        layer.shadowOffset = CGSize(width: 0, height: 4)
-//        layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.09)
-//        layer.shadowOpacity = 1.0
+        mainView.layer.cornerRadius = 4
+        mainView.layer.shadowRadius = 24
+        mainView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        mainView.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.09)
+        mainView.layer.shadowOpacity = 1.0
 
     }
     
     func setupConstraints() {
         
         //Main View
-        self.stretch(mainView)
+        self.stretch(mainView, top: 12, left: 32, bottom: -12, right: -32)
         
         //Container Stack View
         NSLayoutConstraint.activate([
             mainStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -22.78),
             mainStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 24),
-            mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16)
+            mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16),
+            mainStackView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16)
         ])
         
         //Cover Image View
         NSLayoutConstraint.activate([
             coverImageView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
             coverImageView.widthAnchor.constraint(equalToConstant: 81),
-            coverImageView.heightAnchor.constraint(equalToConstant: 123)
+            coverImageView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor)
         ])
         
         //Info Stack View

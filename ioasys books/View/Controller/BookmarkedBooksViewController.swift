@@ -92,10 +92,12 @@ extension BookmarkedBooksViewController: UITableViewDelegate {
         let book = bookmarkedBooksViewModel.bookmarkedBooks[indexPath.row]
         let bookDetailViewModel = book.getDetailViewModelVersion()
         self.presentDetailView(of: bookDetailViewModel)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        180
     }
 }
 
@@ -112,6 +114,17 @@ extension BookmarkedBooksViewController: UITableViewDataSource {
         
         cell.configureSubviews()
         cell.setupConstraints()
+        
+        cell.bookmarkButton.addAction(UIAction { _ in
+            book.changeBookmarkedStatus()
+            if book.isBookmarked {
+                cell.bookmarkButton.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
+            } else {
+                cell.bookmarkButton.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
+            }
+            print("\(book.title) is bookmarked == \(book.isBookmarked), na linha \(indexPath.row)")
+        }, for: .touchUpInside)
+        
         return cell
     }
 }

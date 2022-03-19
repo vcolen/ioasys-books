@@ -36,6 +36,7 @@ class BookCatalogueViewController: UIViewController {
         
         self.currentPage = 2
         view.backgroundColor = .white
+        tableView.separatorColor = .clear
         searchController.searchResultsUpdater = self
         bookCatalogueViewModel = BookCatalogueViewModel(authorization: self.authorization)
         didSucceedInLogin()
@@ -122,10 +123,12 @@ extension BookCatalogueViewController: UITableViewDelegate {
         let book = books[indexPath.row]
         let bookDetailViewModel = book.getDetailViewModelVersion()
         self.presentDetailView(of: bookDetailViewModel)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        180
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -164,10 +167,24 @@ extension BookCatalogueViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIds.bookCellId, for: indexPath) as! BookCell
         let book = books[indexPath.row]
-        cell.configure(book: book)
         
         cell.configureSubviews()
         cell.setupConstraints()
+        cell.configure(book: book)
+        
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets.zero
+        
+    
+        cell.bookmarkButton.addAction(UIAction { _ in
+            book.changeBookmarkedStatus()
+            if book.isBookmarked {
+                cell.bookmarkButton.setImage(UIImage(named: "Bookmarked Icon"), for: .normal)
+            } else {
+                cell.bookmarkButton.setImage(UIImage(named: "Bookmark Icon"), for: .normal)
+            }
+            print("\(book.title) / isBookmarked: \(book.isBookmarked) / linha: \(indexPath.row)")
+        }, for: .touchUpInside)
         
         return cell
     }
