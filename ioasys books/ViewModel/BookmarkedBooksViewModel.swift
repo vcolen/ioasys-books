@@ -28,14 +28,18 @@ class BookmarkedBooksViewModel: BookmarkedBooksViewModelProtocol {
     }
     
     func searchBookmarkedBooks(bookTitle: String, completion: @escaping ([BookViewModel]) -> Void) {
+        let myBooks = BookmarkedBooks().books.values.sorted { book1, book2 in
+            book1.title < book2.title
+        }
+        
         if bookTitle != "" {
-            var bookmarkedBooks = [BookViewModel]()
-            for book in self.bookmarkedBooks {
+            var fetchedBookmarkedBooks = [BookViewModel]()
+            for book in myBooks {
                 if book.title.localizedCaseInsensitiveContains(bookTitle) {
-                    bookmarkedBooks.append(book)
+                    fetchedBookmarkedBooks.append(BookViewModel(book: book))
                 }
             }
-            completion(bookmarkedBooks)
+            completion(fetchedBookmarkedBooks)
         } else {
             completion(self.bookmarkedBooks)
         }

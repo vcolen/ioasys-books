@@ -160,7 +160,7 @@ class BookCell: UITableViewCell {
     func setupConstraints() {
         
         //Main View
-        self.stretch(mainView, top: 12, left: 32, bottom: -12, right: -32)
+        self.stretch(mainView, top: 12, left: 24, bottom: -12, right: -24)
         
         //Container Stack View
         NSLayoutConstraint.activate([

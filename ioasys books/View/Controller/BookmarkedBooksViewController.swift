@@ -115,6 +115,9 @@ extension BookmarkedBooksViewController: UITableViewDataSource {
         cell.configureSubviews()
         cell.setupConstraints()
         
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets.zero
+        
         cell.bookmarkButton.addAction(UIAction { _ in
             book.changeBookmarkedStatus()
             if book.isBookmarked {
